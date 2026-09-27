@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>كلمة — تعلّم الإنجليزية، كلمة بكلمة</title>
+<meta name="description" content="قائمة أوكسفورد 5000 مشروحة بالعربي، و122 كتاب قراءة متدرّج من A1 إلى C1، وتدريبات على الكتابة والتحدّث — في تطبيق واحد.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;600&family=Noto+Kufi+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF6EC; --card:#FFFDF7; --ink:#23332F; --soft:#7A6A55;
+    --moss:#4A6B52; --moss-d:#2F4A38; --gold:#C79A3C; --gold-d:#9A7530;
+    --line:#E3CFA0; --line-soft:#EAE0CC;
+    --ar:'Noto Kufi Arabic',system-ui,sans-serif;
+    --en:'Fraunces',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);color:var(--ink);font-family:var(--ar);line-height:1.85;
+    background-image:radial-gradient(circle,rgba(160,140,100,.13) 1px,transparent 1px);
+    background-size:26px 26px;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px}
+  section{padding:64px 0}
+  a{color:inherit}
+
+  /* ── الواجهة ─────────────────────────── */
+  .hero{text-align:center;padding:76px 0 56px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-260px;left:50%;transform:translateX(-50%);
+    width:900px;height:620px;pointer-events:none;
+    background:radial-gradient(ellipse at center,rgba(199,154,60,.20) 0%,transparent 68%)}
+  .rule{width:74px;height:5px;border-radius:3px;margin:0 auto 20px;
+        background:linear-gradient(90deg,var(--gold),#EBD9AE)}
+  .tagline{
+    font-size:15px;font-weight:700;color:var(--gold-d);
+    margin-bottom:18px;letter-spacing:.2px;
+  }
+  .brand{font-size:74px;font-weight:700;line-height:1;letter-spacing:-1px}
+  .brand-en{font-family:var(--en);font-size:25px;font-weight:700;color:var(--gold-d);
+            letter-spacing:12px;margin-top:12px}
+  .lede{font-size:20px;color:var(--soft);margin-top:24px;line-height:2}
+  .lede b{color:var(--moss);font-weight:700}
+
+  .cta{display:inline-block;margin-top:32px;background:var(--gold);color:#FFFDF7;
+    font-size:18px;font-weight:700;text-decoration:none;padding:16px 46px;border-radius:999px;
+    box-shadow:0 6px 18px rgba(199,154,60,.32);transition:transform .15s,box-shadow .15s}
+  .cta:hover{transform:translateY(-2px);box-shadow:0 9px 24px rgba(199,154,60,.40)}
+  .cta.ghost{background:transparent;color:var(--gold-d);border:2px solid var(--gold);box-shadow:none}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:44px}
+  .stat{background:linear-gradient(180deg,#FFFDF7 0%,#FBF3E2 100%);
+    border:1.5px solid var(--line);border-radius:16px;padding:20px 10px;
+    box-shadow:0 3px 10px rgba(199,154,60,.10)}
+  .stat .n{font-family:var(--en);font-size:28px;font-weight:700;color:var(--gold-d);line-height:1}
+  .stat .l{font-size:12.5px;color:var(--soft);margin-top:6px}
+
+  /* ── عناوين ─────────────────────────── */
+  /* the highlighter: a soft honey wash behind a phrase that must not be
+     skimmed past. Used sparingly — a page where everything glows says
+     nothing at all. */
+  .hl-mark{
+    background:linear-gradient(180deg,transparent 58%,#F6E3B4 58%);
+    padding:0 2px;font-weight:700;color:var(--ink);
+  }
+  .gold{color:var(--gold-d);font-weight:700}
+  .kicker{font-size:13px;font-weight:700;color:var(--gold-d);letter-spacing:1px;margin-bottom:8px}
+  h2{font-size:31px;font-weight:700;line-height:1.55;margin-bottom:16px}
+  h2 .hl{color:var(--moss)}
+  .sub{font-size:17px;color:var(--soft);margin-bottom:32px;line-height:1.9}
+  .tinted{
+    background:var(--card);
+    border-block:1.5px solid var(--line);
+    box-shadow:inset 0 3px 0 rgba(199,154,60,.10), inset 0 -3px 0 rgba(199,154,60,.10);
+  }
+
+  /* ── المميزات ─────────────────────────── */
+  .feats{display:grid;gap:13px}
+  .feat{display:flex;gap:16px;align-items:flex-start;background:var(--card);
+    border:1.5px solid var(--line);border-radius:18px;padding:20px 22px;
+    box-shadow:0 2px 8px rgba(199,154,60,.07)}
+  .tinted .feat{background:var(--paper)}
+  .feat .disc{width:52px;height:52px;border-radius:15px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;font-size:25px}
+  .feat h3{font-size:18px;font-weight:700;margin-bottom:5px}
+  .feat p{font-size:15px;color:var(--soft);line-height:1.85}
+  .feat p b{color:var(--moss-d);font-weight:700}
+  .feat .num{font-size:12.5px;font-weight:700;color:var(--gold-d);margin-top:7px}
+
+  /* ── لماذا الإنجليزية ─────────────────── */
+  .why-lead{font-size:18.5px;line-height:2.05;margin-bottom:30px}
+  .why-lead b{color:var(--moss-d)}
+  .fields{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+  .field{border:1.5px solid var(--line);border-radius:16px;padding:17px 19px;background:var(--card)}
+  .tinted .field{background:var(--paper)}
+  .field h3{font-size:16px;font-weight:700;margin-bottom:5px}
+  .field p{font-size:14.5px;color:var(--soft);line-height:1.85}
+
+  /* ── قصتي ─────────────────────────── */
+  .story-head{text-align:center;margin-bottom:34px}
+  .story-kicker{font-size:25px;font-weight:700;color:var(--moss);margin-bottom:6px}
+  .story-title{font-size:29px;font-weight:700}
+  .quote{background:var(--paper);border:1.5px solid var(--line);border-radius:22px;
+    padding:40px 32px 32px;position:relative}
+  .quote::before{content:"”";position:absolute;top:8px;inset-inline-start:26px;
+    font-family:var(--en);font-size:74px;color:var(--gold);opacity:.55;line-height:1}
+  .quote p{font-size:16.5px;line-height:2.05;margin-bottom:19px}
+  .quote p:last-child{margin-bottom:0}
+  .quote b{color:var(--moss-d);font-weight:700}
+  .sign{text-align:center;margin-top:20px;font-size:15px;color:var(--gold-d);font-weight:700}
+
+  .honest{background:#FBF3E2;border:1.5px solid var(--gold);border-inline-start-width:5px;
+    border-radius:18px;padding:24px;margin-top:22px}
+  .honest p{font-size:16px;line-height:2;margin-bottom:13px}
+  .honest p:last-child{margin-bottom:0}
+  .honest b{color:var(--gold-d)}
+
+  /* ── السعر ─────────────────────────── */
+  /* the line that closes the sale: warm block, above the price */
+  .invest{
+    background:linear-gradient(180deg,#FBF3E2 0%,#F6E9CE 100%);
+    border:1.5px solid var(--line);border-radius:20px;
+    padding:30px 26px;margin:0 auto 30px;max-width:580px;text-align:center;
+    box-shadow:0 4px 14px rgba(199,154,60,.12);
+  }
+  .invest-big{font-size:28px;font-weight:700;color:var(--moss-d);line-height:1.5;margin-bottom:10px}
+  .invest-small{font-size:15.5px;color:var(--soft);line-height:2.1}
+  .invest-hl{background:linear-gradient(180deg,transparent 58%,#EFD79F 58%);
+    padding:0 2px;font-weight:700;color:var(--ink)}
+  .invest-close{display:inline-block;font-size:17px;font-weight:700;color:var(--moss-d);line-height:1.75}
+  @media (max-width:640px){ .invest-big{font-size:23px} .invest-small{font-size:14.5px} .invest-close{font-size:16px} }
+  .price-card{background:var(--card);border:2px solid var(--gold);border-radius:24px;
+    padding:34px 30px;text-align:center;max-width:460px;margin:0 auto;
+    box-shadow:0 8px 26px rgba(199,154,60,.16)}
+  .plan-name{font-size:17px;font-weight:700;color:var(--gold-d);margin-bottom:14px}
+  .now{font-family:var(--en);font-size:60px;font-weight:700;color:var(--ink);line-height:1;margin-top:6px}
+  .once{font-size:14px;color:var(--soft);margin-top:8px}
+  .plans{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:20px}
+  .plan{background:var(--paper);border:1.5px solid var(--line);border-radius:14px;padding:13px 6px}
+  .plan-n{font-family:var(--en);font-size:21px;font-weight:700;color:var(--gold-d);line-height:1}
+  .plan-l{font-size:11.5px;color:var(--soft);margin-top:5px}
+  .plan-t{font-family:var(--ar);font-size:11px;color:var(--soft);margin-top:5px;opacity:.9}
+  .plan-t b{font-family:var(--en);font-weight:700;color:var(--gold-d)}
+  .plan.best .plan-t{color:var(--moss-d);font-family:var(--ar);font-weight:700;opacity:1}
+  .cur{display:inline-flex;align-items:center;gap:8px;margin:0 auto 16px;
+    background:var(--paper);border:1.5px solid var(--line);border-radius:999px;padding:6px 8px 6px 14px}
+  .cur label{font-size:13px;font-weight:700;color:var(--soft)}
+  .cur select{appearance:none;-webkit-appearance:none;font-family:var(--ar);font-size:15px;font-weight:700;
+    color:var(--ink);background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%239A7530' stroke-width='2'/%3E%3C/svg%3E") no-repeat left 12px center;
+    border:1.5px solid var(--gold);border-radius:999px;padding:7px 14px 7px 34px;cursor:pointer}
+  .cur select:focus-visible{outline:3px solid rgba(199,154,60,.35);outline-offset:2px}
+  .cy{font-family:var(--ar);font-size:.42em;font-weight:700;color:var(--soft);margin-inline-start:6px;vertical-align:middle}
+  .plan-n .cy{font-size:.6em}
+  .plan-t b .cy{font-size:.85em;margin-inline-start:3px}
+  .cur{max-width:100%}
+  .cur-hint{font-size:12.5px;color:var(--gold-d);font-weight:700;margin:-8px 0 14px}
+  @media (max-width:380px){ .price-card{padding:30px 18px} .cur{padding:5px 6px 5px 10px;gap:6px} .cur select{font-size:14px;padding:6px 10px 6px 30px} }
+  .fx{font-size:12px;color:var(--soft);margin-top:10px}
+  .price-card .now,.price-card .plan-n,.price-card .plan-t b{direction:ltr;unicode-bidi:isolate}
+  .lifetime{font-size:14.5px;font-weight:700;color:var(--moss);margin-top:14px}
+  .incl{list-style:none;text-align:right;margin-top:22px;padding-top:20px;border-top:1.5px solid var(--line-soft)}
+  .incl li{font-size:15px;line-height:2.1;color:var(--ink)}
+  .incl li::before{content:"✓";color:var(--moss);font-weight:700;margin-inline-end:9px}
+
+  /* ── الخطوات ─────────────────────────── */
+  .steps{counter-reset:s;display:grid;gap:11px;max-width:600px;margin:0 auto}
+  .step{display:flex;gap:15px;align-items:flex-start;
+    border-inline-start:3px solid var(--line);padding:5px 18px 16px}
+  .step::before{counter-increment:s;content:counter(s);font-family:var(--mono);font-size:13px;
+    font-weight:600;color:#FFFDF7;background:var(--gold);width:26px;height:26px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px}
+  .step h3{font-size:16.5px;font-weight:700;margin-bottom:2px}
+  .step p{font-size:14.5px;color:var(--soft)}
+
+  /* ── الأسئلة ─────────────────────────── */
+  details{background:var(--card);border:1.5px solid var(--line);border-radius:16px;
+    padding:15px 20px;margin-bottom:10px}
+  .tinted details{background:var(--paper)}
+  summary{font-size:16.5px;font-weight:700;cursor:pointer;list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"＋";float:inline-start;color:var(--gold);font-weight:400}
+  details[open] summary::after{content:"−"}
+  details p{font-size:15px;color:var(--soft);line-height:1.9;margin-top:11px}
+
+  /* ── الخاتمة ─────────────────────────── */
+  .final{text-align:center;padding:72px 0}
+  .final h2{font-size:33px;margin-bottom:12px}
+  .contact{text-align:center;font-size:15px;color:var(--soft);margin-top:26px}
+  .contact a{color:var(--gold-d);font-weight:700;text-decoration:none;border-bottom:2px solid var(--line)}
+  footer{text-align:center;padding:44px 0 56px;border-top:1.5px solid var(--line)}
+  .made{font-size:19px;font-weight:600;color:var(--gold-d);line-height:1.9}
+  .made-brand{font-family:var(--en);font-size:27px;font-weight:700;color:var(--gold);margin-top:9px;letter-spacing:.5px}
+
+  @media (max-width:640px){
+    .tagline{font-size:13.5px}
+    .brand{font-size:55px}.brand-en{font-size:19px;letter-spacing:9px}
+    .lede{font-size:17.5px}h2{font-size:25px}.final h2{font-size:26px}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .fields{grid-template-columns:1fr}
+    section{padding:50px 0}
+    .quote{padding:36px 21px 25px}.quote p{font-size:16px}
+    .now{font-size:50px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ الواجهة ══ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="rule"></div>
+    <!-- one short line above the name: the promise before the product -->
+    <div class="tagline">اللغة استثمار — فاستثمر في نفسك 💛</div>
+    <h1 class="brand">كلمة</h1>
+    <div class="brand-en">KALIMA</div>
+    <p class="lede">
+      تعلّم الإنجليزية <span class="hl-mark">من الكلمة إلى الإتقان</span><br>
+      مفردات مختارة من <span class="hl-mark">قائمة أوكسفورد 5000</span>، و<span class="hl-mark">كتب قراءة متدرّجة</span> من A1 إلى C1،
+      وتدريبات على <span class="hl-mark">الكتابة والتحدّث</span> — كله بشرح عربي، في تطبيق واحد.
+    </p>
+    <a class="cta" href="https://link.twenify.ai/payment-link/6aa69fb17ac941590e7d1757">ابدأ التعلّم الآن</a>
+
+    <div class="stats">
+      <div class="stat"><div class="n">5,000</div><div class="l">كلمة مشروحة</div></div>
+      <div class="stat"><div class="n">122</div><div class="l">كتاباً متدرّجاً</div></div>
+      <div class="stat"><div class="n">1,000</div><div class="l">سؤال تحدّث</div></div>
+      <div class="stat"><div class="n">250</div><div class="l">موضوع كتابة</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ══ ما بالداخل ══ -->
+<section class="tinted">
+  <div class="wrap">
+    <div class="kicker">ماذا يوجد بالداخل</div>
+    <h2>كل ما تحتاجه <span class="hl">في مكان واحد</span></h2>
+    <p class="sub">لأن حفظ الكلمات وحده لا يكفي — الكلمة تثبت حين تقرأها في سياق، وتكتبها، وتنطقها.</p>
+
+    <div class="feats">
+      <div class="feat">
+        <div class="disc" style="background:#FBF3E2">🗂️</div>
+        <div><h3>مفردات مختارة بترتيب علمي</h3>
+        <p>مبنية على قائمة جامعة أوكسفورد للكلمات الأكثر استخداماً — التي تغطي <span class="hl-mark">95%</span> من المحادثات اليومية. لكل كلمة تعريف بالإنجليزية وترجمة عربية ومثال مترجم، والكلمات ذات المعنيين مفصولة كل معنى بمثاله.</p>
+        <div class="num">5,000 كلمة · 109 تصنيفاً · خمسة مستويات</div></div>
+      </div>
+
+      <div class="feat">
+        <div class="disc" style="background:#F7EAD0">📖</div>
+        <div><h3>كتب قراءة متدرّجة لكل مستوى</h3>
+        <p>قصص أصلية من A1 إلى C1 — ولقسم الأفعال المركّبة كتبه الخاصة به أيضاً — مبنية بالكامل من الكلمات التي تتعلّمها، فتقرأ <span class="hl-mark">نصاً تفهمه</span> بدل أن تتعثّر كل سطرين. أسئلة بعد كل فصل، وقاموس بكلمات الكتاب في نهايته.</p>
+        <div class="num">122 كتاباً متدرّجاً · ستة مستويات</div></div>
+      </div>
+
+      <div class="feat">
+        <div class="disc" style="background:#F2E4C6">👆</div>
+        <div><h3>اضغط أي كلمة في أي قصة</h3>
+        <p><span class="hl-mark">لن تحتاج قاموساً</span> وأنت تقرأ. أي كلمة تضغطها تفتح بطاقتها فوراً: معناها، وتعريفها بالعربي والإنجليزي، ومثال، ونطق.</p></div>
+      </div>
+
+      <div class="feat">
+        <div class="disc" style="background:#F7EAD0">🎙️</div>
+        <div><h3>التحدّث</h3>
+        <p>أسئلة مبنية على إطار CEFR ومرتّبة بمستواك: من أسئلة شخصية بسيطة إلى مواضيع تحتاج حجّة كاملة، والسؤال مترجم فلا تتوقّف عند فهمه.</p>
+        <div class="num">1,000 سؤال · 200 لكل مستوى</div></div>
+      </div>
+
+      <div class="feat">
+        <div class="disc" style="background:#F2E4C6">✍️</div>
+        <div><h3>ورشة الكتابة</h3>
+        <p>مواضيع بمهمة واضحة باللغتين، ومعها كلمات وعبارات مقترحة تناسب مستواك ونوع الكتابة.</p>
+        <div class="num">250 موضوعاً · 50 لكل مستوى</div></div>
+      </div>
+
+      <div class="feat">
+        <div class="disc" style="background:#EDDEBC">🔗</div>
+        <div><h3>الأفعال المركّبة (Phrasal Verbs)</h3>
+        <p>الإنجليزية لا تُبنى على كلمات مفردة فقط. الأفعال المركّبة تدخل في أغلب الجمل اليومية، وإتقانها يجعل فهمك أوضح وكلامك أقرب للواقع. ولها هنا قسم مستقل بمفرداته، <span class="hl-mark">وكتب قراءة خاصة بها</span> مبنية من هذه الأفعال نفسها لتراها مستعملة في سياقها.</p>
+        <div class="num">166 فعلاً مركّباً · 13 كتاباً</div></div>
+      </div>
+
+      <div class="feat">
+        <div class="disc" style="background:#FBF3E2">🔊</div>
+        <div><h3>نطق صوتي</h3>
+        <p>لكل كلمة — في مكتبة الكلمات وداخل القصص — لتتعلّم كيف تُنطق الإنجليزية فعلياً لا كما تتخيّلها.</p></div>
+      </div>
+
+      <div class="feat">
+        <div class="disc" style="background:#EDDEBC">📑</div>
+        <div><h3>قوائمك الخاصة</h3>
+        <p>قوائم تجمع فيها ما يهمّك من كل المستويات، وتبقى محفوظة لترجع لها.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ لماذا الإنجليزية ══ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">ليش الإنجليزية</div>
+    <h2>أنت لا تتعلّم لغة — <span class="hl">أنت تفتح باباً</span></h2>
+
+    <p class="why-lead">
+      الإنجليزية <span class="hl-mark">أكثر اللغات تداولاً</span> في العالم: لغة الإنترنت، والدراسة، والعمل، والسفر.
+      أغلب المحتوى الذي تحتاجه يُكتب بها أولاً، ويُترجم متأخراً — أو لا يُترجم أبداً.
+      <br><br>
+      وحين تتقنها، <span class="hl-mark">الأبواب تنفتح وحدها</span>: وظائف ما كانت مطروحة لك، وعملاء من خارج بلدك،
+      ومنح ودراسة في الخارج، ومصادر تعلّم بلا حدود. وكل كلمة تتعلّمها تعطيك أكثر من معناها:
+      <span class="hl-mark">ثقة</span> تتكلّم بها بلا تردد، و<span class="hl-mark">استقلالية</span> تصل بها إلى المصدر مباشرة بلا وسيط.
+      <br><br>
+      وأجمل ما فيها أنها <span class="hl-mark">تكبر معك</span>: كل مستوى تصله يفتح لك محتوى أوسع وناساً أكثر،
+      وما تتعلّمه اليوم يبقى معك طول عمرك.
+    </p>
+
+    <div class="fields">
+      <div class="field"><h3>🩺 الطب والصحة</h3>
+        <p>أغلب الكليات تدرّس المنهج بالإنجليزية، والمراجع والأبحاث اللي ترجع لها <span class="hl-mark">تصدر بها أولاً</span>.</p></div>
+      <div class="field"><h3>💻 التقنية والبرمجة</h3>
+        <p>أغلب التوثيق والدورات وحلول المشكلات بالإنجليزية، واللي ما يقرأها <span class="hl-mark">ينتظر ترجمة ممكن تتأخر</span>.</p></div>
+      <div class="field"><h3>💼 الأعمال والوظائف</h3>
+        <p>السيرة الذاتية، والمقابلة، والاجتماع مع عميل من برا. وفيه فرص كثيرة <span class="hl-mark">تسأل عن لغتك قبل خبرتك</span>.</p></div>
+      <div class="field"><h3>🎓 الدراسة والابتعاث</h3>
+        <p>القبول الجامعي، واختبارات مثل آيلتس وتوفل، وقراءة الكتب والأبحاث — <span class="hl-mark">كلها تبدأ من مستوى لغتك</span>.</p></div>
+      <div class="field"><h3>✈️ السفر والحياة</h3>
+        <p>في <span class="hl-mark">المطار، والمستشفى</span>، وكل موقف تحتاج فيه أحد يفهمك بسرعة وهو ما يعرف لغتك.</p></div>
+      <div class="field"><h3>🌍 المعرفة عموماً</h3>
+        <p>معظم الإنترنت والكتب والأبحاث تُنشر بالإنجليزية أولاً، والوصول لها مباشرة <span class="hl-mark">يغيّر ما تعرفه</span>.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ قصتي ══ -->
+<section class="tinted">
+  <div class="wrap">
+    <div class="story-head">
+      <div class="story-kicker">قصتي</div>
+      <div class="story-title">ليش بنيت تطبيق «كلمة»</div>
+    </div>
+
+    <div class="quote">
+      <p>لسنين طويلة حاولت أتعلم الإنجليزية، وكل مرة أفشل. أبدأ متحمسة، أحفظ قوائم كلمات عشوائية، وبعد أسبوعين أنسى كل شي وأرجع من الصفر. المشكلة ما كانت في الحماس — كانت في إني أدرس بلا خطة.</p>
+
+      <p>لين سمعت عن أهم <span class="hl-mark">5000 كلمة</span> حددتها جامعة أوكسفورد، واللي تغطي حوالي <span class="gold">95%</span> من المحادثات اليومية. قررت أبدأ فيها، وعلى طول لاحظت الفرق: <span class="hl-mark">الكلمات اللي أحفظها أصادفها فعلاً</span>، لأنها كانت مختارة بعناية مو عشوائية.</p>
+
+      <p>بس لاحظت إن الحفظ وحده ما يكفي. احتجت شيء يثبّت الكلمة ويخليني أفهمها بعمق أكبر — وهو القراءة. فبدأت أقرأ كتب متدرجة، كتاب بعد كتاب. الفرق كان واضح، بس كل كتاب لحاله يكلّف تقريباً <b>12 دولار</b>، والمجموعة كاملة تطلع مبلغ كبير.</p>
+
+      <p>فقررت أسوي الكتب بنفسي: <span class="hl-mark">122 كتاباً متدرجاً</span> من المستوى المبتدئ إلى المتقدم، كلها مدمجة داخل اشتراكك. لو شريتها متفرقة من أي منصة كتب، بتكلّفك مبلغاً كبيراً — والكتب هنا مجرد جزء واحد من أجزاء الدورة، مو الدورة كلها.</p>
+
+      <p>وخلال <span class="hl-mark">ثلاثة أشهر</span> بهذي الطريقة، انتقلت من مستوى مبتدئ جداً — كنت بالكاد أكوّن جملة — إلى إني أقرأ كتباً وأفهمها بدون ما أوقف عند كل سطر، وأتكلّم بجمل من عندي. والفرق ما كان في ذكاء ولا وقت أكثر، بس لأن <span class="hl-mark">الطريق كان واضح</span> وما ضيّعت وقتي في العشوائية.</p>
+
+      <p>من هنا جتني الفكرة: ليه ما أجمع كل شيء في مكان واحد؟ كل الكلمات، وكل الكتب المتدرجة من A1 إلى C1، بدل ما تدفع لكل كتاب لحاله.</p>
+    </div>
+
+    <div class="honest">
+      <p><span class="gold">وأبي أكون صريحة معك:</span> «كلمة» مو عصا سحرية. هي دورة تجمع لك <span class="hl-mark">المصادر الصحيحة والطريق المرتّب</span> لإتقان اللغة — بس النتيجة تعتمد على <span class="hl-mark">اجتهادك ومذاكرتك أنت</span>.</p>
+      <p>لو دخلت وتصفحت بدون التزام، ما راح تتغير. ولو مشيت على الترتيب وذاكرت بانتظام، <span class="hl-mark">بتشوف فرق حقيقي</span> — تماماً مثل ما صار معي.</p>
+    </div>
+
+    <div class="sign">— إنستقرام: @kalima.english</div>
+  </div>
+</section>
+
+<!-- ══ السعر ══ -->
+<section id="buy">
+  <div class="wrap">
+    <div class="kicker" style="text-align:center">الأسعار</div>
+    <h2 style="text-align:center">وصول <span class="hl">مدى الحياة</span></h2>
+    <p class="sub" style="text-align:center">تدفع مرة واحدة — بدون اشتراك شهري.</p>
+
+    <!-- the line that answers the last hesitation: is this worth it? It sits
+         directly above the price, where that question is actually asked. -->
+    <div class="invest">
+      <div class="invest-big">استثمر في نفسك</div>
+      <div class="invest-small">
+        كل شيء تشتريه ينقص بالاستعمال — <span class="hl-mark">إلا اللغة، تكبر</span>.
+        <br>الجوال يقدم، والملابس تبلى، والرحلة تنتهي في أسبوع.
+        <br>واللغة تبقى معك <span class="invest-hl">طول عمرك</span> — تفتح لك وظيفة، وبلداً، وناساً،
+        وباباً ما كنت تعرف أنه موجود.
+        <br><br><span class="invest-close">أنت ما تشتري تطبيقاً — أنت تشتري نسخة أفضل منك.</span>
+      </div>
+    </div>
+
+    <div class="price-card">
+      <div class="plan-name">الباقة الأساسية</div>
+      <div class="cur"><label for="cur">العملة</label>
+        <select id="cur" aria-label="اختر العملة">
+          <option value="KWD">🇰🇼 دينار كويتي</option>
+          <option value="SAR">🇸🇦 ريال سعودي</option>
+          <option value="AED">🇦🇪 درهم إماراتي</option>
+          <option value="QAR">🇶🇦 ريال قطري</option>
+          <option value="BHD">🇧🇭 دينار بحريني</option>
+          <option value="OMR">🇴🇲 ريال عماني</option>
+          <option value="USD">🇺🇸 دولار أمريكي</option>
+        </select></div>
+      <div class="cur-hint">اضغط على العملة لتغييرها ☝️</div>
+      <div class="now" data-usd="149">$149</div>
+      <div class="once">أو قسّمها كما يناسبك</div>
+
+      <!-- three ways to pay, laid out side by side so none looks like the
+           default and the learner picks by what suits them -->
+      <div class="plans">
+        <div class="plan best"><div class="plan-n" data-usd="149">$149</div><div class="plan-l">دفعة واحدة</div><div class="plan-t">الأوفر</div></div>
+        <div class="plan"><div class="plan-n" data-usd="84">$84</div><div class="plan-l">× دفعتين</div><div class="plan-t">الإجمالي <b data-usd="168" data-x2="84">$168</b></div></div>
+      </div>
+
+      <div class="fx" id="fx" hidden>السعر بالعملة المحلية تقريبي، والدفع يتم بالدولار.</div>
+
+      <div class="lifetime">وصول مدى الحياة في كل الحالات</div>
+
+      <ul class="incl">
+        <li>مفردات من A1 إلى C1 بشرح عربي</li>
+        <li>122 كتاب قراءة متدرّج</li>
+        <li>1,000 سؤال تحدّث</li>
+        <li>250 موضوع كتابة</li>
+        <li>الأفعال المركّبة مع كتب قراءة خاصة بها</li>
+        <li>نطق صوتي لكل كلمة</li>
+      </ul>
+
+      <a class="cta" style="margin-top:26px" href="https://link.twenify.ai/payment-link/6aa69fb17ac941590e7d1757">اشترك الآن</a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ بعد الاشتراك ══ -->
+<section class="tinted">
+  <div class="wrap">
+    <div class="kicker" style="text-align:center">بعد الاشتراك</div>
+    <h2 style="text-align:center;margin-bottom:32px">كيف تدخل التطبيق</h2>
+    <div class="steps">
+      <div class="step"><div><h3>اختر باقتك وادفع</h3><p>تختار طريقة الدفع التي تناسبك.</p></div></div>
+      <div class="step"><div><h3>يُنشأ حسابك تلقائياً</h3><p>بنفس بريدك الذي دفعت به — بدون خطوات إضافية.</p></div></div>
+      <div class="step"><div><h3>يفتح لك التطبيق مباشرة</h3><p>تجد «كلمة» جاهزاً أمامك، وترجع له أي وقت من حسابك.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ الأسئلة ══ -->
+<section>
+  <div class="wrap">
+    <details><summary>مستواي مبتدئ تماماً — ينفعني؟</summary>
+      <p>نعم، وهذا مكانه. مستوى A1 يبدأ من الأساس: الأرقام والعائلة والبيت والطعام، وكتبه مكتوبة بجمل قصيرة جداً من الكلمات نفسها التي حفظتها.</p></details>
+
+    <details><summary>هل الشرح بالعربي؟</summary>
+      <p>نعم. كل كلمة لها ترجمة عربية وتعريف مبسّط، وكل مثال مترجم، وكل موضوع كتابة وسؤال تحدّث مشروح باللغتين. لن تتوقّف عند فهم التعليمات نفسها.</p></details>
+  </div>
+</section>
+
+<!-- ══ الخاتمة ══ -->
+<section class="final">
+  <div class="wrap">
+    <div class="rule"></div>
+    <h2>ابدأ من الكلمة الأولى</h2>
+    <p class="sub" style="margin-bottom:24px"><span class="hl-mark">الطريق واضح والمصادر مجموعة</span> — الباقي عليك.</p>
+    <a class="cta" href="https://link.twenify.ai/payment-link/6aa69fb17ac941590e7d1757">ابدأ التعلّم الآن</a>
+
+    <div class="contact">
+      أي سؤال؟ <a href="https://ig.me/m/kalima.english">راسلني على إنستقرام</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="made">صُنع بحب لمتعلّمي الإنجليزية 💛</div>
+  <div class="made-brand">كلمة — Kalima</div>
+</footer>
+
+<script>
+(function(){
+  // Gulf rates per 1 USD (all pegged except KWD, which is basket-managed and near-stable)
+  var C={USD:{r:1,s:'$',d:0},SAR:{r:3.75,s:'ر.س',d:0},AED:{r:3.6725,s:'د.إ',d:0},
+         KWD:{r:0.307,s:'د.ك',d:1},QAR:{r:3.64,s:'ر.ق',d:0},BHD:{r:0.376,s:'د.ب',d:1},OMR:{r:0.3845,s:'ر.ع',d:1}};
+  var TZ={'Asia/Riyadh':'SAR','Asia/Dubai':'AED','Asia/Kuwait':'KWD','Asia/Qatar':'QAR','Asia/Bahrain':'BHD','Asia/Muscat':'OMR'};
+  var sel=document.getElementById('cur'), fx=document.getElementById('fx');
+  function conv(usd,c){var k=Math.pow(10,c.d);return Math.round(usd*c.r*k)/k;}
+  function fmt(v,c){return v.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:c.d});}
+  function paint(code){
+    var c=C[code]||C.USD;
+    document.querySelectorAll('.price-card [data-usd]').forEach(function(el){
+      var v = el.hasAttribute('data-x2') ? Math.round(conv(+el.getAttribute('data-x2'),c)*2*Math.pow(10,c.d))/Math.pow(10,c.d)
+                                        : conv(+el.getAttribute('data-usd'),c);
+      if(code==='USD'){el.textContent='$'+fmt(v,c);}
+      else{el.innerHTML=fmt(v,c)+'<span class="cy">'+c.s+'</span>';}
+    });
+    fx.hidden = code==='USD';
+    sel.value=code;
+  }
+  var code='USD';
+  try{var saved=localStorage.getItem('kalima-cur'); if(saved&&C[saved]) code=saved;
+      else {var tz=Intl.DateTimeFormat().resolvedOptions().timeZone; if(TZ[tz]) code=TZ[tz];}}
+  catch(e){try{var tz2=Intl.DateTimeFormat().resolvedOptions().timeZone; if(TZ[tz2]) code=TZ[tz2];}catch(_){}}
+  paint(code);
+  sel.addEventListener('change',function(){paint(sel.value);try{localStorage.setItem('kalima-cur',sel.value)}catch(e){}});
+})();
+</script>
+</body>
+</html>
