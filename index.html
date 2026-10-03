@@ -548,12 +548,37 @@
     if (!idx[k]) idx[k] = fetch(B() + DIRS[v] + 'index-' + part + '.json').then(function (r) { if (!r.ok) throw 0; return r.json(); }).catch(function () { delete idx[k]; return {}; });
     return idx[k];
   }
-  function getBuf(v, b) {
+  // Sprites are CBR 32k mp3 @24kHz: 45-byte ID3 + one 192-byte Info frame, then 96-byte frames of 576 samples.
+  // So each clip's bytes can be fetched alone with an HTTP Range request (~8 KB) -> plays almost instantly.
+  var HDR = 45 + 192, FB = 96, FS = 576 / 24000, clips = {}, full = {};
+  function getFull(v, b) {
     var k = v + '/' + b;
-    if (!bufs[k]) bufs[k] = fetch(B() + DIRS[v] + b + '.mp3').then(function (r) { if (!r.ok) throw 0; return r.arrayBuffer(); })
-      .then(function (ab) { return new Promise(function (res, rej) { ctx.decodeAudioData(ab, res, rej); }); })
-      .catch(function (e) { delete bufs[k]; throw e; });
-    return bufs[k];
+    if (!full[k]) full[k] = fetch(B() + DIRS[v] + b + '.mp3').then(function (r) { if (!r.ok) throw 0; return r.arrayBuffer(); })
+      .then(decode).catch(function (e) { delete full[k]; throw e; });
+    return full[k];
+  }
+  function decode(ab) { return new Promise(function (res, rej) { ctx.decodeAudioData(ab, res, rej); }); }
+  // returns {buf, start, dur}
+  function getClip(v, e) {
+    var k = v + '/' + e[0] + '@' + e[1];
+    if (clips[k]) return clips[k];
+    var f0 = Math.max(0, Math.floor((e[1] - 0.25) / FS)), f1 = Math.ceil((e[1] + e[2] + 0.12) / FS) + 4;
+    var a = HDR + f0 * FB, z = HDR + f1 * FB - 1;
+    clips[k] = fetch(B() + DIRS[v] + e[0] + '.mp3', { headers: { Range: 'bytes=' + a + '-' + z } }).then(function (r) {
+      if (r.status === 206) return r.arrayBuffer().then(decode).then(function (buf) {
+        var exp = e[1] - f0 * FS + 0.046, d = buf.getChannelData(0), sr = buf.sampleRate;
+        var i = Math.max(0, Math.floor((exp - 0.12) * sr)), lim = Math.min(d.length, Math.floor((exp + 0.2) * sr)), on = -1;
+        for (; i < lim; i++) if (d[i] > 0.02 || d[i] < -0.02) { on = i / sr; break; }
+        var st = on < 0 ? Math.max(0, exp - 0.03) : Math.max(0, on - 0.08);
+        return { buf: buf, start: st, dur: e[2] + 0.1 };
+      });
+      if (r.ok) return getFull(v, e[0]).then(function (buf) { return { buf: buf, start: Math.max(0, e[1] - 0.06), dur: e[2] + 0.14 }; });
+      throw 0;
+    }).catch(function () {
+      delete clips[k];
+      return getFull(v, e[0]).then(function (buf) { return { buf: buf, start: Math.max(0, e[1] - 0.06), dur: e[2] + 0.14 }; });
+    });
+    return clips[k];
   }
   function stop() {
     token++;
@@ -586,18 +611,19 @@
     }).then(function (hit) {
       if (my !== token) return;
       if (!hit) { device(text, onEnd); return; }
-      return getBuf(hit.v, hit.e[0]).then(function (buf) {
+      return getClip(hit.v, hit.e).then(function (c) {
         if (my !== token) return;
-        var s = ctx.createBufferSource(); s.buffer = buf; s.connect(ctx.destination);
-        var start = Math.max(0, hit.e[1] - 0.06), dur = hit.e[2] + 0.14;
+        var s = ctx.createBufferSource(); s.buffer = c.buf; s.connect(ctx.destination);
+        var start = c.start, dur = c.dur;
         s.onended = function () { if (cur === s) cur = null; onEnd && onEnd(); };
         s.start(0, start, dur); cur = s;
       });
     }).catch(function () { if (my === token) device(text, onEnd); });
   }
-  function preload(voice) { var v = voice || 'bella'; if (B() && window.fetch) { getIndex(v, 'w'); } }
+  function preload(voice) { var v = voice || 'bella'; if (B() && window.fetch) { getIndex(v, 'w').then(function () { if (v === 'bella') { getIndex(v, 's'); preload('maya'); } }); } }
   window.KalimaVoice = { say: say, stop: stop, unlock: unlock, preload: preload };
-  setTimeout(function () { try { preload('bella'); } catch (e) {} }, 1500);
+  setTimeout(function () { try { preload('bella'); } catch (e) {} }, 300);
+  ['pointerdown', 'touchstart'].forEach(function (ev) { document.addEventListener(ev, function () { unlock(); }, { once: true, passive: true }); });
 })();
 </script>
 </head>
