@@ -29,7 +29,7 @@
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  #price{scroll-margin-top:96px}
+  #price,#ai-price{scroll-margin-top:96px}
   .price-card .cur-wrap{margin:4px 0 2px}
   .price-card .cur{margin-bottom:6px}
   .price-card .cur-hint{margin:0 0 4px;font-size:11.5px}
@@ -1128,7 +1128,7 @@
       <p class="ai-close">اللغة ما تنحفظ… <span class="ai-mark">اللغة تتعلّم لما تستخدمها</span>.<br>و«كلمة AI» يخليك تستخدمها كل يوم — كتابة وكلام.</p>
 
       <div class="ai-gift">🎁 وتأتي معه <b>باقة كلمة</b>: الكلمات، والكتب، والاستماع، والكتابة، والتحدّث.</div>
-      <a class="cta ai-cta" href="#price">احصل على كلمة AI</a>
+      <a class="cta ai-cta" href="#ai-price">احصل على كلمة AI</a>
     </div>
   </div>
 </section>
@@ -1194,7 +1194,7 @@
       </div>
     </div>
 
-    <div class="price-card ai-card">
+    <div class="price-card ai-card" id="ai-price">
       <div class="badge">الأقوى</div>
       <div class="plan-name">كلمة AI</div>
       <div class="plan-sub">مدرّسك الذكي — يكتب ويتكلم معاك ويصحح لك 24 ساعة</div>
@@ -1307,9 +1307,9 @@
 })();
 </script>
 <script>
-document.querySelectorAll('a[href="#price"]').forEach(function(a){
+document.querySelectorAll('a[href="#price"],a[href="#ai-price"]').forEach(function(a){
   a.addEventListener('click',function(e){
-    var t=document.getElementById('price'); if(!t) return;
+    var t=document.getElementById(a.getAttribute('href').slice(1)); if(!t) return;
     e.preventDefault(); var bar=document.querySelector('.topbar'); var off=(bar?bar.getBoundingClientRect().bottom:0)+10; window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-off,behavior:'smooth'});
   });
 });
