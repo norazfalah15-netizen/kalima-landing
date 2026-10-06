@@ -96,6 +96,55 @@
     box-shadow:inset 0 3px 0 rgba(199,154,60,.10), inset 0 -3px 0 rgba(199,154,60,.10);
   }
 
+
+  /* ── كلمة AI ─────────────────────────── */
+  .ai-sec{padding:56px 0}
+  .ai-band{background:var(--ink);color:#F4EEDF;border-radius:28px;padding:44px 34px;position:relative;overflow:hidden;
+    box-shadow:0 14px 40px rgba(35,51,47,.22)}
+  .ai-band::before{content:"";position:absolute;inset:auto -80px -120px auto;width:300px;height:300px;border-radius:50%;
+    background:radial-gradient(circle,rgba(240,198,74,.18),transparent 70%);pointer-events:none}
+  .ai-kicker{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:#F0C64A;letter-spacing:.3px;margin-bottom:12px}
+  .ai-new{background:#F0C64A;color:var(--ink);border-radius:999px;padding:2px 12px;font-size:12px}
+  .ai-band h2{color:#FFFDF7}
+  .ai-gold{color:#F0C64A}
+  .ai-lead{font-size:16.5px;line-height:2;color:#D9D2C1;margin-bottom:28px;max-width:62ch}
+  .ai-lead b{color:#FFFDF7}
+  .ai-mark{background:linear-gradient(180deg,transparent 64%,rgba(240,198,74,.28) 64%);color:#FFFDF7;font-weight:700;padding:0 2px}
+  .ai-feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+  .ai-feat{display:flex;gap:14px;align-items:flex-start;background:rgba(255,253,247,.06);border:1.5px solid rgba(240,198,74,.22);
+    border-radius:18px;padding:18px 18px}
+  .ai-ic{width:46px;height:46px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:22px;
+    background:rgba(240,198,74,.14)}
+  .ai-feat h3{font-size:17px;font-weight:700;color:#FFFDF7;margin-bottom:4px}
+  .ai-feat p{font-size:14.5px;line-height:1.85;color:#CFC8B6}
+  .ai-sub{font-size:22px;font-weight:700;color:#FFFDF7;margin:38px 0 16px;text-align:center;text-wrap:balance}
+  .ai-vs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .ai-col{border-radius:18px;padding:18px 18px}
+  .ai-col.no{background:rgba(255,253,247,.04);border:1.5px dashed rgba(255,253,247,.18)}
+  .ai-col.yes{background:rgba(240,198,74,.12);border:1.5px solid rgba(240,198,74,.45)}
+  .ai-col-h{font-size:15px;font-weight:700;margin-bottom:10px}
+  .ai-col.no .ai-col-h{color:#A9A190}
+  .ai-col.yes .ai-col-h{color:#F0C64A}
+  .ai-col ul{list-style:none;display:grid;gap:8px}
+  .ai-col li{font-size:14.5px;line-height:1.75;display:flex;gap:8px}
+  .ai-col.no li{color:#A9A190}
+  .ai-col.no li::before{content:"✕";color:#B0776A;font-weight:700}
+  .ai-col.yes li{color:#F4EEDF}
+  .ai-col.yes li::before{content:"✓";color:#F0C64A;font-weight:700}
+  .ai-close{text-align:center;font-size:17px;line-height:2;color:#D9D2C1;margin-top:26px}
+  .ai-gift{margin:24px auto 0;max-width:520px;text-align:center;font-size:15px;color:#F4EEDF;
+    border:1.5px dashed rgba(240,198,74,.55);border-radius:14px;padding:12px 14px}
+  .ai-gift b{color:#F0C64A}
+  .ai-cta{display:block;width:max-content;margin:20px auto 0}
+  @media (max-width:640px){
+    .ai-sec{padding:40px 0}
+    .ai-band{padding:30px 18px;border-radius:22px}
+    .ai-lead{font-size:15px}
+    .ai-vs{grid-template-columns:1fr}
+    .ai-sub{font-size:19px}
+    .ai-close{font-size:15.5px}
+  }
+
   /* ── المميزات ─────────────────────────── */
   .feats{display:grid;gap:13px}
   .feat{display:flex;gap:16px;align-items:flex-start;background:var(--card);
@@ -900,6 +949,45 @@
   </div>
 </section>
 
+<!-- ══ كلمة AI ══ -->
+<section class="ai-sec" id="ai">
+  <div class="wrap">
+    <div class="ai-band">
+      <div class="ai-kicker"><span class="ai-new">جديد</span> كلمة AI</div>
+      <h2>مدرّسك الخاص — <span class="ai-gold">معك 24 ساعة</span></h2>
+      <p class="ai-lead">أصعب شي في تعلّم الإنجليزي مو حفظ الكلمات… أصعب شي إنك <span class="ai-mark">ما تلقى أحد تتكلم معاه ويصحح لك</span>.
+      <br>«كلمة AI» يحل هالمشكلة: تكتب له أو تكلّمه بصوتك، ويرد عليك، ويصحح أخطاءك، ويشرح لك ليش غلطت — <b>بالعربي</b>، وفي أي وقت تبيه.</p>
+
+      <div class="ai-feats">
+        <div class="ai-feat"><div class="ai-ic">✍️</div><div><h3>محادثة كتابية حرّة</h3>
+          <p>اكتب عن يومك، دراستك، شغلك، أي شي. يرد عليك مثل صديق، ويصحح جملتك ويقول لك ليش كانت غلط. وإذا ما فهمت رده، يترجمه لك للعربي.</p></div></div>
+        <div class="ai-feat"><div class="ai-ic">📞</div><div><h3>مكالمة صوتية حرّة</h3>
+          <p>تتكلم بصوتك ويرد عليك بالصوت — مثل مكالمة حقيقية. أحسن تدريب قبل مقابلة شغل، أو سفر، أو اختبار محادثة.</p></div></div>
+        <div class="ai-feat"><div class="ai-ic">🗣️</div><div><h3>يصحح كلامك ونطقك</h3>
+          <p>يسمعك ويقول لك وين أخطأت في كلامك ونطقك، وكيف تقولها صح، ويشرح لك القاعدة بكلمتين بالعربي.</p></div></div>
+        <div class="ai-feat"><div class="ai-ic">🎯</div><div><h3>على قد مستواك</h3>
+          <p>من <bdi dir="ltr">A1</bdi> لين <bdi dir="ltr">C1</bdi>: إذا كنت مبتدئ يكلمك بجمل بسيطة وكلمات سهلة، وكل ما تقدمت يرفع المستوى معك.</p></div></div>
+        <div class="ai-feat"><div class="ai-ic">🕐</div><div><h3>24 ساعة — بدون موعد</h3>
+          <p>الساعة 3 الفجر، أو بين المحاضرات، أو وأنت في السيارة تنتظر. ما تحتاج تحجز حصة ولا تنتظر أحد يفضى لك.</p></div></div>
+        <div class="ai-feat"><div class="ai-ic">😌</div><div><h3>بدون إحراج</h3>
+          <p>اغلط قد ما تبي. ما أحد يضحك عليك ولا يحكم عليك — فتتكلم براحتك، وتتجرأ أكثر، وهذا بالضبط اللي يخليك تتطور.</p></div></div>
+      </div>
+
+      <h3 class="ai-sub">ليش تتعلّم <span class="ai-gold">أسرع وأسهل</span> مع كلمة AI؟</h3>
+      <div class="ai-vs">
+        <div class="ai-col no"><div class="ai-col-h">بدون كلمة AI</div>
+          <ul><li>تحفظ كلمات بس ما تستخدمها، فتنساها</li><li>تكتب وما تدري صح ولا غلط</li><li>تخاف تتكلم عشان لا تغلط قدام أحد</li><li>تنتظر فرصة تتكلم فيها مع أحد</li></ul></div>
+        <div class="ai-col yes"><div class="ai-col-h">مع كلمة AI</div>
+          <ul><li>تستخدم الكلمات في محادثة حقيقية على طول، فتثبت</li><li>كل غلطة تنصحح في لحظتها وتفهم ليش</li><li>تتكلم كل يوم براحتك بدون خوف</li><li>التدريب جاهز أول ما تفتح التطبيق</li></ul></div>
+      </div>
+      <p class="ai-close">اللغة ما تنحفظ… <span class="ai-mark">اللغة تنتعلّم لما تستخدمها</span>.<br>و«كلمة AI» يخليك تستخدمها كل يوم — كتابة وكلام.</p>
+
+      <div class="ai-gift">🎁 وتأتي معه <b>باقة كلمة كاملة</b>: الكلمات، والكتب، والتحدّث، والكتابة.</div>
+      <a class="cta ai-cta" href="#price">احصل على كلمة AI</a>
+    </div>
+  </div>
+</section>
+
 <!-- ══ السعر ══ -->
 <section id="buy">
   <div class="wrap">
@@ -1006,6 +1094,12 @@
 <!-- ══ الأسئلة ══ -->
 <section>
   <div class="wrap">
+    <details><summary>شنو الفرق بين باقة كلمة وكلمة AI؟</summary>
+      <p>كلمة AI فيها كل شي في باقة كلمة (الكلمات، والكتب، والتحدّث، والكتابة)، وفوقها مدرّس ذكي تكتب له وتكلّمه بصوتك، ويصحح كتابتك وكلامك ونطقك ويشرح لك أخطاءك بالعربي — 24 ساعة.</p></details>
+
+    <details><summary>أنا مبتدئ — ينفعني كلمة AI؟</summary>
+      <p>نعم. يكلمك على قد مستواك: جمل قصيرة وكلمات بسيطة إذا كنت في A1، ويرفع المستوى معك كل ما تقدمت. وإذا ما فهمت رده، يترجمه لك للعربي.</p></details>
+
     <details><summary>مستواي مبتدئ تماماً — ينفعني؟</summary>
       <p>نعم، وهذا مكانه. مستوى A1 يبدأ من الأساس: الأرقام والعائلة والبيت والطعام، وكتبه مكتوبة بجمل قصيرة جداً من الكلمات نفسها التي حفظتها.</p></details>
 
