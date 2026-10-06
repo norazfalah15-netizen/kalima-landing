@@ -157,6 +157,9 @@
   .ai-card{border-color:var(--moss)}
   .gift{margin-top:14px;background:var(--paper);border:1.5px dashed var(--gold);border-radius:14px;padding:10px 12px;font-size:15px;color:var(--ink)}
   .gift b{color:var(--moss-d)}
+  .plans.three{grid-template-columns:repeat(3,1fr);gap:8px}
+  .pay-btns.three{grid-template-columns:repeat(3,1fr);gap:8px}
+  .pay-btns.three .cta{font-size:15px;padding-inline:4px}
   .incl li.plus{color:var(--moss-d);font-weight:700}
   .incl li.plus::before{content:""}
   .cur-wrap{text-align:center}
@@ -963,21 +966,23 @@
       <div class="plan-sub">مدرّسك الذكي — يكتب ويتكلم معاك ويصحح لك 24 ساعة</div>
       <div class="now" data-usd="460">$460</div>
       <div class="once">أو قسّمها كما يناسبك</div>
-      <div class="plans">
+      <div class="plans three">
         <div class="plan best"><div class="plan-n" data-usd="460">$460</div><div class="plan-l">دفعة واحدة</div><div class="plan-t">الأوفر</div></div>
+        <div class="plan"><div class="plan-n" data-usd="245">$245</div><div class="plan-l">× دفعتين</div><div class="plan-t">الإجمالي <b data-usd="490" data-x2="245">$490</b></div></div>
         <div class="plan"><div class="plan-n" data-usd="165">$165</div><div class="plan-l">× 3 دفعات</div><div class="plan-t">الإجمالي <b data-usd="495" data-x3="165">$495</b></div></div>
       </div>
       <div class="gift">🎁 تأتي معها <b>باقة كلمة كاملة</b></div>
       <ul class="incl">
         <li>محادثة كتابية حرّة مع «كلمة AI»</li>
         <li>يصحّح كتابتك ويشرح لك أخطاءك</li>
-        <li>محادثة صوتية — تتكلم ويرد عليك بالصوت</li>
-        <li>تصحيح غير محدود</li>
+        <li>مكالمة صوتية حرّة مع «كلمة AI»</li>
+        <li>يصحّح كلامك ونطقك ويشرح لك أخطاءك</li>
         <li class="plus">+ كل ما في باقة كلمة</li>
       </ul>
-      <div class="pay-btns">
+      <div class="pay-btns three">
         <a class="cta" href="#price" data-todo="whop-ai-once">دفعة واحدة</a>
-        <a class="cta ghost" href="#price" data-todo="whop-ai-x3">على 3 دفعات</a>
+        <a class="cta ghost" href="#price" data-todo="whop-ai-x2">دفعتين</a>
+        <a class="cta ghost" href="#price" data-todo="whop-ai-x3">3 دفعات</a>
       </div>
     </div>
     </div>
