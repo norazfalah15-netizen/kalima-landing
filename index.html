@@ -656,14 +656,7 @@
     section{padding:38px 0}
     .sub{margin-bottom:20px}
     h2{margin-bottom:12px}
-    /* ما بالداخل: two per row */
-    .feats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-    .feat{flex-direction:column;gap:6px;padding:12px 11px;border-radius:15px}
-    .feat .disc{width:34px;height:34px;font-size:18px;border-radius:10px}
-    .feat h3{font-size:14px;line-height:1.5;margin-bottom:2px}
-    .feat p{font-size:12.5px;line-height:1.75}
-    .feat .num{font-size:11px;margin-top:5px}
-    .feats>.feat:last-child:nth-child(odd),.fields>.field:last-child:nth-child(odd),.ai-feats>.ai-feat:last-child:nth-child(odd),.pod-grid>.pod-f:last-child:nth-child(odd){grid-column:1/-1}
+    .fields>.field:last-child:nth-child(odd),.ai-feats>.ai-feat:last-child:nth-child(odd),.pod-grid>.pod-f:last-child:nth-child(odd){grid-column:1/-1}
     /* ليش الإنجليزية: two per row */
     .fields{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
     .field{padding:12px 11px;border-radius:14px}
