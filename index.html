@@ -682,6 +682,24 @@
     .steps{gap:8px}
     details{padding:14px 16px}
   }
+
+  /* hero: five stats + Kalima AI pill */
+  .hero-card .stats{grid-template-columns:repeat(5,1fr)!important}
+  .hero-card .stat:nth-child(n)::before{display:block}
+  .hero-card .stat:first-child::before{display:none}
+  .hero-card .stat:nth-child(n+3){border-top:none!important;padding-top:6px}
+  .ai-pill{display:flex;align-items:center;justify-content:center;gap:8px;width:max-content;max-width:100%;margin:16px auto 0;
+    font-size:14px;font-weight:700;color:#F0C64A;text-decoration:none;border:1.5px solid rgba(240,198,74,.55);
+    border-radius:999px;padding:7px 16px 7px 14px;background:rgba(240,198,74,.08)}
+  .ai-pill:hover{background:rgba(240,198,74,.16)}
+  .ai-pill-new{background:#F0C64A;color:#23332F;border-radius:999px;padding:1px 10px;font-size:12px}
+  #ai{scroll-margin-top:96px}
+  @media (max-width:640px){
+    .hero-card .stat{padding:8px 1px}
+    .hero-card .stat .n{font-size:18px}
+    .hero-card .stat .l{font-size:10px}
+    .ai-pill{font-size:12.5px;padding:6px 12px}
+  }
 </style>
 <script>window.KALIMA_VOICE_BASE="https://llzehodvkaddizklaywy.supabase.co/storage/v1/object/public/podcast/";</script>
 <script id="kalima-voice">/* KalimaVoice — every pronunciation on the site comes from pre-recorded clips, so every visitor hears
@@ -818,12 +836,14 @@
         <p class="lede-sub">كله بشرح عربي، وبالتدريج من <bdi dir="ltr">A1</bdi> إلى <bdi dir="ltr">C1</bdi>. انطلق باللغة 📚</p>
         <div class="levels" aria-label="المستويات"><span>A1</span><span>A2</span><span>B1</span><span>B2</span><span>C1</span><span>Phrasal Verbs</span></div>
         <a class="cta" href="#price">ابدأ التعلّم الآن</a>
+        <a class="ai-pill" href="#ai"><span class="ai-pill-new">جديد</span> كلمة AI — مدرّسك الذكي 24 ساعة ←</a>
 
         <div class="stats">
           <div class="stat"><div class="n">5,000</div><div class="l">كلمة مشروحة</div></div>
           <div class="stat"><div class="n">165</div><div class="l">كتاباً متدرّجاً</div></div>
           <div class="stat"><div class="n">1,000</div><div class="l">سؤال تحدّث</div></div>
           <div class="stat"><div class="n">250</div><div class="l">موضوع كتابة</div></div>
+          <div class="stat"><div class="n">172</div><div class="l">حلقة بودكاست</div></div>
         </div>
       </div>
     </div>
