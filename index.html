@@ -650,6 +650,44 @@
     .pane.on,.lv,.tw.hint,.f-tap::before{animation:none}.lv{opacity:1;transform:none}
     .kcard,.kcard .in,.sheet{transition:none}
   }
+
+  /* ── compact layout on phones (text unchanged) ── */
+  @media (max-width:640px){
+    section{padding:38px 0}
+    .sub{margin-bottom:20px}
+    h2{margin-bottom:12px}
+    /* ما بالداخل: two per row */
+    .feats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    .feat{flex-direction:column;gap:6px;padding:12px 11px;border-radius:15px}
+    .feat .disc{width:34px;height:34px;font-size:18px;border-radius:10px}
+    .feat h3{font-size:14px;line-height:1.5;margin-bottom:2px}
+    .feat p{font-size:12.5px;line-height:1.75}
+    .feat .num{font-size:11px;margin-top:5px}
+    .feats>.feat:last-child:nth-child(odd),.fields>.field:last-child:nth-child(odd),.ai-feats>.ai-feat:last-child:nth-child(odd),.pod-grid>.pod-f:last-child:nth-child(odd){grid-column:1/-1}
+    /* ليش الإنجليزية: two per row */
+    .fields{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    .field{padding:12px 11px;border-radius:14px}
+    .field h3{font-size:14px;line-height:1.5}
+    .field p{font-size:12.5px;line-height:1.75}
+    .why-lead{font-size:16px;line-height:1.95;margin-bottom:20px}
+    /* كلمة AI: two per row */
+    .ai-feats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    .ai-feat{flex-direction:column;gap:6px;padding:12px 11px;border-radius:15px}
+    .ai-ic{width:32px;height:32px;font-size:17px;border-radius:10px}
+    .ai-feat h3{font-size:14px;line-height:1.5;margin-bottom:2px}
+    .ai-feat p{font-size:12.5px;line-height:1.75}
+    .ai-lead{margin-bottom:18px}
+    .ai-sub{margin:26px 0 12px}
+    .ai-col{padding:14px 14px}
+    .ai-col li{font-size:13.5px}
+    /* البودكاست */
+    .pod-levels{margin-bottom:14px}
+    .pod-noise{margin-top:14px}
+    .pod-close{margin-top:18px}
+    /* بعد الاشتراك والأسئلة */
+    .steps{gap:8px}
+    details{padding:14px 16px}
+  }
 </style>
 <script>window.KALIMA_VOICE_BASE="https://llzehodvkaddizklaywy.supabase.co/storage/v1/object/public/podcast/";</script>
 <script id="kalima-voice">/* KalimaVoice — every pronunciation on the site comes from pre-recorded clips, so every visitor hears
