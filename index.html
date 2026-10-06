@@ -1660,14 +1660,14 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   });
   body.innerHTML = html;
   var sheet=$('#sheet'), dim=$('#sheetDim'), cur=null;
-  function openSheet(k, span, expand){
+  function openSheet(k, span, expand, nested){ var W=nested?esc:wrap;
     var c = entry(k); if(!c) return; cur=c; stopReading();
     $$('.tw.on').forEach(function(x){x.classList.remove('on')}); if(span) span.classList.add('on');
-    $('#shW').textContent=c.w; $('#shPos').textContent=c.pos; $('#shAr').textContent=c.ar;
+    $('#shW').textContent=c.w.replace(/([A-Za-z])\d+$/,'$1'); $('#shPos').textContent=c.pos; $('#shAr').textContent=c.ar;
     var mb=$('#shMore'), xs=$('#shExs'); mb.hidden=!c.exs.length; xs.hidden=true; mb.textContent='إظهار أمثلة أكثر'; sheet.scrollTop=0;
-    xs.innerHTML=c.exs.map(function(e,i){return '<div class="sh-row sh-x"><button class="sh-mini" data-x="'+i+'" aria-label="اسمع المثال">🔊</button><div><span dir="ltr">'+esc(e[0])+'</span><small>'+esc(e[1])+'</small></div></div>'}).join('');
+    xs.innerHTML=c.exs.map(function(e,i){return '<div class="sh-row sh-x"><button class="sh-mini" data-x="'+i+'" aria-label="اسمع المثال">🔊</button><div><span dir="ltr">'+W(e[0])+'</span><small>'+esc(e[1])+'</small></div></div>'}).join('');
     if(expand && c.exs.length){ xs.hidden=false; mb.textContent='إخفاء الأمثلة'; }
-    $('#shDef').textContent=c.def; $('#shDefAr').textContent=c.defAr; $('#shEx').textContent=c.ex; $('#shExAr').textContent=c.exAr;
+    $('#shDef').innerHTML=W(c.def); $('#shDefAr').textContent=c.defAr; $('#shEx').innerHTML=W(c.ex); $('#shExAr').textContent=c.exAr;
     dim.hidden=false; sheet.classList.add('on'); sheet.setAttribute('aria-hidden','false');
     say(c.w, null, c.pos);
     if(window.KalimaMichael) window.KalimaMichael.prefetch([c.def, c.ex].concat(c.exs.map(function(e){return e[0]})), true);
@@ -1676,6 +1676,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   body.addEventListener('click', function(e){ var t=e.target.closest('.tw'); if(t) openSheet(t.getAttribute('data-w'), t); });
   body.addEventListener('keydown', function(e){ var t=e.target.closest('.tw'); if(t && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); openSheet(t.getAttribute('data-w'), t);} });
   dim.addEventListener('click', closeSheet);
+  sheet.addEventListener('click', function(e){ var t=e.target.closest('.tw'); if(t) openSheet(t.getAttribute('data-w'), null, false, true); });
   $('#shSay').addEventListener('click', function(){ if(cur) say(cur.w, null, cur.pos) });
   $('#shSayDef').addEventListener('click', function(){ if(cur) say(cur.def) });
   $('#shSayEx').addEventListener('click', function(){ if(cur) say(cur.ex) });
