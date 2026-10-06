@@ -1660,7 +1660,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   });
   body.innerHTML = html;
   var sheet=$('#sheet'), dim=$('#sheetDim'), cur=null;
-  function openSheet(k, span, expand, nested){ var W=nested?esc:wrap;
+  function openSheet(k, span, expand){ var W=esc;
     var c = entry(k); if(!c) return; cur=c; stopReading();
     $$('.tw.on').forEach(function(x){x.classList.remove('on')}); if(span) span.classList.add('on');
     $('#shW').textContent=c.w.replace(/([A-Za-z])\d+$/,'$1'); $('#shPos').textContent=c.pos; $('#shAr').textContent=c.ar;
@@ -1676,7 +1676,6 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   body.addEventListener('click', function(e){ var t=e.target.closest('.tw'); if(t) openSheet(t.getAttribute('data-w'), t); });
   body.addEventListener('keydown', function(e){ var t=e.target.closest('.tw'); if(t && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); openSheet(t.getAttribute('data-w'), t);} });
   dim.addEventListener('click', closeSheet);
-  sheet.addEventListener('click', function(e){ var t=e.target.closest('.tw'); if(t) openSheet(t.getAttribute('data-w'), null, false, true); });
   $('#shSay').addEventListener('click', function(){ if(cur) say(cur.w, null, cur.pos) });
   $('#shSayDef').addEventListener('click', function(){ if(cur) say(cur.def) });
   $('#shSayEx').addEventListener('click', function(){ if(cur) say(cur.ex) });
