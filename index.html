@@ -1442,12 +1442,12 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
 #try .pd-spd{appearance:auto;-webkit-appearance:menulist;text-align:center;text-align-last:center;min-width:72px;padding:5px 6px}
 #try .pd-prog{direction:ltr}
 #try .pd-ctrl{position:relative}
-#try .spd-menu{position:absolute;left:0;bottom:calc(100% + 10px);width:78%;z-index:5;background:#22313A;border-radius:20px;padding:12px 12px 12px;box-shadow:0 18px 34px -10px rgba(10,16,20,.65),0 0 0 1px rgba(240,198,74,.25);animation:spdIn .18s ease-out}
+#try .spd-menu{position:absolute;left:0;right:0;bottom:calc(100% + 10px);width:auto;z-index:5;background:#22313A;border-radius:20px;padding:12px 12px 12px;box-shadow:0 18px 34px -10px rgba(10,16,20,.65),0 0 0 1px rgba(240,198,74,.25);animation:spdIn .18s ease-out}
 #try .spd-menu[hidden]{display:none}
 @keyframes spdIn{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
 #try .spd-t{font:700 11px var(--ar);color:#E9C987;text-align:center;margin-bottom:8px}
-#try .spd-g{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;direction:ltr}
-#try .spd-g button{min-height:36px;border:1px solid rgba(240,198,74,.28);background:rgba(255,255,255,.06);color:#FBF3DF;border-radius:11px;font:700 12.5px var(--en);cursor:pointer;padding:0}
+#try .spd-g{display:flex;gap:6px;direction:ltr;overflow-x:auto;scroll-snap-type:x proximity;padding:2px 2px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}#try .spd-g::-webkit-scrollbar{display:none}
+#try .spd-g button{flex:0 0 54px;scroll-snap-align:center;min-height:38px;border:1px solid rgba(240,198,74,.28);background:rgba(255,255,255,.06);color:#FBF3DF;border-radius:11px;font:700 12.5px var(--en);cursor:pointer;padding:0}
 #try .spd-g button.on{background:#F0C64A;color:#22313A;border-color:#F0C64A}
 /* جوال التجربة فقط: زر «شوفه من ورا» فوق الجوال */
 .phone-wrap .p3d[data-p3d],.phone-wrap .p3d.has-row[data-p3d]{padding-top:64px!important;padding-bottom:30px!important}
@@ -2600,7 +2600,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   nzb.addEventListener('click',function(e){ e.stopPropagation(); if(!smenu.hidden) smOpen(false); nzOpen(nzm.hidden); });
   nzm.addEventListener('click',function(e){ e.stopPropagation(); var b=e.target.closest('button[data-v]'); if(!b) return; var v=b.getAttribute('data-v'); sel.value=v; sel.dispatchEvent(new Event('change')); var L=NZL[v]; nzb.querySelector('.nz-l1').textContent=L[0]; nzb.querySelector('.nz-l2').textContent=L[1]; [].forEach.call(nzm.querySelectorAll('button'),function(x){ x.classList.toggle('on',x===b); }); nzOpen(false); });
   var smenu=document.getElementById('pdSpdMenu');
-  function smOpen(o){ smenu.hidden=!o; spd.setAttribute('aria-expanded',o); }
+  function smOpen(o){ smenu.hidden=!o; spd.setAttribute('aria-expanded',o); if(o){ var g=smenu.querySelector('.spd-g'), on=g.querySelector('.on'); if(on) g.scrollLeft=on.offsetLeft-(g.clientWidth-on.offsetWidth)/2; } }
   spd.addEventListener('click',function(e){ e.stopPropagation(); nzOpen(false); smOpen(smenu.hidden); });
   smenu.addEventListener('click',function(e){ e.stopPropagation(); var b=e.target.closest('button[data-v]'); if(!b) return; var v=b.getAttribute('data-v'); spd.setAttribute('data-v',v); spd.textContent=v+'×'; [].forEach.call(smenu.querySelectorAll('button'),function(x){ x.classList.toggle('on',x===b); }); rate(); smOpen(false); });
   root.addEventListener('click',function(e){ if(!smenu.hidden && !e.target.closest('#pdSpdMenu,#pdSpd')) smOpen(false); if(!nzm.hidden && !e.target.closest('#pdNzMenu,#pdNzBtn')) nzOpen(false); });
