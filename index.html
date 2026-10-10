@@ -1609,8 +1609,8 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
 #try .wseg{display:flex;gap:3px;background:#EFE5CC;border-radius:10px;padding:2px;direction:rtl}
 #try .wseg button{font:700 10.5px var(--ar);border:0;background:transparent;color:#7A6B48;border-radius:8px;padding:4px 10px;cursor:pointer}
 #try .wseg button.on{background:#fff;color:#22313A;box-shadow:0 1px 3px rgba(0,0,0,.15)}
-#try .wchips{display:flex;gap:4px;padding:0 10px 6px;direction:rtl}
-#try .wchips button{flex:1 1 auto;font:700 9.5px var(--ar);white-space:nowrap;border:1px solid #E4D7B8;background:#fff;color:#22313A;border-radius:99px;padding:5px 4px;cursor:pointer}
+#try .wchips{display:flex;gap:4px;padding:0 10px 6px;direction:rtl;overflow:hidden}
+#try .wchips button{flex:1 1 0;min-width:0;font:700 9px var(--ar);white-space:nowrap;overflow:hidden;text-overflow:clip;border:1px solid #E4D7B8;background:#fff;color:#22313A;border-radius:99px;padding:6px 2px;cursor:pointer}#try .wchips #chQuiz{background:#F0C64A;border-color:#D9A92E}
 #try .wchips button.on{background:#F6E7BE;border-color:#C79A3C}
 #try .wgrid{flex:1;min-height:0;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:2px 12px 10px;align-content:start;-webkit-overflow-scrolling:touch}
 #try .wgrid[hidden]{display:none}
@@ -1964,7 +1964,7 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
           <!-- words -->
           <div class="pane on" data-pane="words">
             <div class="deck-meta"><span id="deckCount">01 / 30</span><div class="wseg" role="tablist" aria-label="طريقة العرض"><button type="button" class="on" data-view="cards" role="tab">🗂️ بطاقات</button><button type="button" data-view="grid" role="tab">▦ شبكة</button></div></div>
-            <div class="wchips"><button type="button" id="chSave">🔖 أضف لقائمة</button><button type="button" id="chHide">إخفاء المعنى</button><button type="button" id="chShuf">🔀 عشوائي</button><button type="button" id="chQuiz">✍️ اختبرني</button></div>
+            <div class="wchips"><button type="button" id="chSave">أضف لقائمة</button><button type="button" id="chHide">إخفاء المعنى</button><button type="button" id="chShuf">عشوائي</button><button type="button" id="chQuiz">اختبرني</button></div>
             <div class="wgrid" id="wGrid" hidden></div>
             <div class="deck" id="deck"></div>
             <div class="deck-dots" id="deckDots"></div>
@@ -2596,7 +2596,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
     function view(v){ var g=v==='grid'; pane.classList.toggle('gridmode',g); grid.hidden=!g; if(g) gridDraw(); [].forEach.call(pane.querySelectorAll('.wseg button'),function(b){var on=b.getAttribute('data-view')===v; b.classList.toggle('on',on); b.setAttribute('aria-selected',on)}); closeSheet(); }
     pane.querySelector('.wseg').addEventListener('click',function(e){ var b=e.target.closest('button'); if(b) view(b.getAttribute('data-view')); });
     grid.addEventListener('click',function(e){ var b=e.target.closest('button[data-i]'); if(b) openSheet(cards[+b.getAttribute('data-i')].w.toLowerCase(), null); });
-    function saveUI(){ var b=$('#chSave'), on=!!saved[cards[idx].w]; b.classList.toggle('on',on); b.textContent=on?'✓ في قائمتك':'🔖 أضف لقائمة'; }
+    function saveUI(){ var b=$('#chSave'), on=!!saved[cards[idx].w]; b.classList.toggle('on',on); b.textContent=on?'✓ في القائمة':'أضف لقائمة'; }
     $('#chSave').addEventListener('click',function(){ var w=cards[idx].w; saved[w]=!saved[w]; saveUI(); });
     var _show=show; show=function(d){ _show(d); saveUI(); };
     $('#chHide').addEventListener('click',function(){ hide=!hide; pane.classList.toggle('hide-ar',hide); this.classList.toggle('on',hide); this.textContent=hide?'إظهار المعنى':'إخفاء المعنى'; });
