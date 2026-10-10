@@ -2648,7 +2648,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
     ph.parentNode.insertBefore(stage,ph); stage.appendChild(floor); stage.appendChild(rig); rig.appendChild(ph);
     var g=document.createElement('div'); g.className='mk-gloss'; ph.appendChild(g);
     rig.appendChild(backFace('mk-back-flat',BACK+TAGS[1]+'<div class="mk-cam"><i></i><i></i><i></i></div>'));
-    [['s1','--z:95px','sat-in gold','<b>5,000</b> كلمة'],['s2','--z:80px;--dl:-1.5s','sat-in','🎧 <b>172</b> حلقة'],['s3','--z:70px;--dl:-2.5s','sat-in','📚 <b>165</b> قصة'],['s4','--z:85px;--dl:-3.9s','sat-in','🪜 <b>A1</b> ← <b>C1</b>']].forEach(function(a){
+    [['s1','--z:95px','sat-in gold','<b>5,000</b> كلمة'],['s3','--z:70px;--dl:-2.5s','sat-in','📚 <b>165</b> قصة'],['s2','--z:80px;--dl:-1.5s','sat-in','🎧 <b>172</b> حلقة'],['s4','--z:85px;--dl:-3.9s','sat-in','🪜 <b>A1</b> ← <b>C1</b>']].forEach(function(a){
       var d=document.createElement('div'); d.className='sat '+a[0]; d.setAttribute('style',a[1]); d.innerHTML='<div class="'+a[2]+'">'+a[3]+'</div>'; ph.appendChild(d);
     });
   }
