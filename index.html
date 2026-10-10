@@ -1619,7 +1619,8 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
 #try .wgrid .g-w{font:700 14px var(--en);color:#22313A;direction:ltr}
 #try .wgrid .g-a{font:600 11px var(--ar);color:#7A6B48}
 #try [data-pane=words].hide-ar .f-ar,#try [data-pane=words].hide-ar .g-a{visibility:hidden}
-#try [data-pane=words].gridmode #deck,#try [data-pane=words].gridmode #deckDots,#try [data-pane=words].gridmode .deck-btns,#try [data-pane=words].gridmode #chSave{display:none}
+#try [data-pane=words].gridmode #deck,#try [data-pane=words].gridmode #deckDots,#try [data-pane=words].gridmode .deck-btns{display:none}
+#try .wgrid button{position:relative}#try .wgrid button.sv{border-color:#C79A3C;background:#FBF1D4}#try .wgrid button.sv::after{content:'🔖';position:absolute;top:3px;left:5px;font-size:11px}
 #try [data-pane=words]{position:relative}
 #try .qz{position:absolute;inset:0;z-index:6;background:#FAF6EC;display:flex;flex-direction:column;padding:6px 12px 10px}
 #try .qz[hidden],#try .qz-lock[hidden]{display:none}
@@ -2592,12 +2593,13 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   /* ── words: view toggle, chips, quiz preview (locked rounds) ── */
   (function(){
     var pane=$('[data-pane=words]'), grid=$('#wGrid'), saved={}, hide=false;
-    function gridDraw(){ grid.innerHTML=cards.map(function(c,i){return '<button type="button" data-i="'+i+'"><span class="g-e">'+esc(c.e||'📘')+'</span><span class="g-w">'+esc(c.w)+'</span><span class="g-a">'+esc(c.ar)+'</span></button>'}).join(''); }
-    function view(v){ var g=v==='grid'; pane.classList.toggle('gridmode',g); grid.hidden=!g; if(g) gridDraw(); [].forEach.call(pane.querySelectorAll('.wseg button'),function(b){var on=b.getAttribute('data-view')===v; b.classList.toggle('on',on); b.setAttribute('aria-selected',on)}); closeSheet(); }
+    function gridDraw(){ grid.innerHTML=cards.map(function(c,i){return '<button type="button" data-i="'+i+'"'+(saved[c.w]?' class="sv"':'')+'><span class="g-e">'+esc(c.e||'📘')+'</span><span class="g-w">'+esc(c.w)+'</span><span class="g-a">'+esc(c.ar)+'</span></button>'}).join(''); }
+    function view(v){ var g=v==='grid'; pane.classList.toggle('gridmode',g); grid.hidden=!g; if(g) gridDraw(); addMode=false; saveUI(); [].forEach.call(pane.querySelectorAll('.wseg button'),function(b){var on=b.getAttribute('data-view')===v; b.classList.toggle('on',on); b.setAttribute('aria-selected',on)}); closeSheet(); }
     pane.querySelector('.wseg').addEventListener('click',function(e){ var b=e.target.closest('button'); if(b) view(b.getAttribute('data-view')); });
-    grid.addEventListener('click',function(e){ var b=e.target.closest('button[data-i]'); if(b) openSheet(cards[+b.getAttribute('data-i')].w.toLowerCase(), null); });
-    function saveUI(){ var b=$('#chSave'), on=!!saved[cards[idx].w]; b.classList.toggle('on',on); b.textContent=on?'✓ في القائمة':'أضف لقائمة'; }
-    $('#chSave').addEventListener('click',function(){ var w=cards[idx].w; saved[w]=!saved[w]; saveUI(); });
+    var addMode=false;
+    grid.addEventListener('click',function(e){ var b=e.target.closest('button[data-i]'); if(!b) return; var c=cards[+b.getAttribute('data-i')]; if(addMode){ saved[c.w]=!saved[c.w]; b.classList.toggle('sv',!!saved[c.w]); return; } openSheet(c.w.toLowerCase(), null); });
+    function saveUI(){ var b=$('#chSave'); if(!grid.hidden){ b.classList.toggle('on',addMode); b.textContent=addMode?'اختر الكلمات ✓':'أضف لقائمة'; return; } var on=!!saved[cards[idx].w]; b.classList.toggle('on',on); b.textContent=on?'✓ في القائمة':'أضف لقائمة'; }
+    $('#chSave').addEventListener('click',function(){ if(!grid.hidden){ addMode=!addMode; saveUI(); return; } var w=cards[idx].w; saved[w]=!saved[w]; saveUI(); });
     var _show=show; show=function(d){ _show(d); saveUI(); };
     $('#chHide').addEventListener('click',function(){ hide=!hide; pane.classList.toggle('hide-ar',hide); this.classList.toggle('on',hide); this.textContent=hide?'إظهار المعنى':'إخفاء المعنى'; });
     $('#chShuf').addEventListener('click',function(){ for(var i=cards.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=cards[i];cards[i]=cards[j];cards[j]=t;} idx=0; show(0); if(!grid.hidden) gridDraw(); });
