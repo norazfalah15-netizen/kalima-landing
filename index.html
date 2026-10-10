@@ -1439,6 +1439,13 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
 #try .pd-core{display:none}
 #try .pd-bar{border-top:none;background:transparent;margin-top:auto}
 #try .pd-spd{appearance:auto;-webkit-appearance:menulist;text-align:center;text-align-last:center;min-width:72px;padding:5px 6px}
+#try .pd-mid{display:flex;align-items:center;gap:6px}
+#try .pd-skip{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font:700 12px var(--en);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:1px;padding:0;line-height:1;flex:none;font-size:11px}
+#try .pd-skip b{font-size:11px}
+#try .pd-ctrl{gap:4px}
+#try .pd-chip{min-width:0;padding:5px 9px}
+#try .pd-spd{min-width:64px}
+#try .pl-en i[data-k]{cursor:pointer;border-bottom:1.5px dotted rgba(199,154,60,.8)}
 #try .pd-noise{gap:10px;margin-top:10px}
 #try .pd-noise select{flex:0 0 54%;min-height:30px;font-size:11px;padding:3px 8px;border-radius:10px}
 #try .pd-noise input{flex:1;width:auto;min-width:0;height:32px;accent-color:#C79A3C}
@@ -1896,7 +1903,7 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
               <div class="pd-prog"><i id="pdProg"></i></div>
               <div class="pd-ctrl">
                 <button class="pd-chip" id="pdAr" aria-pressed="false">ترجمة</button>
-                <button class="pd-play" id="pdPlay" aria-label="تشغيل">▶</button>
+                <div class="pd-mid" dir="ltr"><button class="pd-skip" id="pdBack" aria-label="رجوع 10 ثواني">⟲<b>10</b></button><button class="pd-play" id="pdPlay" aria-label="تشغيل">▶</button><button class="pd-skip" id="pdFwd" aria-label="تقديم 10 ثواني"><b>10</b>⟳</button></div>
                 <select class="pd-chip pd-spd" id="pdSpd" dir="ltr" aria-label="السرعة"><option value="0.75">0.75×</option><option value="0.8">0.8×</option><option value="0.85">0.85×</option><option value="0.9">0.9×</option><option value="0.95">0.95×</option><option value="1" selected>1×</option><option value="1.05">1.05×</option><option value="1.1">1.1×</option><option value="1.15">1.15×</option><option value="1.2">1.2×</option><option value="1.25">1.25×</option></select>
               </div>
               <div class="pd-noise">
@@ -2504,6 +2511,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
     dim.hidden=false; sheet.classList.add('on'); sheet.setAttribute('aria-hidden','false');
     say(c.w, null, c.pos);
   }
+  window.__kSheet={ key:function(w){ var lw=String(w).toLowerCase().replace('’',"'"); var k=AMAP[lw]||(lw.indexOf("'")>-1?(/n't$/.test(lw)?null:AMAP[lw.split("'")[0]]):null); return (k&&DICT[k])?k:null; }, open:function(k){ openSheet(k,null); } };
   function closeSheet(){ sheet.classList.remove('on'); sheet.setAttribute('aria-hidden','true'); dim.hidden=true; $$('.tw.on').forEach(function(x){x.classList.remove('on')}); }
   body.addEventListener('click', function(e){ var t=e.target.closest('.tw'); if(t) openSheet(t.getAttribute('data-w'), t); });
   body.addEventListener('keydown', function(e){ var t=e.target.closest('.tw'); if(t && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); openSheet(t.getAttribute('data-w'), t);} });
@@ -2560,6 +2568,11 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   au.addEventListener('ended',function(){ setIcon(); nzStop(); });
   lines.forEach(function(l){ l.addEventListener('click',function(){ au.currentTime=Math.max(0,+l.getAttribute('data-s')-0.05); if(au.paused){ rate(); var p=au.play(); if(p&&p.catch) p.catch(function(){}); nzCtx(); } tick(); }); });
   spd.addEventListener('change',function(){ rate(); });
+  document.getElementById('pdBack').addEventListener('click',function(){ au.currentTime=Math.max(0,au.currentTime-10); tick(); });
+  document.getElementById('pdFwd').addEventListener('click',function(){ au.currentTime=Math.min(END-0.3,au.currentTime+10); tick(); });
+  /* المس أي كلمة في الحوار → يطلع معناها (نفس بطاقة القصص) */
+  if(window.__kSheet){ words.forEach(function(w){ var k=window.__kSheet.key((w.textContent||'').replace(/[^A-Za-z'’]/g,'')); if(k){ w.setAttribute('data-k',k); w.setAttribute('role','button'); } }); }
+  box.addEventListener('click',function(e){ var w=e.target.closest&&e.target.closest('i[data-k]'); if(!w) return; e.stopPropagation(); if(!au.paused) au.pause(); window.__kSheet.open(w.getAttribute('data-k')); },true);
   arB.addEventListener('click',function(){ var on=!box.classList.contains('ar'); box.classList.toggle('ar',on); arB.setAttribute('aria-pressed',on); tick(); });
   window.__pdPause=function(){ if(!au.paused) au.pause(); };
   /* background sounds: Web Audio loop, volume by gain (works on iPhone too) */
