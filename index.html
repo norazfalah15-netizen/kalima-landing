@@ -1441,6 +1441,14 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
 #try .pd-bar{border-top:none;background:transparent;margin-top:auto}
 #try .pd-spd{appearance:auto;-webkit-appearance:menulist;text-align:center;text-align-last:center;min-width:72px;padding:5px 6px}
 #try .pd-prog{direction:ltr}
+#try .pd-ctrl{position:relative}
+#try .spd-menu{position:absolute;left:0;bottom:calc(100% + 10px);width:78%;z-index:5;background:#22313A;border-radius:20px;padding:12px 12px 12px;box-shadow:0 18px 34px -10px rgba(10,16,20,.65),0 0 0 1px rgba(240,198,74,.25);animation:spdIn .18s ease-out}
+#try .spd-menu[hidden]{display:none}
+@keyframes spdIn{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
+#try .spd-t{font:700 11px var(--ar);color:#E9C987;text-align:center;margin-bottom:8px}
+#try .spd-g{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;direction:ltr}
+#try .spd-g button{min-height:36px;border:1px solid rgba(240,198,74,.28);background:rgba(255,255,255,.06);color:#FBF3DF;border-radius:11px;font:700 12.5px var(--en);cursor:pointer;padding:0}
+#try .spd-g button.on{background:#F0C64A;color:#22313A;border-color:#F0C64A}
 #try .pd-mid{display:flex;align-items:center;gap:6px}
 #try .pd-skip{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font:700 12px var(--en);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:1px;padding:0;line-height:1;flex:none;font-size:11px}
 #try .pd-skip b{font-size:11px}
@@ -1906,7 +1914,7 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
               <div class="pd-ctrl">
                 <button class="pd-chip" id="pdAr" aria-pressed="false">ترجمة</button>
                 <div class="pd-mid" dir="ltr"><button class="pd-skip" id="pdBack" aria-label="رجوع 10 ثواني">⟲<b>10</b></button><button class="pd-play" id="pdPlay" aria-label="تشغيل">▶</button><button class="pd-skip" id="pdFwd" aria-label="تقديم 10 ثواني"><b>10</b>⟳</button></div>
-                <select class="pd-chip pd-spd" id="pdSpd" dir="ltr" aria-label="السرعة"><option value="0.75">0.75×</option><option value="0.8">0.8×</option><option value="0.85">0.85×</option><option value="0.9">0.9×</option><option value="0.95">0.95×</option><option value="1" selected>1×</option><option value="1.05">1.05×</option><option value="1.1">1.1×</option><option value="1.15">1.15×</option><option value="1.2">1.2×</option><option value="1.25">1.25×</option></select>
+                <button class="pd-chip pd-spd" id="pdSpd" type="button" dir="ltr" data-v="1" aria-label="السرعة" aria-haspopup="true" aria-expanded="false">1×</button><div class="spd-menu" id="pdSpdMenu" hidden><div class="spd-t">سرعة الصوت</div><div class="spd-g"><button type="button" data-v="0.75">0.75×</button><button type="button" data-v="0.8">0.8×</button><button type="button" data-v="0.85">0.85×</button><button type="button" data-v="0.9">0.9×</button><button type="button" data-v="0.95">0.95×</button><button type="button" data-v="1" class="on">1×</button><button type="button" data-v="1.05">1.05×</button><button type="button" data-v="1.1">1.1×</button><button type="button" data-v="1.15">1.15×</button><button type="button" data-v="1.2">1.2×</button><button type="button" data-v="1.25">1.25×</button></div></div>
               </div>
               <div class="pd-noise">
                 <select id="pdNoise" aria-label="أصوات الخلفية"><option value="">🔈 بدون أصوات خلفية</option><option value="cafe">☕ مقهى</option><option value="street">🚗 شارع</option><option value="plane">✈️ طيارة</option><option value="rain">🌧️ مطر</option><option value="wind">🌬️ رياح</option></select>
@@ -2554,7 +2562,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   var play=document.getElementById('pdPlay'), prog=document.getElementById('pdProg'), spd=document.getElementById('pdSpd'), arB=document.getElementById('pdAr');
   var sel=document.getElementById('pdNoise'), vol=document.getElementById('pdVol'), raf=0, lastLine=-1, lastWord=null;
   var SPEEDS=[1,1.25,0.75], si=0, END=122.9, avs=[].slice.call(root.querySelectorAll('#pdAv span')), wave=document.getElementById('pdWave'); if(lines[0]) lines[0].classList.add('on'); arB.setAttribute('aria-pressed','true');
-  function rate(){ var r=+spd.value||1; try{ au.playbackRate=r; au.defaultPlaybackRate=r; au.preservesPitch=true; au.webkitPreservesPitch=true; }catch(e){} }
+  function rate(){ var r=+spd.getAttribute('data-v')||1; try{ au.playbackRate=r; au.defaultPlaybackRate=r; au.preservesPitch=true; au.webkitPreservesPitch=true; }catch(e){} }
   function tick(){
     var t=au.currentTime; prog.style.width=Math.min(100,t/END*100)+'%';
     var li=-1; for(var i=0;i<lines.length;i++){ if(+lines[i].getAttribute('data-s')<=t+0.05) li=i; }
@@ -2569,7 +2577,11 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   au.addEventListener('pause',function(){ setIcon(); nzStop(); tick(); });
   au.addEventListener('ended',function(){ setIcon(); nzStop(); });
   lines.forEach(function(l){ l.addEventListener('click',function(){ au.currentTime=Math.max(0,+l.getAttribute('data-s')-0.05); if(au.paused){ rate(); var p=au.play(); if(p&&p.catch) p.catch(function(){}); nzCtx(); } tick(); }); });
-  spd.addEventListener('change',function(){ rate(); });
+  var smenu=document.getElementById('pdSpdMenu');
+  function smOpen(o){ smenu.hidden=!o; spd.setAttribute('aria-expanded',o); }
+  spd.addEventListener('click',function(e){ e.stopPropagation(); smOpen(smenu.hidden); });
+  smenu.addEventListener('click',function(e){ e.stopPropagation(); var b=e.target.closest('button[data-v]'); if(!b) return; var v=b.getAttribute('data-v'); spd.setAttribute('data-v',v); spd.textContent=v+'×'; [].forEach.call(smenu.querySelectorAll('button'),function(x){ x.classList.toggle('on',x===b); }); rate(); smOpen(false); });
+  root.addEventListener('click',function(e){ if(!smenu.hidden && !e.target.closest('#pdSpdMenu,#pdSpd')) smOpen(false); });
   document.getElementById('pdBack').addEventListener('click',function(){ au.currentTime=Math.max(0,au.currentTime-10); tick(); });
   document.getElementById('pdFwd').addEventListener('click',function(){ au.currentTime=Math.min(END-0.3,au.currentTime+10); tick(); });
   /* المس أي كلمة في الحوار → يطلع معناها (نفس بطاقة القصص) */
