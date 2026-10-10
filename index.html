@@ -1603,6 +1603,46 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
 #try .b-ex small{font-size:11.5px;margin-top:2px}
 #try .b-ex .bk-say{margin-top:5px}
 #try .bk-more{margin-top:6px;padding:5px 14px}
+
+/* words: view toggle, chips, grid, quiz preview */
+#try .deck-meta{justify-content:space-between;padding:0 12px 5px}
+#try .wseg{display:flex;gap:3px;background:#EFE5CC;border-radius:10px;padding:2px;direction:rtl}
+#try .wseg button{font:700 10.5px var(--ar);border:0;background:transparent;color:#7A6B48;border-radius:8px;padding:4px 10px;cursor:pointer}
+#try .wseg button.on{background:#fff;color:#22313A;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+#try .wchips{display:flex;gap:4px;padding:0 10px 6px;direction:rtl}
+#try .wchips button{flex:1 1 auto;font:700 9.5px var(--ar);white-space:nowrap;border:1px solid #E4D7B8;background:#fff;color:#22313A;border-radius:99px;padding:5px 4px;cursor:pointer}
+#try .wchips button.on{background:#F6E7BE;border-color:#C79A3C}
+#try .wgrid{flex:1;min-height:0;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:2px 12px 10px;align-content:start;-webkit-overflow-scrolling:touch}
+#try .wgrid[hidden]{display:none}
+#try .wgrid button{background:#fff;border:1px solid #E4D7B8;border-radius:14px;padding:8px 6px;text-align:center;cursor:pointer;display:flex;flex-direction:column;gap:1px;align-items:center}
+#try .wgrid .g-e{font-size:24px;line-height:1.1}
+#try .wgrid .g-w{font:700 14px var(--en);color:#22313A;direction:ltr}
+#try .wgrid .g-a{font:600 11px var(--ar);color:#7A6B48}
+#try [data-pane=words].hide-ar .f-ar,#try [data-pane=words].hide-ar .g-a{visibility:hidden}
+#try [data-pane=words].gridmode #deck,#try [data-pane=words].gridmode #deckDots,#try [data-pane=words].gridmode .deck-btns,#try [data-pane=words].gridmode #chSave{display:none}
+#try [data-pane=words]{position:relative}
+#try .qz{position:absolute;inset:0;z-index:6;background:#FAF6EC;display:flex;flex-direction:column;padding:6px 12px 10px}
+#try .qz[hidden],#try .qz-lock[hidden]{display:none}
+#try .qz-top{display:flex;align-items:center;gap:10px;flex-direction:row-reverse;justify-content:flex-start;padding:2px 0 8px}
+#try .qz-top>div{flex:1;text-align:right}
+#try .qz-top b{display:block;font:800 15px var(--ar);color:#22313A}
+#try .qz-top small{font:600 10.5px var(--ar);color:#8B7D5A}
+#try .qz-back{width:34px;height:34px;border-radius:11px;border:1px solid #E4D7B8;background:#fff;font-size:16px;cursor:pointer}
+#try .qz-body{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:7px}
+#try .qz-note{font:600 11px var(--ar);color:#8B7D5A;text-align:right;padding-bottom:2px}
+#try .qz-row{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #E4D7B8;border-radius:14px;padding:9px 10px;text-align:right;cursor:pointer;width:100%}
+#try .qz-ico{flex:0 0 38px;height:38px;border-radius:11px;background:#F6E7BE;display:grid;place-items:center;font:800 16px var(--en);color:#A8801F}
+#try .qz-row .t{flex:1}
+#try .qz-row b{display:block;font:800 12.5px var(--ar);color:#22313A}
+#try .qz-row small{display:block;font:500 10.5px var(--ar);color:#8B7D5A;line-height:1.4}
+#try .qz-row em{font:600 10px var(--ar);color:#8B7D5A;font-style:normal}
+#try .qz-lock{position:absolute;inset:0;background:rgba(20,28,33,.55);display:grid;place-items:center;padding:16px}
+#try .qz-card{background:#FFFDF7;border-radius:20px;padding:16px 14px;text-align:center;box-shadow:0 18px 40px -10px rgba(0,0,0,.5);width:100%}
+#try .qz-ic{font-size:28px}
+#try .qz-card b{display:block;font:800 15px var(--ar);color:#22313A;margin:4px 0 6px}
+#try .qz-card p{font:500 12px/1.6 var(--ar);color:#6B5E40;margin:0 0 12px}
+#try .qz-cta{display:block;background:linear-gradient(180deg,#F0C64A,#D9A92E);color:#22313A;font:800 13px var(--ar);border-radius:99px;padding:10px;text-decoration:none}
+#try .qz-x{margin-top:8px;background:none;border:0;font:700 12px var(--ar);color:#8B7D5A;cursor:pointer}
 </style>
 <script>window.KALIMA_VOICE_BASE="https://llzehodvkaddizklaywy.supabase.co/storage/v1/object/public/podcast/";</script>
 <script id="kalima-voice">/* KalimaVoice — every pronunciation on the site comes from pre-recorded clips, so every visitor hears
@@ -1912,13 +1952,20 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
 
           <!-- words -->
           <div class="pane on" data-pane="words">
-            <div class="deck-meta"><span id="deckCount">01 / 06</span></div>
+            <div class="deck-meta"><span id="deckCount">01 / 30</span><div class="wseg" role="tablist" aria-label="طريقة العرض"><button type="button" class="on" data-view="cards" role="tab">🗂️ بطاقات</button><button type="button" data-view="grid" role="tab">▦ شبكة</button></div></div>
+            <div class="wchips"><button type="button" id="chSave">🔖 أضف لقائمة</button><button type="button" id="chHide">إخفاء المعنى</button><button type="button" id="chShuf">🔀 عشوائي</button><button type="button" id="chQuiz">✍️ اختبرني</button></div>
+            <div class="wgrid" id="wGrid" hidden></div>
             <div class="deck" id="deck"></div>
             <div class="deck-dots" id="deckDots"></div>
             <div class="deck-btns">
               <button class="db" id="btnPrev" aria-label="السابقة"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
               <button class="db say" id="btnSay" aria-label="اسمع النطق">🔊</button>
               <button class="db" id="btnNext" aria-label="التالية"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="qz" id="qz" hidden>
+              <div class="qz-top"><button type="button" class="qz-back" id="qzBack" aria-label="رجوع">→</button><div><b id="qzT">اختبرني</b><small id="qzS">A1 · 30 كلمة</small></div></div>
+              <div class="qz-body" id="qzBody"></div>
+              <div class="qz-lock" id="qzLock" hidden><div class="qz-card"><div class="qz-ic">🔒</div><b id="qzLockT">هذي الجولة للمشتركين</b><p>اشترك في كلمة وافتح كل الجولات وأنواع الاختبارات الأربعة، وتابع تقدمك جولة بجولة.</p><a class="qz-cta" href="#price">اشترك الآن</a><button type="button" class="qz-x" id="qzX">رجوع</button></div></div>
             </div>
           </div>
 
@@ -2530,6 +2577,31 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   $('#btnPrev').addEventListener('click', function(){ move(-1) });
   $('#btnSay').addEventListener('click', function(){ say(cards[idx].w, null, cards[idx].pos) });
   show(0);
+
+  /* ── words: view toggle, chips, quiz preview (locked rounds) ── */
+  (function(){
+    var pane=$('[data-pane=words]'), grid=$('#wGrid'), saved={}, hide=false;
+    function gridDraw(){ grid.innerHTML=cards.map(function(c,i){return '<button type="button" data-i="'+i+'"><span class="g-e">'+esc(c.e||'📘')+'</span><span class="g-w">'+esc(c.w)+'</span><span class="g-a">'+esc(c.ar)+'</span></button>'}).join(''); }
+    function view(v){ var g=v==='grid'; pane.classList.toggle('gridmode',g); grid.hidden=!g; if(g) gridDraw(); [].forEach.call(pane.querySelectorAll('.wseg button'),function(b){var on=b.getAttribute('data-view')===v; b.classList.toggle('on',on); b.setAttribute('aria-selected',on)}); closeSheet(); }
+    pane.querySelector('.wseg').addEventListener('click',function(e){ var b=e.target.closest('button'); if(b) view(b.getAttribute('data-view')); });
+    grid.addEventListener('click',function(e){ var b=e.target.closest('button[data-i]'); if(b) openSheet(cards[+b.getAttribute('data-i')].w.toLowerCase(), null); });
+    function saveUI(){ var b=$('#chSave'), on=!!saved[cards[idx].w]; b.classList.toggle('on',on); b.textContent=on?'✓ في قائمتك':'🔖 أضف لقائمة'; }
+    $('#chSave').addEventListener('click',function(){ var w=cards[idx].w; saved[w]=!saved[w]; saveUI(); });
+    var _show=show; show=function(d){ _show(d); saveUI(); };
+    $('#chHide').addEventListener('click',function(){ hide=!hide; pane.classList.toggle('hide-ar',hide); this.classList.toggle('on',hide); this.textContent=hide?'إظهار المعنى':'إخفاء المعنى'; });
+    $('#chShuf').addEventListener('click',function(){ for(var i=cards.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=cards[i];cards[i]=cards[j];cards[j]=t;} idx=0; show(0); if(!grid.hidden) gridDraw(); });
+    /* quiz preview */
+    var qz=$('#qz'), qb=$('#qzBody'), lock=$('#qzLock'), step=0, qtype='';
+    var TYPES=[['abc','اختر المعنى','تظهر لك الكلمة بالإنجليزي، واختر معناها بالعربي'],['⇄','اختر الكلمة','يظهر لك المعنى بالعربي، واختر الكلمة بالإنجليزي'],['✏️','أكمل الجملة','اختر الكلمة الناقصة في المثال'],['🎧','اسمع واختر','اسمع الكلمة واختر كيف تُكتب']];
+    function qTypes(){ step=0; $('#qzT').textContent='اختبرني'; $('#qzS').textContent='A1 · 30 كلمة'; qb.innerHTML='<div class="qz-note">اختر نوع الاختبار 👇</div>'+TYPES.map(function(t,i){return '<button type="button" class="qz-row" data-t="'+i+'"><span class="qz-ico">'+t[0]+'</span><span class="t"><b>'+t[1]+'</b><small>'+t[2]+'</small><em>3 جولات · خلّصت 0 من 3</em></span></button>'}).join(''); }
+    function qRounds(i){ step=1; qtype=TYPES[i][1]; $('#qzT').textContent=qtype; $('#qzS').textContent='A1 · 30 كلمة · 3 جولات'; qb.innerHTML='<div class="qz-note">عدد الكلمات 30، على 3 جولات. ابدأ بالجولة الأولى 👇</div>'+[1,2,3].map(function(n){return '<button type="button" class="qz-row" data-r="'+n+'"><span class="qz-ico">'+n+'</span><span class="t"><b>الجولة '+n+'</b><small>الكلمات '+((n-1)*10+1)+'–'+(n*10)+' · 10 أسئلة</small></span><em>لم تبدأ</em></button>'}).join(''); }
+    $('#chQuiz').addEventListener('click',function(){ closeSheet(); lock.hidden=true; qTypes(); qz.hidden=false; });
+    qb.addEventListener('click',function(e){ var t=e.target.closest('[data-t]'); if(t){ qRounds(+t.getAttribute('data-t')); return; } var r=e.target.closest('[data-r]'); if(r){ $('#qzLockT').textContent='الجولة '+r.getAttribute('data-r')+' للمشتركين'; lock.hidden=false; } });
+    $('#qzX').addEventListener('click',function(){ lock.hidden=true; });
+    $('#qzBack').addEventListener('click',function(){ if(!lock.hidden){ lock.hidden=true; return; } if(step===1) qTypes(); else qz.hidden=true; });
+    $$('[data-go]').forEach(function(b){ b.addEventListener('click',function(){ qz.hidden=true; lock.hidden=true; }); });
+    saveUI();
+  })();
 
   /* ── story ── */
   $('#stTitle').textContent = D.ctitle; window.__KW = D.kw;
