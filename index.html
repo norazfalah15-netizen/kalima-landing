@@ -2634,7 +2634,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
     $('#shW').textContent=c.w; $('#shPos').textContent=c.pos; $('#shAr').textContent=c.ar;
     var mb=$('#shMore'), xs=$('#shExs'); mb.hidden=!c.exs.length; xs.hidden=true; mb.textContent='إظهار أمثلة أكثر'; sheet.scrollTop=0;
     xs.innerHTML=c.exs.map(function(e,i){return '<div class="sh-row sh-x"><button class="sh-mini" data-x="'+i+'" aria-label="اسمع المثال">🔊</button><div><span dir="ltr">'+wrap(e[0])+'</span><small>'+esc(e[1])+'</small></div></div>'}).join('');
-    if(expand && c.exs.length){ xs.hidden=false; mb.textContent='إخفاء الأمثلة'; }
+    if(expand && c.exs.length){ xs.hidden=false; mb.textContent='عودة'; }
     $('#shDef').innerHTML=wrap(c.def); $('#shDefAr').textContent=c.defAr; $('#shEx').innerHTML=wrap(c.ex); $('#shExAr').textContent=c.exAr;
     dim.hidden=false; sheet.classList.add('on'); sheet.setAttribute('aria-hidden','false');
     say(c.w, null, c.pos);
@@ -2648,7 +2648,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   $('#shSay').addEventListener('click', function(){ if(cur) say(cur.w, null, cur.pos) });
   $('#shSayDef').addEventListener('click', function(){ if(cur) say(cur.def) });
   $('#shSayEx').addEventListener('click', function(){ if(cur) say(cur.ex) });
-  $('#shMore').addEventListener('click', function(){ var xs=$('#shExs'); xs.hidden=!xs.hidden; this.textContent=xs.hidden?'إظهار أمثلة أكثر':'إخفاء الأمثلة'; });
+  $('#shMore').addEventListener('click', function(){ var xs=$('#shExs'); if(!xs.hidden){ closeSheet(); return; } xs.hidden=false; this.textContent='عودة'; });
   $('#shExs').addEventListener('click', function(e){ var b=e.target.closest('.sh-mini'); if(b&&cur){ e.stopPropagation(); say(cur.exs[+b.getAttribute('data-x')][0]); } });
   var sy0=null; sheet.addEventListener('pointerdown', function(e){sy0=e.target.closest('.sh-grab')?e.clientY:null});
   sheet.addEventListener('pointerup', function(e){ if(sy0!==null&&e.clientY-sy0>40) closeSheet(); sy0=null; });
