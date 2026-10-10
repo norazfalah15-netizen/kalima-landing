@@ -2783,10 +2783,11 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   [].slice.call(document.querySelectorAll('.p3d .mk')).forEach(function(mk,i){ mk.appendChild(backFace('mk-back',BACK+TAGS[[0,2,3][i]||0]+'<div class="mk-cam"><i></i><i></i><i></i></div>')); });
   var items=[].slice.call(document.querySelectorAll('[data-p3d]')).map(function(el){
     var flat=el.classList.contains('flat'), rg=el.querySelector('.p3d-rig');
+    if(el.closest('.phone-wrap')&&rg) rg.style.transform='none';
     if(!flat&&rg) rg.setAttribute('aria-hidden','true');
     var btn=document.createElement('button'); btn.type='button'; btn.className='p3d-spin'; btn.textContent='↻ الخلف'; btn.setAttribute('aria-label','اعرض خلف الجوال'); el.appendChild(btn);
     return {el:el,rig:rg,floor:el.querySelector('.p3d-floor'),gl:[].slice.call(el.querySelectorAll('.mk-gloss')),btn:btn,
-            vis:false,ry:-14,rx:5,ty:0,c:0,last:'',flat:flat,back:false,spin:0,spinT:0,v:0,drag:0,lx:0,ret:0,
+            vis:false,demo:!!el.closest('.phone-wrap'),ry:el.closest('.phone-wrap')?0:-14,rx:el.closest('.phone-wrap')?0:5,ty:0,c:0,last:'',flat:flat,back:false,spin:0,spinT:0,v:0,drag:0,lx:0,ret:0,
             sats:[].slice.call(el.querySelectorAll('.sat')).map(function(n){ var m=/--z:(\d+)px/.exec(n.getAttribute('style')||''); return {n:n,z:m?+m[1]:60}; })};
   });
   var car=document.getElementById('car'), carRig=document.getElementById('carRig'), carVis=false, carA=0, carD=0, carLast='';
@@ -2814,6 +2815,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
       var ty=-16-it.c*24+px*16+Math.sin(t/1900)*3.2;
       var tx=6+it.c*8-py*10+Math.cos(t/2300)*1.6;
       var tt=Math.sin(t/1500)*5;
+      if(it.demo){ ty=0; tx=0; tt=0; }
       it.ry+=(ty-it.ry)*k; it.rx+=(tx-it.rx)*k; it.ty+=(tt-it.ty)*k;
       var rt=it.ry+it.spin;
       var tr='translateY('+it.ty.toFixed(1)+'px) rotateX('+it.rx.toFixed(1)+'deg) rotateY('+rt.toFixed(1)+'deg)';
