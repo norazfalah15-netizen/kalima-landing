@@ -1637,7 +1637,7 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
 #try .qz-row b{display:block;font:800 12.5px var(--ar);color:#22313A}
 #try .qz-row small{display:block;font:500 10.5px var(--ar);color:#8B7D5A;line-height:1.4}
 #try .qz-row em{font:600 10px var(--ar);color:#8B7D5A;font-style:normal}
-#try .qz-lock{position:absolute;inset:0;background:rgba(20,28,33,.55);display:grid;place-items:center;padding:16px}
+#try .qz-lock{position:absolute;inset:0;z-index:9;background:rgba(20,28,33,.55);display:grid;place-items:center;padding:16px}
 #try .qz-card{background:#FFFDF7;border-radius:20px;padding:16px 14px;text-align:center;box-shadow:0 18px 40px -10px rgba(0,0,0,.5);width:100%}
 #try .qz-ic{font-size:28px}
 #try .qz-card b{display:block;font:800 15px var(--ar);color:#22313A;margin:4px 0 6px}
@@ -1974,10 +1974,10 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
               <button class="db say" id="btnSay" aria-label="اسمع النطق">🔊</button>
               <button class="db" id="btnNext" aria-label="التالية"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
             </div>
+              <div class="qz-lock" id="qzLock" hidden><div class="qz-card"><div class="qz-ic">🔒</div><b id="qzLockT">هذي الجولة للمشتركين</b><p id="qzLockP">اشترك في كلمة وافتح كل الجولات وأنواع الاختبارات الأربعة، وتابع تقدمك جولة بجولة.</p><a class="qz-cta" href="#price">اشترك الآن</a><button type="button" class="qz-x" id="qzX">رجوع</button></div></div>
             <div class="qz" id="qz" hidden>
               <div class="qz-top"><button type="button" class="qz-back" id="qzBack" aria-label="رجوع">→</button><div><b id="qzT">اختبرني</b><small id="qzS">A1 · 30 كلمة</small></div></div>
               <div class="qz-body" id="qzBody"></div>
-              <div class="qz-lock" id="qzLock" hidden><div class="qz-card"><div class="qz-ic">🔒</div><b id="qzLockT">هذي الجولة للمشتركين</b><p>اشترك في كلمة وافتح كل الجولات وأنواع الاختبارات الأربعة، وتابع تقدمك جولة بجولة.</p><a class="qz-cta" href="#price">اشترك الآن</a><button type="button" class="qz-x" id="qzX">رجوع</button></div></div>
             </div>
           </div>
 
@@ -2598,8 +2598,8 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
     pane.querySelector('.wseg').addEventListener('click',function(e){ var b=e.target.closest('button'); if(b) view(b.getAttribute('data-view')); });
     var addMode=false;
     grid.addEventListener('click',function(e){ var b=e.target.closest('button[data-i]'); if(!b) return; var c=cards[+b.getAttribute('data-i')]; if(addMode){ saved[c.w]=!saved[c.w]; b.classList.toggle('sv',!!saved[c.w]); return; } openSheet(c.w.toLowerCase(), null); });
-    function saveUI(){ var b=$('#chSave'); if(!grid.hidden){ b.classList.toggle('on',addMode); b.textContent=addMode?'اختر الكلمات ✓':'أضف لقائمة'; return; } var on=!!saved[cards[idx].w]; b.classList.toggle('on',on); b.textContent=on?'✓ في القائمة':'أضف لقائمة'; }
-    $('#chSave').addEventListener('click',function(){ if(!grid.hidden){ addMode=!addMode; saveUI(); return; } var w=cards[idx].w; saved[w]=!saved[w]; saveUI(); });
+    function saveUI(){}
+    $('#chSave').addEventListener('click',function(){ closeSheet(); $('#qzLockT').textContent='قائمتك الخاصة للمشتركين'; $('#qzLockP').textContent='اشترك في كلمة واحفظ الكلمات اللي تبيها في قائمتك، وارجع لها وراجعها في أي وقت.'; $('#qzLock').hidden=false; });
     var _show=show; show=function(d){ _show(d); saveUI(); };
     $('#chHide').addEventListener('click',function(){ hide=!hide; pane.classList.toggle('hide-ar',hide); this.classList.toggle('on',hide); this.textContent=hide?'إظهار المعنى':'إخفاء المعنى'; });
     $('#chShuf').addEventListener('click',function(){ for(var i=cards.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=cards[i];cards[i]=cards[j];cards[j]=t;} idx=0; show(0); if(!grid.hidden) gridDraw(); });
@@ -2609,7 +2609,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
     function qTypes(){ step=0; $('#qzT').textContent='اختبرني'; $('#qzS').textContent='A1 · 30 كلمة'; qb.innerHTML='<div class="qz-note">اختر نوع الاختبار 👇</div>'+TYPES.map(function(t,i){return '<button type="button" class="qz-row" data-t="'+i+'"><span class="qz-ico">'+t[0]+'</span><span class="t"><b>'+t[1]+'</b><small>'+t[2]+'</small><em>3 جولات · خلّصت 0 من 3</em></span></button>'}).join(''); }
     function qRounds(i){ step=1; qtype=TYPES[i][1]; $('#qzT').textContent=qtype; $('#qzS').textContent='A1 · 30 كلمة · 3 جولات'; qb.innerHTML='<div class="qz-note">عدد الكلمات 30، على 3 جولات. ابدأ بالجولة الأولى 👇</div>'+[1,2,3].map(function(n){return '<button type="button" class="qz-row" data-r="'+n+'"><span class="qz-ico">'+n+'</span><span class="t"><b>الجولة '+n+'</b><small>الكلمات '+((n-1)*10+1)+'–'+(n*10)+' · 10 أسئلة</small></span><em>لم تبدأ</em></button>'}).join(''); }
     $('#chQuiz').addEventListener('click',function(){ closeSheet(); lock.hidden=true; qTypes(); qz.hidden=false; });
-    qb.addEventListener('click',function(e){ var t=e.target.closest('[data-t]'); if(t){ qRounds(+t.getAttribute('data-t')); return; } var r=e.target.closest('[data-r]'); if(r){ $('#qzLockT').textContent='الجولة '+r.getAttribute('data-r')+' للمشتركين'; lock.hidden=false; } });
+    qb.addEventListener('click',function(e){ var t=e.target.closest('[data-t]'); if(t){ qRounds(+t.getAttribute('data-t')); return; } var r=e.target.closest('[data-r]'); if(r){ $('#qzLockT').textContent='الجولة '+r.getAttribute('data-r')+' للمشتركين'; $('#qzLockP').textContent='اشترك في كلمة وافتح كل الجولات وأنواع الاختبارات الأربعة، وتابع تقدمك جولة بجولة.'; lock.hidden=false; } });
     $('#qzX').addEventListener('click',function(){ lock.hidden=true; });
     $('#qzBack').addEventListener('click',function(){ if(!lock.hidden){ lock.hidden=true; return; } if(step===1) qTypes(); else qz.hidden=true; });
     $$('[data-go]').forEach(function(b){ b.addEventListener('click',function(){ qz.hidden=true; lock.hidden=true; }); });
