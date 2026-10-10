@@ -2603,7 +2603,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
     var addMode=false;
     grid.addEventListener('click',function(e){ var b=e.target.closest('button[data-i]'); if(!b) return; var c=cards[+b.getAttribute('data-i')]; if(addMode){ saved[c.w]=!saved[c.w]; b.classList.toggle('sv',!!saved[c.w]); return; } openSheet(c.w.toLowerCase(), null); });
     function saveUI(){}
-    $('#chSave').addEventListener('click',function(){ closeSheet(); $('#qzLockT').textContent='قائمتك الخاصة للمشتركين'; $('#qzLockP').textContent='اشترك في كلمة واحفظ الكلمات اللي تبيها في قائمتك، وارجع لها وراجعها في أي وقت.'; $('#qzLock').hidden=false; });
+    $('#chSave').addEventListener('click',function(){ closeSheet(); $('#qzLockT').textContent='قوائم الكلمات للمشتركين'; $('#qzLockP').textContent='اشترك في كلمة واحفظ الكلمات اللي تبيها في قائمتك، وارجع لها وراجعها في أي وقت.'; $('#qzLock').hidden=false; });
     var _show=show; show=function(d){ _show(d); saveUI(); };
     $('#chHide').addEventListener('click',function(){ hide=!hide; pane.classList.toggle('hide-ar',hide); this.classList.toggle('on',hide); this.textContent=hide?'إظهار المعنى':'إخفاء المعنى'; });
     $('#chShuf').addEventListener('click',function(){ for(var i=cards.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=cards[i];cards[i]=cards[j];cards[j]=t;} idx=0; show(0); if(!grid.hidden) gridDraw(); });
