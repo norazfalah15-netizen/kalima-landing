@@ -2526,7 +2526,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
     if(levelsDrawn) return; levelsDrawn=true;
     $('#lvList').innerHTML = LV.map(function(l,k){
       return '<div class="lv" style="animation-delay:'+(k*70)+'ms"><span class="lv-b" style="background:'+l[2]+'">'+l[0]+'</span>'+
-        '<div class="lv-m"><b>'+l[1]+'</b><small>'+l[3].toLocaleString('en-US')+' كلمة · '+l[4]+' كتاب</small>'+
+        '<div class="lv-m"><b>'+l[1]+'</b>'+
         '<div class="lv-p"><i data-w="'+l[5]+'" style="background:'+l[2]+'"></i></div></div></div>';
     }).join('');
     setTimeout(function(){ $$('.lv-p i').forEach(function(i){ i.style.width=i.getAttribute('data-w')+'%' }) }, 60);
