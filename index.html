@@ -2784,7 +2784,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   var items=[].slice.call(document.querySelectorAll('[data-p3d]')).map(function(el){
     var flat=el.classList.contains('flat'), rg=el.querySelector('.p3d-rig');
     if(!flat&&rg) rg.setAttribute('aria-hidden','true');
-    var btn=document.createElement('button'); btn.type='button'; btn.className='p3d-spin'; btn.textContent='↻ شوفه من ورا'; btn.setAttribute('aria-label','لفّ الجوال وشوفه من ورا'); el.appendChild(btn);
+    var btn=document.createElement('button'); btn.type='button'; btn.className='p3d-spin'; btn.textContent='↻ الخلف'; btn.setAttribute('aria-label','اعرض خلف الجوال'); el.appendChild(btn);
     return {el:el,rig:rg,floor:el.querySelector('.p3d-floor'),gl:[].slice.call(el.querySelectorAll('.mk-gloss')),btn:btn,
             vis:false,ry:-14,rx:5,ty:0,c:0,last:'',flat:flat,back:false,spin:0,spinT:0,v:0,drag:0,lx:0,ret:0,
             sats:[].slice.call(el.querySelectorAll('.sat')).map(function(n){ var m=/--z:(\d+)px/.exec(n.getAttribute('style')||''); return {n:n,z:m?+m[1]:60}; })};
