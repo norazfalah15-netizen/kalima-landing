@@ -2287,10 +2287,10 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
 <!-- ══ السعر ══ -->
 <section id="buy">
   <div class="wrap">
+    <div id="price"></div><div id="ai-price"></div>
     <div class="kicker" style="text-align:center">قريباً</div>
     <h2 style="text-align:center">التسجيل <span class="hl">يفتح قريباً</span></h2>
-    <p class="sub" style="text-align:center">نجهّز كل شي، وتابعنا على إنستقرام عشان تعرف أول ما يفتح.</p>
-    <div id="price"></div><div id="ai-price"></div>
+    <p class="sub" style="text-align:center"><span class="hl-mark">نشتغل على شي قوي… وقريباً تشوفونه.</span><br>نجهّز كل شي، وتابعنا على إنستقرام عشان تعرف أول ما يفتح.</p>
     <div class="contact">
       <div class="ig-follow"><a href="https://www.instagram.com/kalima.english/" target="_blank" rel="noopener">📷 تابعنا على إنستقرام</a></div>
     </div>
@@ -2355,8 +2355,13 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
 <script>
 document.querySelectorAll('a[href="#price"],a[href="#ai-price"]').forEach(function(a){
   a.addEventListener('click',function(e){
-    var t=document.getElementById(a.getAttribute('href').slice(1)); if(!t) return;
-    e.preventDefault(); var bar=document.querySelector('.topbar'); var off=(bar?bar.getBoundingClientRect().bottom:0)+10; window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-off,behavior:'smooth'});
+    var t=document.getElementById('price'); if(!t) return;
+    e.preventDefault();
+    function off(){ var bar=document.querySelector('.topbar'); return Math.max(bar?bar.getBoundingClientRect().bottom:0,80)+10; }
+    function go(how){ window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-off(),behavior:how}); }
+    go('smooth');
+    /* the page height shifts while scrolling (sticky hero), so re-align until it settles */
+    [700,1400,2200].forEach(function(ms){ setTimeout(function(){ if(Math.abs(t.getBoundingClientRect().top-off())>6) go('instant'); },ms); });
   });
 });
 </script>
