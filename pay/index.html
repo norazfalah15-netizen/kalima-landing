@@ -106,10 +106,9 @@ select{font:inherit;font-size:14px;padding:7px 10px;border-radius:10px;border:1.
     </div>
   </div>
 
-  <p class="fx" id="fx" hidden>الأسعار بعملتك تقريبية — الخصم يتم بالدولار الأمريكي وبنكك يحوّله بسعر اليوم.</p>
-  <p class="note">⚠️ تنبيه: بعض البنوك تضيف رسوم تحويل عملة على الدفع بالدولار (حوالي 5 دولار). هذه الرسوم من البنك وليست منّا.</p>
+  <p class="fx" id="fx">الخصم يتم بالدولار الأمريكي وبنكك يحوّله بسعر اليوم، وبعض البنوك تضيف رسوم تحويل بسيطة (حوالي 5 دولار) — هذي من البنك وليست منّا.</p>
 
-  <p class="foot">الدفع آمن عبر Whop (فيزا / ماستركارد / Apple Pay).</p>
+  <p class="foot">الدفع آمن عبر Whop (فيزا / ماستركارد / Apple Pay).<br><span style="font-size:20px;display:inline-block;margin-top:6px">🌼</span></p>
 </div>
 
 <script>
@@ -127,7 +126,7 @@ select{font:inherit;font-size:14px;padding:7px 10px;border-radius:10px;border:1.
       var txt = code==='USD' ? '<span class="num">$'+fmt(v,c)+'</span>' : '<span class="num">'+fmt(v,c)+'</span><span class="cy">'+c.s+'</span>';
       el.innerHTML = txt + (small ? small.outerHTML : '');
     });
-    fx.hidden = code==='USD'; sel.value=code;
+    sel.value=code;
   }
   var code='USD';
   try{var saved=localStorage.getItem('kalima-cur'); if(saved&&C[saved]) code=saved;
