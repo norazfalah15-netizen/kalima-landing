@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>الاشتراك في كلمة</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700&family=Fraunces:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FAF6EC;--card:#fff;--ink:#1E2B33;--mute:#5B6670;--line:#EFE2BD;--gold:#F0C64A;--gold2:#C9971F;--navy:#1E2B33;--green:#4F7A5A}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Kufi Arabic",system-ui,sans-serif}
+body{padding:calc(20px + env(safe-area-inset-top,0px)) 16px calc(32px + env(safe-area-inset-bottom,0px))}
+.wrap{max-width:520px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.logo{width:48px;height:48px;border-radius:14px;background:var(--gold);color:var(--navy);display:grid;place-items:center;font-weight:700;font-size:18px;box-shadow:0 6px 18px rgba(201,151,31,.25)}
+h1{font-size:22px;margin:0;line-height:1.3}
+.sub{color:var(--mute);font-size:14px;margin:2px 0 0}
+.hero{background:var(--navy);color:#fff;border-radius:22px;padding:18px 20px;margin-bottom:16px}
+.hero b{color:var(--gold);font-weight:700}
+.hero ul{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:6px;font-size:14px}
+.hero li::before{content:"✓";color:var(--gold);margin-inline-end:8px;font-weight:700}
+.curbar{display:flex;justify-content:space-between;align-items:center;margin:14px 0 10px;font-size:13px;color:var(--mute)}
+select{font:inherit;font-size:14px;padding:7px 10px;border-radius:10px;border:1.5px solid var(--line);background:#fff;color:var(--ink)}
+.plans{display:grid;gap:12px}
+.plan{position:relative;background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:18px 18px 16px;display:grid;gap:10px}
+.plan.best{border:2px solid var(--gold);box-shadow:0 10px 30px rgba(201,151,31,.18)}
+.badge{position:absolute;top:-12px;inset-inline-start:16px;background:var(--gold);color:var(--navy);font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.name{font-weight:700;font-size:17px}
+.price{font-family:Fraunces,serif;font-size:34px;font-weight:600;line-height:1;direction:rtl;display:inline-flex;align-items:baseline;gap:6px;white-space:nowrap}
+.price .num,[data-inline] .num{unicode-bidi:isolate;direction:ltr}
+[data-inline]{display:inline-flex;align-items:baseline;gap:3px;direction:rtl;white-space:nowrap;font-weight:700}
+.price small{font-family:"Noto Kufi Arabic",sans-serif;font-size:13px;color:var(--mute);font-weight:500}
+.cy{font-family:"Noto Kufi Arabic",sans-serif;font-size:16px}
+.total{font-size:13px;color:var(--mute)}
+.save{color:var(--green);font-weight:700;font-size:13px}
+.cta{display:block;text-align:center;text-decoration:none;font-weight:700;font-size:16px;padding:13px;border-radius:14px;background:var(--navy);color:#fff;transition:transform .12s}
+.cta:active{transform:scale(.98)}
+.best .cta{background:var(--gold);color:var(--navy)}
+.fx{font-size:12px;color:var(--mute);text-align:center;margin-top:14px}
+.foot{margin-top:18px;text-align:center;font-size:12.5px;color:var(--mute);line-height:1.8}
+.foot a{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">
+    <div class="logo">كلمة</div>
+    <div><h1>الاشتراك في كلمة</h1><p class="sub">وصول كامل مدى الحياة · كل المستويات <span dir="ltr">A1 → C1</span></p></div>
+  </div>
+
+  <div class="hero">
+    <div>اشتراك <b>مرة وحدة</b> — بدون تجديد وبدون رسوم شهرية.</div>
+    <ul>
+      <li>مكتبة الكلمات لكل المستويات مع النطق</li>
+      <li>القصص المتدرجة والاختبارات</li>
+      <li>بودكاست كلمة (مايا وآدم) بالمشاهد المتحركة</li>
+      <li>كل التحديثات القادمة مجاناً</li>
+    </ul>
+  </div>
+
+  <div class="curbar">
+    <span>اعرض الأسعار بـ</span>
+    <select id="cur" aria-label="العملة">
+      <option value="USD">دولار أمريكي $</option>
+      <option value="KWD">دينار كويتي د.ك</option>
+      <option value="SAR">ريال سعودي ر.س</option>
+      <option value="AED">درهم إماراتي د.إ</option>
+      <option value="QAR">ريال قطري ر.ق</option>
+      <option value="BHD">دينار بحريني د.ب</option>
+      <option value="OMR">ريال عماني ر.ع</option>
+    </select>
+  </div>
+
+  <div class="plans" id="plans">
+    <div class="plan best">
+      <span class="badge">الأوفر ⭐</span>
+      <div class="row"><span class="name">دفعة واحدة</span><span class="price" data-usd="180"></span></div>
+      <div class="row"><span class="total">تدفع مرة وحدة وخلاص</span><span class="save">توفّر <span data-usd="30" data-inline></span> مقارنة بالتقسيط</span></div>
+      <a class="cta" href="https://whop.com/checkout/plan_f5mkqJYVLKBPp" target="_blank" rel="noopener">اشترك الآن — دفعة واحدة</a>
+    </div>
+
+    <div class="plan">
+      <div class="row"><span class="name">دفعتين</span><span class="price" data-usd="95"><small>× 2</small></span></div>
+      <div class="row"><span class="total">الإجمالي <span data-usd="190" data-inline></span> · دفعة الآن ودفعة بعد شهر</span></div>
+      <a class="cta" href="https://whop.com/checkout/plan_23tJq610g0Bov" target="_blank" rel="noopener">اشترك على دفعتين</a>
+    </div>
+
+    <div class="plan">
+      <div class="row"><span class="name">ثلاث دفعات</span><span class="price" data-usd="70"><small>× 3</small></span></div>
+      <div class="row"><span class="total">الإجمالي <span data-usd="210" data-inline></span> · دفعة كل شهر</span></div>
+      <a class="cta" href="https://whop.com/checkout/plan_BiWRHnZqJtTvX" target="_blank" rel="noopener">اشترك على 3 دفعات</a>
+    </div>
+  </div>
+
+  <p class="fx" id="fx" hidden>الأسعار بعملتك تقريبية — الخصم يتم بالدولار الأمريكي وبنكك يحوّله بسعر اليوم.</p>
+
+  <p class="foot">الدفع آمن عبر Whop (فيزا / ماستركارد / Apple Pay).<br>بعد الدفع أرسلي/أرسل إيميلك لتفعيل حسابك خلال دقائق.<br><a href="https://kalima-app-iota.vercel.app">kalima-app-iota.vercel.app</a></p>
+</div>
+
+<script>
+(function(){
+  var C={USD:{r:1,s:'$',d:0},SAR:{r:3.75,s:'ر.س',d:0},AED:{r:3.6725,s:'د.إ',d:0},
+         KWD:{r:0.307,s:'د.ك',d:1},QAR:{r:3.64,s:'ر.ق',d:0},BHD:{r:0.376,s:'د.ب',d:1},OMR:{r:0.3845,s:'ر.ع',d:1}};
+  var TZ={'Asia/Riyadh':'SAR','Asia/Dubai':'AED','Asia/Kuwait':'KWD','Asia/Qatar':'QAR','Asia/Bahrain':'BHD','Asia/Muscat':'OMR'};
+  var sel=document.getElementById('cur'), fx=document.getElementById('fx');
+  function conv(usd,c){var k=Math.pow(10,c.d);return Math.round(usd*c.r*k)/k;}
+  function fmt(v,c){return v.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:c.d});}
+  function paint(code){
+    var c=C[code]||C.USD;
+    document.querySelectorAll('[data-usd]').forEach(function(el){
+      var usd=+el.getAttribute('data-usd'), v=conv(usd,c), small=el.querySelector('small');
+      var txt = code==='USD' ? '<span class="num">$'+fmt(v,c)+'</span>' : '<span class="num">'+fmt(v,c)+'</span><span class="cy">'+c.s+'</span>';
+      el.innerHTML = txt + (small ? small.outerHTML : '');
+    });
+    fx.hidden = code==='USD'; sel.value=code;
+  }
+  var code='USD';
+  try{var saved=localStorage.getItem('kalima-cur'); if(saved&&C[saved]) code=saved;
+      else {var tz=Intl.DateTimeFormat().resolvedOptions().timeZone; if(TZ[tz]) code=TZ[tz];}}
+  catch(e){try{var tz2=Intl.DateTimeFormat().resolvedOptions().timeZone; if(TZ[tz2]) code=TZ[tz2];}catch(_){}}
+  paint(code);
+  sel.addEventListener('change',function(){paint(sel.value);try{localStorage.setItem('kalima-cur',sel.value)}catch(e){}});
+})();
+</script>
+</body>
+</html>
