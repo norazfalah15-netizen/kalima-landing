@@ -1413,6 +1413,7 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
 /* الحقائق فوق الجوال */
 .chip-row{margin:4px auto 0!important}
 .chip-row2{margin-top:8px!important}
+.p3d-spin{display:none!important}
 .p3d.has-row{padding-top:14px!important}
 .phone-wrap .p3d.has-row{margin-top:-8px!important}
 /* زر «شوفه من ورا»: صغير وهادي بدل الزر الأبيض الكبير */
@@ -2172,8 +2173,6 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
           <div class="mk-prog"><i></i></div><div class="mk-time"><span>0:34</span><span>10:28</span></div>
           <div class="mk-ctl"><span>⟲ 10</span><span class="pl">▶</span><span>10 ⟳</span></div>
           <div class="mk-gloss"></div></div>
-            <div class="sat s2" style="--z:80px;--dl:-1.6s"><div class="sat-in">ترجمة فورية</div></div>
-            <div class="sat s3" style="--z:70px;--dl:-3s"><div class="sat-in dk">🎯 <b>30</b> كلمة أساسية</div></div>
       </div></div>
     </div>
 
@@ -2706,7 +2705,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
     ph.parentNode.insertBefore(stage,ph); stage.appendChild(floor); stage.appendChild(rig); rig.appendChild(ph);
     var g=document.createElement('div'); g.className='mk-gloss'; ph.appendChild(g);
     rig.appendChild(backFace('mk-back-flat',BACK+TAGS[1]+'<div class="mk-cam"><i></i><i></i><i></i></div>'));
-    [['s1','--z:95px','sat-in gold','<b>5,000</b> كلمة'],['s3','--z:70px;--dl:-2.5s','sat-in','📚 <b>165</b> قصة'],['s2','--z:80px;--dl:-1.5s','sat-in','🎧 <b>172</b> حلقة'],['s4','--z:85px;--dl:-3.9s','sat-in','🪜 <b>A1</b> ← <b>C1</b>']].forEach(function(a){
+    [['s1','--z:95px','sat-in gold','<b>5,000</b> كلمة'],['s3','--z:70px;--dl:-2.5s','sat-in','📚 <b>165</b> قصة'],['s2','--z:80px;--dl:-1.5s','sat-in','🎧 <b>172</b> حلقة']].forEach(function(a){
       var d=document.createElement('div'); d.className='sat '+a[0]; d.setAttribute('style',a[1]); d.innerHTML='<div class="'+a[2]+'">'+a[3]+'</div>'; ph.appendChild(d);
     });
   }
