@@ -1414,6 +1414,13 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
 .chip-row{margin:4px auto 0!important}
 .chip-row2{margin-top:8px!important}
 .p3d-spin{display:none!important}
+.tb-btn{display:flex;flex-direction:column;align-items:center;line-height:1.15;padding:8px 20px!important;position:relative;overflow:hidden;font-size:15px!important}
+.tb-btn small{display:block;font-size:10.5px;font-weight:600;opacity:.8;margin-top:2px}
+.tb-btn::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:tbShine 3.6s ease-in-out infinite}
+@keyframes tbShine{0%,62%{left:-60%}100%{left:130%}}
+@media (prefers-reduced-motion:reduce){.tb-btn::after{animation:none;display:none}}
+.buybar{display:none!important}
+
 .p3d.has-row{padding-top:14px!important}
 .phone-wrap .p3d.has-row{margin-top:-8px!important}
 /* زر «شوفه من ورا»: صغير وهادي بدل الزر الأبيض الكبير */
@@ -1820,7 +1827,7 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
     <span class="tb-logo">كلمة</span>
     <span class="tb-name"><b>كلمة</b><small>KALIMA</small></span>
   </a>
-  <a class="tb-btn" href="#price">اشترك</a>
+  <a class="tb-btn" href="#price">اشترك<small>وصول مدى الحياة</small></a>
 </nav>
 
 <!-- ══ العالم: الواجهة ثلاثية الأبعاد + «اللغة عالم آخر» ══ -->
