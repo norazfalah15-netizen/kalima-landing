@@ -2340,6 +2340,36 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
   </div>
 </section>
 
+<script>
+(function(){
+  // Gulf rates per 1 USD (all pegged except KWD, which is basket-managed and near-stable)
+  var C={USD:{r:1,s:'$',d:0},SAR:{r:3.75,s:'ر.س',d:0},AED:{r:3.6725,s:'د.إ',d:0},
+         KWD:{r:0.307,s:'د.ك',d:1},QAR:{r:3.64,s:'ر.ق',d:0},BHD:{r:0.376,s:'د.ب',d:1},OMR:{r:0.3845,s:'ر.ع',d:1}};
+  var TZ={'Asia/Riyadh':'SAR','Asia/Dubai':'AED','Asia/Kuwait':'KWD','Asia/Qatar':'QAR','Asia/Bahrain':'BHD','Asia/Muscat':'OMR'};
+  var sel=document.getElementById('cur'), fx=document.getElementById('fx');
+  function conv(usd,c){var k=Math.pow(10,c.d);return Math.round(usd*c.r*k)/k;}
+  function fmt(v,c){return v.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:c.d});}
+  function paint(code){
+    var c=C[code]||C.USD;
+    document.querySelectorAll('#buy [data-usd]').forEach(function(el){
+      var xk = el.hasAttribute('data-x3') ? 3 : 2, xv = el.getAttribute('data-x3') || el.getAttribute('data-x2');
+      var v = xv ? Math.round(conv(+xv,c)*xk*Math.pow(10,c.d))/Math.pow(10,c.d)
+                                        : (el.hasAttribute('data-nice') ? (function(x){var st=x>=5000?1000:100;return Math.floor(x/st)*st;})(+el.getAttribute('data-usd')*c.r) : el.hasAttribute('data-floor') ? Math.floor(+el.getAttribute('data-usd')*c.r) : el.hasAttribute('data-int') ? Math.round(conv(+el.getAttribute('data-usd'),c)) : conv(+el.getAttribute('data-usd'),c));
+      if(code==='USD'){el.textContent='$'+fmt(v,c);}
+      else{el.innerHTML=(el.tagName==='B'?'':'<span class="ap">≈</span>')+fmt(v,c)+'<span class="cy">'+c.s+'</span>';}
+    });
+    fx.hidden = code==='USD';
+    sel.value=code;
+  }
+  var code='USD';
+  try{var saved=localStorage.getItem('kalima-cur'); if(saved&&C[saved]) code=saved;
+      else {var tz=Intl.DateTimeFormat().resolvedOptions().timeZone; if(TZ[tz]) code=TZ[tz];}}
+  catch(e){try{var tz2=Intl.DateTimeFormat().resolvedOptions().timeZone; if(TZ[tz2]) code=TZ[tz2];}catch(_){}}
+  paint(code);
+  sel.addEventListener('change',function(){paint(sel.value);try{localStorage.setItem('kalima-cur',sel.value)}catch(e){}});
+})();
+</script>
+
 <!-- ══ الأسئلة ══ -->
 <section>
   <div class="wrap">
