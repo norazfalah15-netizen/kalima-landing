@@ -284,6 +284,13 @@
   .incl li.plus{color:var(--moss-d);font-weight:700}
   .incl li.plus::before{content:"+";font-size:1.6em;line-height:0;vertical-align:-0.12em;font-weight:800;color:var(--moss-d)}
   .cur-wrap{text-align:center}
+  .promise{margin:12px 0 4px;padding:12px 14px;border-radius:14px;background:rgba(240,198,74,.14);border:1px solid rgba(240,198,74,.45);font-size:14.5px;line-height:1.75;text-align:right}
+  .promise b{color:var(--gold-d)}
+  .price-card{position:relative}
+  .pbadge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:#1E2B36;font-weight:800;font-size:13px;padding:5px 14px;border-radius:999px;white-space:nowrap;box-shadow:0 6px 16px rgba(0,0,0,.18)}
+  .price-card.starter{margin-top:22px;border-color:rgba(240,198,74,.45)}
+  .price-card.starter .pay-btns{grid-template-columns:1fr}
+  .price-card .up{font-size:13px;color:var(--soft);margin:10px 0 4px;text-align:center}
   .price-card{background:var(--card);border:2px solid var(--gold);border-radius:24px;
     padding:34px 30px;text-align:center;max-width:460px;margin:0 auto;width:100%;position:relative;
     box-shadow:0 8px 26px rgba(199,154,60,.16)}
@@ -2240,8 +2247,8 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
 <section id="buy">
   <div class="wrap">
     <div class="kicker" style="text-align:center">الأسعار</div>
-    <h2 style="text-align:center">باقة <span class="hl">كلمة</span></h2>
-    <p class="sub" style="text-align:center">باقة كلمة تبقى معك مدى الحياة — وتقدر تدفع مرة وحدة أو على دفعتين.</p>
+    <h2 style="text-align:center">اختر <span class="hl">باقتك</span></h2>
+    <p class="sub" style="text-align:center">الباقتين تبقى معك مدى الحياة — ابدأ من المبتدئ، أو خذ الرحلة كاملة.</p>
 
     <!-- the line that answers the last hesitation: is this worth it? It sits
          directly above the price, where that question is actually asked. -->
@@ -2294,6 +2301,7 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
     </div>
     <div class="price-grid" id="price" style="max-width:460px">
     <div class="price-card">
+      <div class="pbadge">⭐ الأكثر قيمة</div>
       <div class="plan-name">باقة كلمة</div>
       <div class="plan-sub">كل المستويات — من A1 إلى C1</div>
       <div class="now" data-usd="150">$150</div>
@@ -2303,6 +2311,7 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
         <div class="plan"><div class="plan-n" data-usd="75">$75</div><div class="plan-l">× دفعتين</div><div class="plan-t">الإجمالي <b data-usd="150" data-x2="75">$150</b></div></div>
       </div>
       <div class="lifetime">وصول مدى الحياة في كل الحالات</div>
+      <div class="promise">🎯 <b>النتيجة:</b> تمشي خطوة بخطوة من <bdi>A1</bdi> لين المستوى المتقدّم <bdi>C1</bdi> — تقرأ، وتسمع، وتتكلّم، وتكتب بثقة.</div>
       <ul class="incl">
         <li>مفردات من A1 إلى C1 بشرح عربي</li>
         <li>165 كتاب قراءة متدرّج</li>
@@ -2318,6 +2327,25 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
       </div>
     </div>
 
+
+    <div class="price-card starter">
+      <div class="plan-name">كلمة ستارتر</div>
+      <div class="plan-sub">مستوى المبتدئ <bdi>A1</bdi> كامل</div>
+      <div class="now" data-usd="49">$49</div>
+      <div class="once">دفعة واحدة · وصول مدى الحياة</div>
+      <div class="promise">🎯 <b>النتيجة:</b> تتخطّى مستوى المبتدئ — تعرف أهم كلمات الإنجليزي اليومية، وتقرأ قصص كاملة، وتفهم حوارات بسيطة بدون ترجمة.</div>
+      <ul class="incl">
+        <li>قرابة 900 كلمة <bdi>A1</bdi> بنطقها ومعناها وأمثلة</li>
+        <li>33 كتاب قراءة لمستوى <bdi>A1</bdi></li>
+        <li>31 حلقة بودكاست لمستوى <bdi>A1</bdi></li>
+        <li>أسئلة تحدّث ومواضيع كتابة لمستوى <bdi>A1</bdi></li>
+        <li>نطق صوتي لكل كلمة</li>
+      </ul>
+      <p class="up">وإذا خلّصته، تقدر تنتقل للباقة الكاملة بأي وقت.</p>
+      <div class="pay-btns">
+        <a class="cta ghost" href="#STARTER_WHOP" target="_blank" rel="noopener">ابدأ بـ <bdi data-usd="49">$49</bdi></a>
+      </div>
+    </div>
     </div>
     <div class="fx" id="fx" style="text-align:center;margin-top:18px" hidden>🔒 الدفع آمن عن طريق Whop بأي بطاقة بنكية.<br><span style="display:inline-block;margin-top:6px;font-size:.92em;opacity:.85">قد يزيد المبلغ المخصوم حوالي 10 دولارات هذه رسوم يأخذها بنكك على الدفع بالدولار — مو مننا، ولا تدخل في سعر كلمة 🤍</span></div>
   </div>
