@@ -2374,15 +2374,17 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
   var TZ={'Asia/Riyadh':'SAR','Asia/Dubai':'AED','Asia/Kuwait':'KWD','Asia/Qatar':'QAR','Asia/Bahrain':'BHD','Asia/Muscat':'OMR'};
   var sel=document.getElementById('cur'), fx=document.getElementById('fx');
   function conv(usd,c){var k=Math.pow(10,c.d);return Math.round(usd*c.r*k)/k;}
-  function fmt(v,c){return v.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:c.d});}
+  /* prices always show their decimal (15.0 د.ك); whole-number comparisons ("more than…") stay whole */
+  function fmt(v,c,whole){var d=whole?0:c.d;return v.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});}
   function paint(code){
     var c=C[code]||C.USD;
     document.querySelectorAll('#buy [data-usd]').forEach(function(el){
       var xk = el.hasAttribute('data-x3') ? 3 : 2, xv = el.getAttribute('data-x3') || el.getAttribute('data-x2');
       var v = xv ? Math.round(conv(+xv,c)*xk*Math.pow(10,c.d))/Math.pow(10,c.d)
                                         : (el.hasAttribute('data-nice') ? (function(x){var st=x>=5000?1000:100;return Math.floor(x/st)*st;})(+el.getAttribute('data-usd')*c.r) : el.hasAttribute('data-floor') ? Math.floor(+el.getAttribute('data-usd')*c.r) : el.hasAttribute('data-int') ? Math.round(conv(+el.getAttribute('data-usd'),c)) : conv(+el.getAttribute('data-usd'),c));
-      if(code==='USD'){el.textContent='$'+fmt(v,c);}
-      else{el.innerHTML=(el.tagName==='B'?'':'<span class="ap">≈</span>')+fmt(v,c)+'<span class="cy">'+c.s+'</span>';}
+      var wh=el.hasAttribute('data-nice')||el.hasAttribute('data-floor')||el.hasAttribute('data-int');
+      if(code==='USD'){el.textContent='$'+fmt(v,c,wh);}
+      else{el.innerHTML=(el.tagName==='B'?'':'<span class="ap">≈</span>')+fmt(v,c,wh)+'<span class="cy">'+c.s+'</span>';}
     });
     fx.hidden = code==='USD';
     sel.value=code;
