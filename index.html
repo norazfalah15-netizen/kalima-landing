@@ -284,6 +284,47 @@
   .incl li.plus{color:var(--moss-d);font-weight:700}
   .incl li.plus::before{content:"+";font-size:1.6em;line-height:0;vertical-align:-0.12em;font-weight:800;color:var(--moss-d)}
   .cur-wrap{text-align:center}
+  /* ── books section ── */
+  .books{background:radial-gradient(900px 500px at 50% 0%,rgba(240,198,74,.12),transparent 70%),linear-gradient(180deg,#16212B,#111A22);color:#FAF6EC}
+  .books h2,.books .kicker{color:#FAF6EC}.books .kicker{color:#E0B43A}.books .sub{color:#CFC6B4}
+  .bk-feats{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:22px auto 8px;max-width:640px}
+  .bk-feats span{padding:7px 14px;border-radius:999px;background:rgba(250,246,236,.07);border:1px solid rgba(250,246,236,.14);font-size:13.5px;font-weight:600}
+  .bk-shelf{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;margin:34px auto 0;max-width:1040px;perspective:1400px}
+  .bk{display:flex;flex-direction:column;align-items:center;opacity:0;transform:translateY(18px);animation:bkIn .7s ease forwards;animation-delay:var(--d)}
+  @keyframes bkIn{to{opacity:1;transform:none}}
+  .bk-3d{position:relative;width:100%;max-width:170px;aspect-ratio:3/4.2;transform-style:preserve-3d;transform:rotateY(-18deg) rotateX(4deg);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+  .bk:hover .bk-3d{transform:rotateY(-4deg) rotateX(0) translateY(-6px)}
+  .bk-cover{position:absolute;inset:0;border-radius:4px 12px 12px 4px;background:linear-gradient(150deg,var(--c1),var(--c2));padding:14px 13px;display:flex;flex-direction:column;align-items:center;text-align:center;color:#FAF6EC;box-shadow:inset 6px 0 0 rgba(0,0,0,.18),inset 8px 0 14px rgba(0,0,0,.18),0 22px 40px rgba(0,0,0,.45);overflow:hidden;transform:translateZ(10px)}
+  .bk-cover:before{content:"";position:absolute;inset:0;background:radial-gradient(160px 120px at 80% 0%,rgba(255,255,255,.22),transparent 70%)}
+  .bk-pages{position:absolute;top:4px;bottom:4px;right:-9px;width:14px;background:repeating-linear-gradient(180deg,#F4EEDF 0 2px,#E1D7C2 2px 3px);border-radius:0 3px 3px 0;transform:rotateY(70deg) translateZ(0);transform-origin:left}
+  .bk-top{width:100%;display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:700}
+  .bk-brand{background:#F2C94C;color:#1E2B36;border-radius:7px;padding:2px 7px;font-size:11px}
+  .bk-no{opacity:.7;font-family:var(--en)}
+  .bk-lv{font-family:var(--en);font-weight:800;font-size:52px;line-height:1;margin-top:auto;letter-spacing:-.02em;text-shadow:0 4px 18px rgba(0,0,0,.25)}
+  .bk-ar{font-weight:800;font-size:15px;margin-top:6px;white-space:nowrap}
+  .bk-n bdi{font-family:var(--en)}
+  .bk-en{font-family:var(--en);font-size:11px;opacity:.75;letter-spacing:.04em}
+  .bk-n{margin-top:10px;font-size:12.5px;font-weight:700;background:rgba(0,0,0,.18);padding:3px 10px;border-radius:999px}
+  .bk-line{width:40%;height:2px;background:#F2C94C;margin:12px auto 0;border-radius:2px}
+  .bk-foot{margin-top:auto;font-family:var(--en);font-size:8.5px;letter-spacing:.22em;opacity:.65}
+  .bk-meta{margin-top:20px;display:flex;flex-direction:column;align-items:center;gap:4px}
+  .bk-meta b{font-size:15px}.bk-meta span{font-size:13px;color:#CFC6B4}
+  .bk-meta span bdi{font-family:var(--en);color:#F2C94C;font-weight:700;font-size:15px}
+  .bk-btn{margin-top:8px;padding:8px 16px;border-radius:999px;border:1.5px solid rgba(242,201,76,.6);color:#F2C94C;font-weight:700;font-size:13px;text-decoration:none}
+  .bk-btn:hover{background:rgba(242,201,76,.12)}
+  .bk-bundle{margin:44px auto 0;max-width:760px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 26px;border-radius:24px;background:linear-gradient(160deg,rgba(242,201,76,.16),rgba(242,201,76,.05));border:1.5px solid rgba(242,201,76,.45)}
+  .bb-tag{font-size:13px;font-weight:700;color:#E0B43A}.bb-title{font-size:20px;font-weight:800;margin-top:2px}
+  .bb-price{margin-top:4px;font-family:var(--en)}.bb-price s{color:#8D8577;font-size:18px;text-decoration-color:#C9553D;text-decoration-thickness:2px}.bb-price b{color:#F2C94C;font-size:30px;margin-inline-start:6px}
+  .bk-free{margin:18px auto 0;max-width:760px;text-align:center;padding:14px 18px;border-radius:16px;background:rgba(94,139,107,.18);border:1px solid rgba(94,139,107,.45);font-size:15px}
+  @media (max-width:900px){.bk-shelf{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:560px){
+    .bk-shelf{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;padding:10px 24px 18px;margin:26px -20px 0;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+    .bk-shelf::-webkit-scrollbar{display:none}
+    .bk{flex:0 0 46%;scroll-snap-align:center}
+    .bk-3d{transform:rotateY(-12deg)}
+    .bk-bundle{flex-direction:column;text-align:center}
+    .bk-bundle .cta{width:100%}
+  }
   .promise{margin:12px 0 4px;padding:12px 14px;border-radius:14px;background:rgba(240,198,74,.14);border:1px solid rgba(240,198,74,.45);font-size:14.5px;line-height:1.75;text-align:right}
   .promise b{color:var(--gold-d)}
   .price-card{position:relative}
@@ -2353,6 +2394,113 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
 
 </div>
 
+<!-- ══ الكتب ══ -->
+<section id="books" class="books">
+  <div class="wrap">
+    <div class="kicker" style="text-align:center">سلسلة كتب كلمة</div>
+    <h2 style="text-align:center">أهم <span class="hl">5,000</span> كلمة… في 5 كتب</h2>
+    <p class="sub" style="text-align:center">كتاب لكل مستوى، من المبتدئ لين المتقدّم — بشرح عربي، تقراه على جوالك أو تطبعه.</p>
+
+    <div class="bk-feats">
+      <span>🖼️ صورة لكل كلمة</span><span>💬 معنى بالعربي</span><span>✍️ مثال لكل كلمة</span><span>📖 قصص قصيرة</span><span>✅ تمارين</span>
+    </div>
+
+    <div class="bk-shelf">
+      <div class="bk" style="--c1:#5E8B6B;--c2:#3F6B4E;--d:0.00s">
+        <div class="bk-3d"><div class="bk-cover">
+          <div class="bk-top"><span class="bk-brand">كلمة</span><span class="bk-no">1/5</span></div>
+          <div class="bk-lv"><bdi>A1</bdi></div>
+          <div class="bk-ar">المستوى المبتدئ</div>
+          <div class="bk-en">Beginner</div>
+          <div class="bk-n"><bdi>897</bdi> كلمة</div>
+          <div class="bk-line"></div>
+          <div class="bk-foot">KALIMA · WORD BOOK</div>
+        </div><div class="bk-pages"></div></div>
+        <div class="bk-meta">
+          <b>كتاب <bdi>A1</bdi></b>
+          <span><bdi data-usd="19">$19</bdi> · PDF</span>
+          <a class="bk-btn" href="#BOOK_A1" target="_blank" rel="noopener">اشترِ الكتاب</a>
+        </div>
+      </div>
+      <div class="bk" style="--c1:#6B9A9F;--c2:#46767B;--d:0.08s">
+        <div class="bk-3d"><div class="bk-cover">
+          <div class="bk-top"><span class="bk-brand">كلمة</span><span class="bk-no">2/5</span></div>
+          <div class="bk-lv"><bdi>A2</bdi></div>
+          <div class="bk-ar">المستوى الأساسي</div>
+          <div class="bk-en">Elementary</div>
+          <div class="bk-n"><bdi>817</bdi> كلمة</div>
+          <div class="bk-line"></div>
+          <div class="bk-foot">KALIMA · WORD BOOK</div>
+        </div><div class="bk-pages"></div></div>
+        <div class="bk-meta">
+          <b>كتاب <bdi>A2</bdi></b>
+          <span><bdi data-usd="19">$19</bdi> · PDF</span>
+          <a class="bk-btn" href="#BOOK_A2" target="_blank" rel="noopener">اشترِ الكتاب</a>
+        </div>
+      </div>
+      <div class="bk" style="--c1:#C9A043;--c2:#9C7A2A;--d:0.16s">
+        <div class="bk-3d"><div class="bk-cover">
+          <div class="bk-top"><span class="bk-brand">كلمة</span><span class="bk-no">3/5</span></div>
+          <div class="bk-lv"><bdi>B1</bdi></div>
+          <div class="bk-ar">المستوى المتوسط</div>
+          <div class="bk-en">Intermediate</div>
+          <div class="bk-n"><bdi>807</bdi> كلمة</div>
+          <div class="bk-line"></div>
+          <div class="bk-foot">KALIMA · WORD BOOK</div>
+        </div><div class="bk-pages"></div></div>
+        <div class="bk-meta">
+          <b>كتاب <bdi>B1</bdi></b>
+          <span><bdi data-usd="19">$19</bdi> · PDF</span>
+          <a class="bk-btn" href="#BOOK_B1" target="_blank" rel="noopener">اشترِ الكتاب</a>
+        </div>
+      </div>
+      <div class="bk" style="--c1:#B07A3E;--c2:#86592A;--d:0.24s">
+        <div class="bk-3d"><div class="bk-cover">
+          <div class="bk-top"><span class="bk-brand">كلمة</span><span class="bk-no">4/5</span></div>
+          <div class="bk-lv"><bdi>B2</bdi></div>
+          <div class="bk-ar">المستوى فوق المتوسط</div>
+          <div class="bk-en">Upper-Intermediate</div>
+          <div class="bk-n"><bdi>726</bdi> كلمة</div>
+          <div class="bk-line"></div>
+          <div class="bk-foot">KALIMA · WORD BOOK</div>
+        </div><div class="bk-pages"></div></div>
+        <div class="bk-meta">
+          <b>كتاب <bdi>B2</bdi></b>
+          <span><bdi data-usd="19">$19</bdi> · PDF</span>
+          <a class="bk-btn" href="#BOOK_B2" target="_blank" rel="noopener">اشترِ الكتاب</a>
+        </div>
+      </div>
+      <div class="bk" style="--c1:#2E4050;--c2:#1B2834;--d:0.32s">
+        <div class="bk-3d"><div class="bk-cover">
+          <div class="bk-top"><span class="bk-brand">كلمة</span><span class="bk-no">5/5</span></div>
+          <div class="bk-lv"><bdi>C1</bdi></div>
+          <div class="bk-ar">المستوى المتقدّم</div>
+          <div class="bk-en">Advanced</div>
+          <div class="bk-n"><bdi>1,310</bdi> كلمة</div>
+          <div class="bk-line"></div>
+          <div class="bk-foot">KALIMA · WORD BOOK</div>
+        </div><div class="bk-pages"></div></div>
+        <div class="bk-meta">
+          <b>كتاب <bdi>C1</bdi></b>
+          <span><bdi data-usd="19">$19</bdi> · PDF</span>
+          <a class="bk-btn" href="#BOOK_C1" target="_blank" rel="noopener">اشترِ الكتاب</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="bk-bundle">
+      <div class="bb-txt">
+        <div class="bb-tag">📚 السلسلة كاملة</div>
+        <div class="bb-title">الكتب الخمسة مع بعض</div>
+        <div class="bb-price"><s data-usd="95">$95</s> <b data-usd="79">$79</b></div>
+      </div>
+      <a class="cta" href="#BOOKS_ALL" target="_blank" rel="noopener">اشترِ السلسلة كاملة</a>
+    </div>
+
+    <div class="bk-free">🎁 <b>مشترك في باقة كلمة الكاملة؟</b> الكتب الخمسة <b>مجاناً</b> لك ضمن اشتراكك.</div>
+  </div>
+</section>
+
 <!-- ══ بعد الاشتراك ══ -->
 <section class="tinted">
   <div class="wrap">
@@ -2378,7 +2526,7 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
   function fmt(v,c,whole){var d=whole?0:c.d;return v.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});}
   function paint(code){
     var c=C[code]||C.USD;
-    document.querySelectorAll('#buy [data-usd]').forEach(function(el){
+    document.querySelectorAll('#buy [data-usd], #books [data-usd]').forEach(function(el){
       var xk = el.hasAttribute('data-x3') ? 3 : 2, xv = el.getAttribute('data-x3') || el.getAttribute('data-x2');
       var v = xv ? Math.round(conv(+xv,c)*xk*Math.pow(10,c.d))/Math.pow(10,c.d)
                                         : (el.hasAttribute('data-nice') ? (function(x){var st=x>=5000?1000:100;return Math.floor(x/st)*st;})(+el.getAttribute('data-usd')*c.r) : el.hasAttribute('data-floor') ? Math.floor(+el.getAttribute('data-usd')*c.r) : el.hasAttribute('data-int') ? Math.round(conv(+el.getAttribute('data-usd'),c)) : conv(+el.getAttribute('data-usd'),c));
