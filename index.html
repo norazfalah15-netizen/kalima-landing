@@ -284,6 +284,18 @@
   .incl li.plus{color:var(--moss-d);font-weight:700}
   .incl li.plus::before{content:"+";font-size:1.6em;line-height:0;vertical-align:-0.12em;font-weight:800;color:var(--moss-d)}
   .cur-wrap{text-align:center}
+  /* limited-time offer (shown only while the offer runs; everything returns to normal by itself when it ends) */
+  body:not(.offer) .off-only{display:none!important}
+  body.offer .reg-only{display:none!important}
+  .offer-rib{display:inline-flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 10px;margin-top:18px;padding:10px 18px;border-radius:999px;background:linear-gradient(160deg,#F7D774,#E0B43A);color:#1E2B36;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 10px 26px rgba(224,180,58,.35)}
+  .offer-rib s{opacity:.6}.offer-rib .cd-mini{background:rgba(30,43,54,.12);padding:2px 10px;border-radius:999px;font-family:var(--en);font-weight:700}
+  .pbadge.hot{background:#C9553D;color:#fff}
+  .was-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px}
+  .was{font-family:var(--en);font-size:26px;color:var(--soft);text-decoration:line-through;text-decoration-color:#C9553D;text-decoration-thickness:3px}
+  .save{background:#E8F3EA;color:#3F7A4E;font-weight:800;font-size:13px;padding:4px 10px;border-radius:999px}
+  .cd{margin:12px auto 0;display:inline-block;padding:7px 14px;border-radius:999px;background:#FBEDE9;color:#9E3F2B;font-weight:700;font-size:14px}
+  .cd bdi{font-family:var(--en)}
+  .pay-btns.one{grid-template-columns:1fr}
   .promise{margin:12px 0 4px;padding:12px 14px;border-radius:14px;background:rgba(240,198,74,.14);border:1px solid rgba(240,198,74,.45);font-size:14.5px;line-height:1.75;text-align:right}
   .promise b{color:var(--gold-d)}
   .price-card{position:relative}
@@ -1853,6 +1865,7 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
         <li><i>🌍</i>تفهم العالم<br>بدون ترجمة</li>
         <li><i>🗣️</i>تتكلّم بثقة<br>بدون تردد</li>
       </ul>
+      <a class="offer-rib off-only" href="#price">🔥 عرض لفترة محدودة: الباقة الكاملة بـ <b><bdi>$99</bdi></b> بدل <s><bdi>$150</bdi></s><span class="cd-mini">⏳ <bdi class="cdT">72:00:00</bdi></span></a>
       <div class="hero-cta">
         <a class="cta" href="#price">ابدأ التعلّم الآن</a>
         <a class="cta-ghost" href="#try">جرّب جزء بنفسك</a>
@@ -2301,16 +2314,23 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
     </div>
     <div class="price-grid" id="price" style="max-width:460px">
     <div class="price-card">
-      <div class="pbadge">⭐ الأكثر قيمة</div>
+      <div class="pbadge reg-only">⭐ الأكثر قيمة</div>
+      <div class="pbadge hot off-only">🔥 عرض لفترة محدودة</div>
       <div class="plan-name">باقة كلمة</div>
       <div class="plan-sub">كل المستويات — من A1 إلى C1</div>
-      <div class="now" data-usd="150">$150</div>
-      <div class="once">أو قسّمها كما يناسبك</div>
-      <div class="plans">
+      <div class="off-only">
+        <div class="was-row"><s class="was" data-usd="150">$150</s><span class="save">وفّر <bdi data-usd="51">$51</bdi></span></div>
+        <div class="now" data-usd="99">$99</div>
+        <div class="once">دفعة وحدة · وصول مدى الحياة</div>
+        <div class="cd">⏳ ينتهي العرض بعد <bdi class="cdT">72:00:00</bdi></div>
+      </div>
+      <div class="now reg-only" data-usd="150">$150</div>
+      <div class="once reg-only">أو قسّمها كما يناسبك</div>
+      <div class="plans reg-only">
         <div class="plan best"><div class="plan-n" data-usd="150">$150</div><div class="plan-l">دفعة واحدة</div><div class="plan-t">الإجمالي <b data-usd="150">$150</b></div></div>
         <div class="plan"><div class="plan-n" data-usd="75">$75</div><div class="plan-l">× دفعتين</div><div class="plan-t">الإجمالي <b data-usd="150" data-x2="75">$150</b></div></div>
       </div>
-      <div class="lifetime">وصول مدى الحياة في كل الحالات</div>
+      <div class="lifetime reg-only">وصول مدى الحياة في كل الحالات</div>
       <div class="promise">🎯 <b>النتيجة:</b> تمشي خطوة بخطوة من <bdi>A1</bdi> لين المستوى المتقدّم <bdi>C1</bdi> — تقرأ، وتسمع، وتتكلّم، وتكتب بثقة.</div>
       <ul class="incl">
         <li>مفردات من A1 إلى C1 بشرح عربي</li>
@@ -2321,9 +2341,12 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
         <li>الأفعال المركّبة مع كتب قراءة وبودكاست خاصين بها</li>
         <li>نطق صوتي لكل كلمة</li>
       </ul>
-      <div class="pay-btns">
+      <div class="pay-btns reg-only">
         <a class="cta" href="https://whop.com/checkout/plan_ZsH2e4dLLpFmg" target="_blank" rel="noopener">دفعة واحدة</a>
         <a class="cta ghost" href="https://whop.com/checkout/plan_6J78MPxRQMuJc" target="_blank" rel="noopener">على دفعتين</a>
+      </div>
+      <div class="pay-btns one off-only">
+        <a class="cta" href="#OFFER_WHOP" target="_blank" rel="noopener">احصل على العرض بـ <bdi data-usd="99">$99</bdi></a>
       </div>
     </div>
 
@@ -3637,6 +3660,26 @@ try{
 }catch(e){}
 })();
 
+</script>
+
+<script>
+/* Limited-time offer: set OFFER_END to the real end time when the offer goes live.
+   Before the end the offer shows with a live countdown; after it, the page goes back to the normal prices by itself. */
+(function(){
+  var OFFER_END = null; /* e.g. "2026-11-17T21:00:00+03:00" */
+  var end = OFFER_END ? Date.parse(OFFER_END) : Date.now() + 72*3600*1000; /* preview: 72 hours from now */
+  function pad(n){ return (n<10?'0':'')+n; }
+  var t;
+  function tick(){
+    var left = Math.max(0, end - Date.now());
+    if (!left) { document.body.classList.remove('offer'); clearInterval(t); return; }
+    document.body.classList.add('offer');
+    var h = Math.floor(left/3600000), m = Math.floor(left%3600000/60000), sec = Math.floor(left%60000/1000);
+    var txt = pad(h)+':'+pad(m)+':'+pad(sec);
+    document.querySelectorAll('.cdT').forEach(function(el){ el.textContent = txt; });
+  }
+  t = setInterval(tick, 1000); tick();
+})();
 </script>
 </body>
 </html>
