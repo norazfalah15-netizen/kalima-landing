@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>كتاب A1 · كلمة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800&family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FAF6EC;--page:#FFFDF7;--ink:#23332F;--soft:#7A6A55;--line:#E8DFCB;
+  --g1:#5E8B6B;--g2:#3F6B4E;--gl:#E7F0E9;--gold:#C79A3C;--gold-d:#9A7530;--gold-l:#F2C94C;
+  --ok:#3F8A57;--okl:#E3F2E7;--no:#C2553D;--nol:#FBE7E2;
+  --ar:'Noto Kufi Arabic',system-ui,sans-serif;--en:'Fraunces',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{background:#1E2B36;color:var(--ink);font-family:var(--ar);line-height:1.8;overflow-x:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+bdi,.en{font-family:var(--en)}
+.ltr{direction:ltr;text-align:left;unicode-bidi:isolate}
+#app{min-height:100%;display:flex;flex-direction:column;align-items:center}
+
+/* ---------- cover ---------- */
+.cover-wrap{min-height:100vh;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 16px 48px;
+  background:radial-gradient(700px 480px at 85% -5%,rgba(242,201,76,.22),transparent 60%),radial-gradient(600px 420px at 0% 105%,rgba(94,139,107,.35),transparent 60%),linear-gradient(180deg,#1E2B36,#121B23);color:#FAF6EC;text-align:center}
+.c3d{width:min(250px,64vw);aspect-ratio:3/4.2;position:relative;transform:rotateY(-16deg) rotateX(4deg);transform-style:preserve-3d;animation:float 6s ease-in-out infinite;margin-bottom:34px}
+@keyframes float{50%{transform:rotateY(-10deg) rotateX(2deg) translateY(-8px)}}
+.c-face{position:absolute;inset:0;border-radius:6px 16px 16px 6px;background:linear-gradient(150deg,var(--g1),var(--g2));padding:20px 18px;display:flex;flex-direction:column;align-items:center;
+  box-shadow:inset 8px 0 0 rgba(0,0,0,.18),inset 10px 0 18px rgba(0,0,0,.18),0 30px 60px rgba(0,0,0,.5);overflow:hidden}
+.c-face:before{content:"";position:absolute;inset:0;background:radial-gradient(220px 160px at 80% 0%,rgba(255,255,255,.24),transparent 70%)}
+.c-pages{position:absolute;top:6px;bottom:6px;right:-12px;width:18px;background:repeating-linear-gradient(180deg,#F4EEDF 0 2px,#E1D7C2 2px 3px);border-radius:0 4px 4px 0;transform:rotateY(70deg);transform-origin:left}
+.c-top{width:100%;display:flex;justify-content:space-between;align-items:center;position:relative}
+.c-brand{background:var(--gold-l);color:#1E2B36;border-radius:8px;padding:2px 9px;font-size:13px;font-weight:800}
+.c-no{font-family:var(--en);font-size:13px;opacity:.75}
+.c-lv{font-family:var(--en);font-weight:800;font-size:84px;line-height:1;margin-top:auto;text-shadow:0 6px 24px rgba(0,0,0,.25);position:relative}
+.c-ar{font-weight:800;font-size:19px;margin-top:8px;position:relative}
+.c-en{font-family:var(--en);font-size:13px;opacity:.78;letter-spacing:.05em;position:relative}
+.c-n{margin-top:14px;font-size:14px;font-weight:700;background:rgba(0,0,0,.2);padding:4px 14px;border-radius:999px;position:relative}
+.c-foot{margin-top:auto;font-family:var(--en);font-size:10px;letter-spacing:.24em;opacity:.65;position:relative}
+.cover-wrap h1{font-size:28px;font-weight:800;line-height:1.5}
+.cover-wrap h1 span{color:var(--gold-l)}
+.cover-wrap p{color:#CFC6B4;font-size:15px;margin-top:6px}
+.c-stats{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:20px 0 28px}
+.c-stats div{background:rgba(250,246,236,.07);border:1px solid rgba(250,246,236,.13);border-radius:14px;padding:8px 14px;font-size:13px;font-weight:600}
+.c-stats b{font-family:var(--en);color:var(--gold-l);font-size:18px;margin-left:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:14px 30px;font-weight:800;font-size:17px;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn.gold{background:linear-gradient(160deg,#F7D774,#E0B43A);color:#1E2B36;box-shadow:0 14px 34px rgba(224,180,58,.3)}
+.btn.line{border:2px solid rgba(250,246,236,.25);color:#FAF6EC;margin-top:12px;font-size:15px;padding:11px 24px}
+.btn.green{background:linear-gradient(160deg,var(--g1),var(--g2));color:#fff;box-shadow:0 10px 24px rgba(63,107,78,.3)}
+.btn.soft{background:var(--gl);color:var(--g2)}
+.btn.full{width:100%}
+
+/* ---------- shell ---------- */
+.shell{width:100%;max-width:640px;min-height:100vh;display:flex;flex-direction:column;background:var(--paper)}
+.bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:8px;padding:10px 12px;background:rgba(250,246,236,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar .ib{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;background:var(--page);border:1px solid var(--line);flex:none}
+.bar .tt{flex:1;min-width:0;text-align:center;font-weight:800;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .tt small{display:block;font-size:11px;font-weight:600;color:var(--soft);line-height:1.3}
+.tog{display:flex;align-items:center;gap:6px;height:40px;padding:0 12px;border-radius:12px;background:var(--page);border:1px solid var(--line);font-size:13px;font-weight:700;flex:none}
+.tog i{width:30px;height:18px;border-radius:999px;background:#D9D0BC;position:relative;transition:.2s}
+.tog i:after{content:"";position:absolute;top:2px;right:2px;width:14px;height:14px;border-radius:50%;background:#fff;transition:.2s}
+.tog.on i{background:var(--g1)}.tog.on i:after{right:14px}
+.prog{height:3px;background:var(--line)}.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--g1),var(--gold-l));transition:width .3s}
+
+/* ---------- toc ---------- */
+.toc{padding:18px 16px 40px}
+.toc-head{display:flex;align-items:center;gap:14px;background:linear-gradient(150deg,var(--g1),var(--g2));color:#fff;border-radius:22px;padding:18px;margin-bottom:18px;box-shadow:0 14px 30px rgba(63,107,78,.25)}
+.toc-head .lv{font-family:var(--en);font-weight:800;font-size:44px;line-height:1}
+.toc-head b{display:block;font-size:17px}
+.toc-head span{font-size:13px;opacity:.85}
+.toc-head .ring{margin-right:auto;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-family:var(--en);font-weight:700;font-size:15px}
+.cont{display:flex;align-items:center;gap:10px;justify-content:center;margin:0 0 16px}
+.unit{width:100%;display:flex;align-items:center;gap:12px;background:var(--page);border:1px solid var(--line);border-radius:18px;padding:12px 14px;margin-bottom:10px;text-align:right;transition:transform .15s,box-shadow .15s}
+.unit:active{transform:scale(.99)}
+.unit .ic{width:48px;height:48px;border-radius:14px;background:var(--gl);display:grid;place-items:center;font-size:24px;flex:none}
+.unit .tx{flex:1;min-width:0}
+.unit .tx b{display:block;font-size:15px}
+.unit .tx small{color:var(--soft);font-size:12px}
+.unit .tx small bdi{font-weight:600}
+.unit .bar2{height:5px;border-radius:9px;background:#EFE8D8;margin-top:6px;overflow:hidden}
+.unit .bar2 i{display:block;height:100%;background:var(--g1);border-radius:9px}
+.unit .no{font-family:var(--en);font-weight:700;color:var(--gold-d);font-size:15px;flex:none;width:26px;text-align:center}
+.unit .st{flex:none;font-size:13px;font-weight:800;color:var(--ok);background:var(--okl);border-radius:999px;padding:2px 9px}
+
+/* ---------- page ---------- */
+.stage{flex:1;padding:16px 14px 110px;perspective:1600px}
+.page{background:var(--page);border-radius:6px 18px 18px 6px;min-height:calc(100vh - 200px);padding:20px 18px 54px;position:relative;
+  box-shadow:inset -10px 0 18px -14px rgba(0,0,0,.25),0 1px 0 var(--line),0 18px 40px -18px rgba(35,51,47,.35);border:1px solid var(--line)}
+.page:after{content:"";position:absolute;top:10px;bottom:10px;left:-6px;width:6px;border-radius:4px 0 0 4px;background:repeating-linear-gradient(180deg,#F4EEDF 0 2px,#E1D7C2 2px 3px)}
+.page.in-next{animation:inNext .38s cubic-bezier(.2,.8,.2,1)}
+.page.in-prev{animation:inPrev .38s cubic-bezier(.2,.8,.2,1)}
+@keyframes inNext{from{opacity:0;transform:rotateY(-14deg) translateX(-24px);transform-origin:right}to{opacity:1;transform:none}}
+@keyframes inPrev{from{opacity:0;transform:rotateY(14deg) translateX(24px);transform-origin:left}to{opacity:1;transform:none}}
+.pno{position:absolute;bottom:14px;left:0;right:0;text-align:center;font-family:var(--en);font-size:13px;color:var(--soft)}
+.ph{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--gold-d);margin-bottom:12px}
+.ph:after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* word entry */
+.wd{padding:16px 0;border-bottom:1px dashed var(--line)}
+.wd:last-of-type{border-bottom:0}
+.wd-top{display:flex;align-items:center;gap:12px}
+.pic{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;font-size:36px;background:linear-gradient(160deg,#FFF8E6,#F3E9D2);flex:none;border:1px solid var(--line)}
+.pic.l{font-family:var(--en);font-weight:800;font-size:30px;color:#fff;background:linear-gradient(150deg,var(--g1),var(--g2));border:0}
+.wd-h{flex:1;min-width:0}
+.wd-w{display:flex;align-items:center;gap:8px;direction:ltr;justify-content:flex-end}
+.wd-w b{font-family:var(--en);font-size:28px;font-weight:700;line-height:1.15;word-break:break-word}
+.say{width:36px;height:36px;border-radius:50%;background:var(--gl);color:var(--g2);display:grid;place-items:center;font-size:15px;flex:none;transition:transform .15s,background .15s}
+.say.sm{width:30px;height:30px;font-size:13px}
+.say.on{background:var(--g1);color:#fff;transform:scale(1.08)}
+.wd-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:2px}
+.wd-ar{font-size:19px;font-weight:800;color:var(--gold-d)}
+.pos{font-size:11.5px;font-weight:700;color:var(--g2);background:var(--gl);border-radius:999px;padding:1px 9px}
+.known{margin-right:auto;font-size:12px;font-weight:700;border:1.5px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--soft);transition:.15s}
+.known.on{background:var(--ok);border-color:var(--ok);color:#fff}
+.def{margin-top:10px;background:#FBF7EE;border-radius:12px;padding:9px 12px}
+.def .ltr{font-family:var(--en);font-size:15.5px;color:#3B4A45}
+.def .a{font-size:13.5px;color:var(--soft);margin-top:2px}
+.ex{display:flex;gap:8px;align-items:flex-start;margin-top:10px}
+.ex .t{flex:1;min-width:0}
+.ex .ltr{font-family:var(--en);font-size:16.5px;line-height:1.55}
+.ex .ltr mark{background:linear-gradient(transparent 58%,rgba(242,201,76,.55) 58%);color:inherit;font-weight:700}
+.ex .a{font-size:13.5px;color:var(--soft)}
+.more{margin-top:8px;font-size:12.5px;font-weight:700;color:var(--g2)}
+.mores{border-right:3px solid var(--gl);padding-right:10px;margin-top:4px}
+.hideAr .a,.hideAr .wd-ar,.hideAr .s-ar{filter:blur(6px);opacity:.6;cursor:pointer;transition:filter .2s}
+.hideAr .a.show,.hideAr .wd-ar.show,.hideAr .s-ar.show{filter:none;opacity:1}
+
+/* opener */
+.op{text-align:center;padding:30px 6px}
+.op .big{width:108px;height:108px;border-radius:32px;margin:0 auto 18px;display:grid;place-items:center;font-size:56px;background:linear-gradient(160deg,#FFF8E6,#F3E9D2);border:1px solid var(--line);box-shadow:0 14px 30px -12px rgba(154,117,48,.4)}
+.op .k{font-size:13px;font-weight:800;color:var(--gold-d);letter-spacing:.5px}
+.op h2{font-size:28px;font-weight:800;margin-top:4px}
+.op .en2{font-family:var(--en);color:var(--soft);font-size:16px}
+.op .ins{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:22px 0}
+.op .ins div{background:#FBF7EE;border:1px solid var(--line);border-radius:14px;padding:8px 12px;font-size:13px;font-weight:700}
+.op .ins b{font-family:var(--en);color:var(--g2);font-size:17px;margin-left:3px}
+.op .chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;direction:ltr;margin:4px 0 26px}
+.op .chips span{font-family:var(--en);font-size:14px;background:var(--gl);color:var(--g2);border-radius:999px;padding:2px 10px}
+
+/* story */
+.st-h{text-align:center;margin-bottom:14px}
+.st-h .k{font-size:12px;font-weight:800;color:var(--gold-d)}
+.st-h h2{font-family:var(--en);font-size:27px;font-weight:700;line-height:1.3;direction:ltr}
+.st-h .ta{font-size:15px;color:var(--soft);font-weight:700}
+.st-play{display:flex;justify-content:center;margin:6px 0 16px}
+.sn{display:flex;gap:8px;align-items:flex-start;padding:8px 6px;border-radius:12px;transition:background .2s}
+.sn.on{background:#FFF6DA}
+.sn .t{flex:1;min-width:0}
+.sn .ltr{font-family:var(--en);font-size:18px;line-height:1.65}
+.s-ar{font-size:14px;color:var(--soft)}
+.tw{cursor:pointer;border-radius:4px;transition:background .15s}
+.tw:hover{background:#F6EEDB}
+.tw.u{font-weight:700;color:var(--g2);background:linear-gradient(transparent 62%,rgba(94,139,107,.2) 62%)}
+.tip{font-size:12.5px;color:var(--soft);text-align:center;margin-top:12px}
+
+/* quiz */
+.qz-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;color:var(--soft);margin-bottom:8px}
+.qz-dots{display:flex;gap:4px}.qz-dots i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.qz-dots i.ok{background:var(--ok)}.qz-dots i.no{background:var(--no)}.qz-dots i.cur{background:var(--gold)}
+.qz-k{font-size:13px;font-weight:800;color:var(--gold-d);text-align:center;margin-top:10px}
+.qz-q{text-align:center;margin:10px 0 18px;min-height:96px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.qz-q .em{font-size:46px;line-height:1}
+.qz-q .w{font-family:var(--en);font-size:34px;font-weight:700}
+.qz-q .ar{font-size:28px;font-weight:800;color:var(--gold-d)}
+.qz-q .s{font-family:var(--en);font-size:19px;line-height:1.6;direction:ltr;background:#FBF7EE;border-radius:14px;padding:12px 14px}
+.qz-q .s u{text-decoration:none;display:inline-block;min-width:70px;border-bottom:2.5px solid var(--gold)}
+.qz-q .bigsay{width:86px;height:86px;border-radius:50%;font-size:34px;background:linear-gradient(160deg,var(--g1),var(--g2));color:#fff;display:grid;place-items:center;box-shadow:0 12px 26px rgba(63,107,78,.35)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{border:2px solid var(--line);background:#fff;border-radius:16px;padding:14px 10px;font-weight:700;font-size:16px;min-height:58px;transition:transform .12s,border-color .15s,background .15s}
+.opt.en{font-family:var(--en);font-size:19px}
+.opt:active{transform:scale(.97)}
+.opt.ok{border-color:var(--ok);background:var(--okl);color:var(--ok)}
+.opt.no{border-color:var(--no);background:var(--nol);color:var(--no)}
+.opt[disabled]{cursor:default}
+.fb{margin-top:16px;text-align:center;font-weight:800;min-height:28px}
+.fb.ok{color:var(--ok)}.fb.no{color:var(--no)}
+.res{text-align:center;padding:24px 6px}
+.res .sc{font-family:var(--en);font-size:66px;font-weight:800;color:var(--g2);line-height:1}
+.res .sc small{font-size:28px;color:var(--soft)}
+.res .stars{font-size:34px;letter-spacing:6px;margin:10px 0}
+.res p{color:var(--soft);font-weight:600;margin-bottom:22px}
+.res .row{display:flex;flex-direction:column;gap:10px}
+
+/* bottom nav */
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:640px;z-index:6;display:flex;justify-content:center;padding:10px 14px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(transparent,rgba(250,246,236,.96) 34%)}
+.nav-in{width:100%;max-width:612px;display:flex;align-items:center;gap:10px}
+.nb{height:52px;border-radius:16px;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;gap:6px;flex:1}
+.nb.next{background:linear-gradient(160deg,var(--g1),var(--g2));color:#fff;box-shadow:0 10px 22px rgba(63,107,78,.3);flex:1.6}
+.nb.prev{background:var(--page);border:1px solid var(--line)}
+.nb[disabled]{opacity:.35}
+
+/* word popup */
+.sheet-bg{position:fixed;inset:0;background:rgba(18,27,35,.45);z-index:20;opacity:0;pointer-events:none;transition:opacity .2s}
+.sheet-bg.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:21;margin:0 auto;max-width:560px;background:var(--page);border-radius:24px 24px 0 0;padding:10px 18px calc(22px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .28s cubic-bezier(.2,.8,.2,1);max-height:80vh;overflow:auto}
+.sheet.on{transform:none}
+.sheet .grab{width:44px;height:5px;border-radius:9px;background:var(--line);margin:0 auto 6px}
+
+.msg{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#FAF6EC;text-align:center;padding:24px}
+.spin{width:42px;height:42px;border-radius:50%;border:4px solid rgba(250,246,236,.15);border-top-color:var(--gold-l);animation:sp 1s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media (min-width:700px){.stage{padding-top:26px}}
+</style>
+</head>
+<body>
+<div id="app"><div class="msg"><div class="spin"></div><div>جاري فتح الكتاب…</div></div></div>
+<div class="sheet-bg" id="sbg"></div>
+<div class="sheet" id="sheet"></div>
+
+<script>
+(function () {
+'use strict';
+var SB = 'https://llzehodvkaddizklaywy.supabase.co', SBK = 'sb_publishable_8mtwca4dj1U99oE40ufSeg_b57gyO4D';
+var APP = 'https://kalima-app-iota.vercel.app';
+var PER = 3; // words per page
+var LS = 'kalima-book-a1';
+
+/* ---------- stories (one per unit) ---------- */
+var STORIES = [
+ {t:"Omar's Family",a:'عائلة عمر',s:[
+  ["Hello! My name is Omar, and I am a student.","مرحباً! اسمي عمر، وأنا طالب."],
+  ["I live with my family: my mother, my father and my little sister, Layla.","أعيش مع عائلتي: أمي وأبي وأختي الصغيرة ليلى."],
+  ["My brother is an adult now. He is married, and he has a baby son.","أخي كبير الآن. هو متزوج، وعنده ابن رضيع."],
+  ["On Friday, my grandfather and grandmother come to our house.","يوم الجمعة، يأتي جدي وجدتي إلى بيتنا."],
+  ["My aunt, my uncle and my cousins come too.","وتأتي عمتي وعمي وأبناء عمي أيضاً."],
+  ["We talk, we share food, and the children play.","نتحدث ونتشارك الطعام ويلعب الأطفال."],
+  ["Today, a new neighbour comes to the door. \"Hi! I'm Sami,\" he says.","اليوم، يأتي جار جديد إلى الباب. يقول: \"أهلاً! أنا سامي.\""],
+  ["My father says, \"Welcome! Please meet my family.\"","يقول أبي: \"أهلاً وسهلاً! تفضّل، تعرّف على عائلتي.\""],
+  ["I introduce my sister, and Sami says, \"Nice to meet you.\"","أعرّفه على أختي، فيقول سامي: \"سعيد بلقائك.\""],
+  ["Family is a big part of my life.","العائلة جزء كبير من حياتي."]]},
+ {t:'A Tired Morning',a:'صباح متعب',s:[
+  ["Reem wakes up at seven, but she is very tired.","تستيقظ ريم الساعة السابعة، لكنها متعبة جداً."],
+  ["Her head is hot, and her eyes are red.","رأسها ساخن، وعيناها حمراوان."],
+  ["\"I am sick,\" she says to her mother.","تقول لأمها: \"أنا مريضة.\""],
+  ["Her mother looks at her face and listens to her.","تنظر أمها إلى وجهها وتستمع إليها."],
+  ["\"You need to sleep today,\" her mother says.","تقول أمها: \"تحتاجين أن تنامي اليوم.\""],
+  ["Reem washes her face and hands, and she goes back to bed.","تغسل ريم وجهها ويديها، وتعود إلى السرير."],
+  ["She sleeps for five hours.","تنام خمس ساعات."],
+  ["In the afternoon, she can hear the birds outside.","في العصر، تستطيع أن تسمع الطيور في الخارج."],
+  ["Now she feels strong again, and her body is OK.","الآن تشعر بالقوة مرة أخرى، وجسمها بخير."],
+  ["\"Healthy food and good sleep are the best for my health,\" she says.","تقول: \"الطعام الصحي والنوم الجيد هما الأفضل لصحتي.\""]]},
+ {t:'Lunch at the Restaurant',a:'غداء في المطعم',s:[
+  ["Sami is hungry, so he goes to a restaurant with his friend Ali.","سامي جائع، لذلك يذهب إلى مطعم مع صديقه علي."],
+  ["The waiter gives them a menu.","يعطيهما النادل قائمة الطعام."],
+  ["Sami orders chicken, rice and a salad.","يطلب سامي دجاجاً وأرزاً وسلطة."],
+  ["Ali wants soup and a cheese sandwich.","يريد علي حساءً وشطيرة جبن."],
+  ["\"I am thirsty too,\" says Ali. \"Can I have a glass of water, please?\"","يقول علي: \"أنا عطشان أيضاً. ممكن كوب ماء من فضلك؟\""],
+  ["The food is delicious. The chicken has salt and pepper, and the vegetables are very good.","الطعام لذيذ. الدجاج فيه ملح وفلفل، والخضار جيدة جداً."],
+  ["After the meal, they drink tea with milk and a little sugar.","بعد الوجبة، يشربان شاياً بالحليب وقليلاً من السكر."],
+  ["Then Ali sees the cake. \"Chocolate cake or ice cream?\" he asks.","ثم يرى علي الكعكة. يسأل: \"كعكة شوكولاتة أم آيس كريم؟\""],
+  ["\"No, thank you,\" Sami says. \"I am full!\"","يقول سامي: \"لا، شكراً. أنا شبعان!\""]]},
+ {t:'A Day at the Farm',a:'يوم في المزرعة',s:[
+  ["Layla visits her uncle's farm with her family.","تزور ليلى مزرعة عمها مع عائلتها."],
+  ["There are many animals on the farm.","توجد حيوانات كثيرة في المزرعة."],
+  ["She sees a big brown horse, three cows and ten sheep.","ترى حصاناً بنياً كبيراً وثلاث بقرات وعشرة خراف."],
+  ["A small dog runs to her, and a white cat sleeps in the sun.","يركض إليها كلب صغير، وتنام قطة بيضاء في الشمس."],
+  ["\"Look! A mouse!\" says her brother. The cat opens its eyes.","يقول أخوها: \"انظري! فأر!\" تفتح القطة عينيها."],
+  ["Near the river, Layla sees birds and a fish in the water.","قرب النهر، ترى ليلى طيوراً وسمكة في الماء."],
+  ["\"Is there a snake here?\" Layla asks. \"Sometimes,\" says her uncle.","تسأل ليلى: \"هل يوجد ثعبان هنا؟\" يقول عمها: \"أحياناً.\""],
+  ["At night, they watch a film about a lion and an elephant.","في الليل، يشاهدون فيلماً عن أسد وفيل."],
+  ["\"I love animals!\" Layla says.","تقول ليلى: \"أحب الحيوانات!\""]]},
+ {t:'The New Room',a:'الغرفة الجديدة',s:[
+  ["Mona wants a new colour for her bedroom.","تريد منى لوناً جديداً لغرفة نومها."],
+  ["The walls are white and grey, and she thinks they are boring.","الجدران بيضاء ورمادية، وهي ترى أنها مملة."],
+  ["\"What is your favourite colour?\" asks her father.","يسأل أبوها: \"ما لونك المفضل؟\""],
+  ["\"I like pink and purple,\" Mona says. \"Or maybe blue.\"","تقول منى: \"أحب الوردي والبنفسجي. أو ربما الأزرق.\""],
+  ["At the shop, they see red, yellow, green and orange paint.","في المتجر، يرون طلاءً أحمر وأصفر وأخضر وبرتقالياً."],
+  ["Her father likes dark brown, but Mona says no.","يحب أبوها البني الداكن، لكن منى تقول لا."],
+  ["They buy blue paint for the walls and a black chair.","يشتريان طلاءً أزرق للجدران وكرسياً أسود."],
+  ["Now her room is beautiful, and Mona is very happy.","الآن غرفتها جميلة، ومنى سعيدة جداً."]]},
+ {t:"Khalid's Big Day",a:'يوم خالد الكبير',s:[
+  ["Khalid is twelve years old today.","يبلغ خالد اثني عشر عاماً اليوم."],
+  ["It is his first day at a new school.","إنه يومه الأول في مدرسة جديدة."],
+  ["The school is two kilometres from his house, so he walks for twenty minutes.","المدرسة على بعد كيلومترين من بيته، لذلك يمشي عشرين دقيقة."],
+  ["There are thirty students in his class.","يوجد ثلاثون طالباً في صفه."],
+  ["His classroom is on the third floor.","صفه في الطابق الثالث."],
+  ["The teacher asks, \"What is half of a hundred?\" \"Fifty!\" says Khalid.","يسأل المعلم: \"كم نصف المئة؟\" يقول خالد: \"خمسون!\""],
+  ["At a quarter past one, he eats lunch with two new friends.","في الواحدة والربع، يأكل الغداء مع صديقين جديدين."],
+  ["In the evening, his family has a big cake for him.","في المساء، عند عائلته كعكة كبيرة له."],
+  ["\"This is the second best day of my life,\" he says. \"The first is the day my sister was born!\"","يقول: \"هذا ثاني أفضل يوم في حياتي. الأول هو يوم ولادة أختي!\""]]},
+ {t:"Huda's Week",a:'أسبوع هدى',s:[
+  ["Huda has a busy routine.","عند هدى روتين مزدحم."],
+  ["From Sunday to Thursday, she wakes up early, at six o'clock in the morning.","من الأحد إلى الخميس، تستيقظ مبكراً، الساعة السادسة صباحاً."],
+  ["She studies in the afternoon and reads in the evening.","تدرس في العصر وتقرأ في المساء."],
+  ["On Friday and Saturday, it is the weekend, so she sleeps late.","يومي الجمعة والسبت عطلة نهاية الأسبوع، لذلك تنام متأخرة."],
+  ["Her birthday is in April, in the spring.","عيد ميلادها في أبريل، في الربيع."],
+  ["Today is Monday, and her birthday is next week.","اليوم الاثنين، وعيد ميلادها الأسبوع القادم."],
+  ["Last year, she had a party at midnight!","السنة الماضية، سوّت حفلة في منتصف الليل!"],
+  ["\"This year, I want a party in the evening,\" she says. \"Not tonight, not tomorrow, but soon!\"","تقول: \"هذه السنة، أريد حفلة في المساء. ليس الليلة، ولا غداً، لكن قريباً!\""],
+  ["She looks at the clock. It is nine o'clock. Time for bed!","تنظر إلى الساعة. إنها التاسعة. حان وقت النوم!"]]},
+ {t:'A Trip to the Mountain',a:'رحلة إلى الجبل',s:[
+  ["In winter, the weather is cold in the mountains.","في الشتاء، يكون الطقس بارداً في الجبال."],
+  ["Faisal and his father go on a trip to a mountain.","يذهب فيصل وأبوه في رحلة إلى جبل."],
+  ["The air is cool, and there is snow on the trees.","الهواء بارد ولطيف، ويوجد ثلج على الأشجار."],
+  ["In the afternoon, the sun comes out, and it is warm.","في العصر، تطلع الشمس ويصير الجو دافئاً."],
+  ["They see a river, flowers and many green plants.","يريان نهراً وزهوراً ونباتات خضراء كثيرة."],
+  ["\"Everything here is natural and beautiful,\" says Faisal.","يقول فيصل: \"كل شيء هنا طبيعي وجميل.\""],
+  ["At night, they sit outside and look at the stars.","في الليل، يجلسان في الخارج وينظران إلى النجوم."],
+  ["\"Is there life in space?\" Faisal asks. His father laughs.","يسأل فيصل: \"هل توجد حياة في الفضاء؟\" يضحك أبوه."],
+  ["Then the rain starts, so they go inside.","ثم يبدأ المطر، فيدخلان."],
+  ["At home, it is hot near the sea, but Faisal loves the mountain.","في البيت، الجو حار قرب البحر، لكن فيصل يحب الجبل."]]},
+ {t:'A Visitor in the City',a:'زائرة في المدينة',s:[
+  ["Anna is a tourist from a small village in the north of England.","آنا سائحة من قرية صغيرة في شمال إنجلترا."],
+  ["Now she is in a big city, the capital of the country.","الآن هي في مدينة كبيرة، عاصمة البلد."],
+  ["She wants to learn about the local culture.","تريد أن تتعلم عن الثقافة المحلية."],
+  ["In the morning, she visits a museum in the city centre.","في الصباح، تزور متحفاً في وسط المدينة."],
+  ["Then she goes to the library and a park.","ثم تذهب إلى المكتبة وإلى حديقة."],
+  ["In the afternoon, she goes to the beach in the south of the city.","في العصر، تذهب إلى الشاطئ في جنوب المدينة."],
+  ["She asks a man, \"Where is the theatre?\" \"It is in the west, near the hospital,\" he says.","تسأل رجلاً: \"أين المسرح؟\" يقول: \"إنه في الغرب، قرب المستشفى.\""],
+  ["In the evening, she watches a film at the cinema.","في المساء، تشاهد فيلماً في السينما."],
+  ["\"This is my favourite place in the world,\" she says.","تقول: \"هذا مكاني المفضل في العالم.\""]]},
+ {t:'Cleaning Day',a:'يوم التنظيف',s:[
+  ["It is Saturday, and Sara's house is dirty.","إنه السبت، وبيت سارة متسخ."],
+  ["\"Let's clean the house!\" says her mother.","تقول أمها: \"يلا ننظف البيت!\""],
+  ["Sara starts in her bedroom upstairs. She puts her books in a box.","تبدأ سارة بغرفة نومها في الطابق العلوي. تضع كتبها في صندوق."],
+  ["Her brother washes the floor in the kitchen downstairs.","يغسل أخوها أرضية المطبخ في الطابق السفلي."],
+  ["Her mother cleans the bathroom, the shower and the toilet.","تنظف أمها الحمام والدش والمرحاض."],
+  ["Sara washes the windows, and now there is a lot of light in every room.","تغسل سارة النوافذ، والآن يوجد ضوء كثير في كل غرفة."],
+  ["Her father works in the garden.","يعمل أبوها في الحديقة."],
+  ["At five o'clock, they sit at the kitchen table and drink tea.","في الساعة الخامسة، يجلسون إلى طاولة المطبخ ويشربون الشاي."],
+  ["\"Our home is clean and beautiful,\" says Sara. \"I love where we live.\"","تقول سارة: \"بيتنا نظيف وجميل. أحب المكان الذي نعيش فيه.\""]]},
+ {t:'Shopping for Clothes',a:'شراء الملابس',s:[
+  ["Tomorrow, Ahmed is going on a trip, and he needs new clothes.","غداً، سيذهب أحمد في رحلة، ويحتاج ملابس جديدة."],
+  ["He goes to the shop with his sister, Noor.","يذهب إلى المتجر مع أخته نور."],
+  ["He buys two shirts, a T-shirt and a pair of jeans.","يشتري قميصين وتي شيرت وبنطلون جينز."],
+  ["\"It is cold there. You need a jacket or a coat,\" says Noor.","تقول نور: \"الجو بارد هناك. تحتاج جاكيت أو معطفاً.\""],
+  ["He finds a warm black coat, a sweater and new boots.","يجد معطفاً أسود دافئاً وكنزة وجزمة جديدة."],
+  ["Noor buys a hat and a blue dress.","تشتري نور قبعة وفستاناً أزرق."],
+  ["\"And an umbrella! It rains a lot there,\" she says.","تقول: \"ومظلة! تمطر كثيراً هناك.\""],
+  ["Ahmed puts everything in his bag.","يضع أحمد كل شيء في حقيبته."],
+  ["\"I like your style!\" says Noor. \"Wear your new shoes tomorrow.\"","تقول نور: \"يعجبني أسلوبك! البس حذاءك الجديد غداً.\""]]},
+ {t:'The English Test',a:'اختبار الإنجليزي',s:[
+  ["Yousef is a student at university, and he wants to learn English.","يوسف طالب في الجامعة، ويريد أن يتعلم الإنجليزية."],
+  ["Every day, he reads a page of a book and writes new words on paper.","كل يوم، يقرأ صفحة من كتاب ويكتب كلمات جديدة على ورقة."],
+  ["He has a dictionary, so he checks the meaning of every word.","عنده قاموس، لذلك يتحقق من معنى كل كلمة."],
+  ["Tomorrow, he has an English test.","غداً، عنده اختبار في الإنجليزية."],
+  ["His teacher gives the class some advice: \"Read the question, then write the answer.\"","يعطي المعلم الصف نصيحة: \"اقرأ السؤال، ثم اكتب الإجابة.\""],
+  ["In the exam, there is a story and ten questions.","في الامتحان، توجد قصة وعشرة أسئلة."],
+  ["Yousef understands the story, but one question is difficult.","يفهم يوسف القصة، لكن سؤالاً واحداً صعب."],
+  ["He thinks, and then he remembers the word.","يفكر، ثم يتذكر الكلمة."],
+  ["The next week, the teacher says, \"Your result is ninety. Only one small mistake!\"","في الأسبوع التالي، يقول المعلم: \"نتيجتك تسعون. خطأ صغير واحد فقط!\""],
+  ["\"Practice is the best idea,\" says Yousef. \"A little every day.\"","يقول يوسف: \"التمرين هو أفضل فكرة. قليل كل يوم.\""]]},
+ {t:'Different Jobs',a:'وظائف مختلفة',s:[
+  ["In Mariam's family, everyone has a different job.","في عائلة مريم، كل شخص عنده وظيفة مختلفة."],
+  ["Her mother is a doctor at a hospital, and her aunt is a nurse.","أمها طبيبة في مستشفى، وعمتها ممرضة."],
+  ["Her father works in an office. He has a lot of meetings.","أبوها يعمل في مكتب. عنده اجتماعات كثيرة."],
+  ["Her uncle is a farmer, and her cousin is a taxi driver.","عمها مزارع، وابن عمها سائق تاكسي."],
+  ["Mariam's brother is a scientist at a big company.","أخو مريم عالِم في شركة كبيرة."],
+  ["Mariam is an artist. She wants to start her own business.","مريم فنانة. تريد أن تبدأ مشروعها الخاص."],
+  ["She has a plan: to design beautiful bags.","عندها خطة: أن تصمم حقائب جميلة."],
+  ["Today, she has an interview at a big shop.","اليوم، عندها مقابلة في متجر كبير."],
+  ["\"Work hard, and success will come,\" says her father.","يقول أبوها: \"اعملي بجد، وسيأتي النجاح.\""]]},
+ {t:'A Day Without the Internet',a:'يوم بدون إنترنت',s:[
+  ["Omar loves his phone. He watches videos, reads the news and sends messages all day.","يحب عمر هاتفه. يشاهد الفيديوهات ويقرأ الأخبار ويرسل الرسائل طوال اليوم."],
+  ["One day, there is no internet at home.","في يوم من الأيام، لا يوجد إنترنت في البيت."],
+  ["He can't check his email, and he can't post photos online.","لا يستطيع أن يتفقد بريده الإلكتروني، ولا أن ينشر صوراً على الإنترنت."],
+  ["\"What can I do?\" he asks.","يسأل: \"ماذا أفعل؟\""],
+  ["His grandfather says, \"Let's listen to the radio.\"","يقول جده: \"يلا نستمع إلى الراديو.\""],
+  ["They listen to a programme about old films.","يستمعان إلى برنامج عن الأفلام القديمة."],
+  ["Then his grandfather shows him an old camera and photographs of the family.","ثم يريه جده كاميرا قديمة وصوراً للعائلة."],
+  ["In the evening, they watch a movie on TV together.","في المساء، يشاهدان فيلماً على التلفزيون معاً."],
+  ["\"Today was a good day,\" says Omar. \"Maybe I don't need my phone all the time!\"","يقول عمر: \"كان اليوم يوماً حلواً. ربما لا أحتاج هاتفي طوال الوقت!\""]]},
+ {t:'The Big Match',a:'المباراة الكبيرة',s:[
+  ["Ali plays football in a club. He is a fast player.","يلعب علي كرة القدم في نادٍ. هو لاعب سريع."],
+  ["Every Monday, his team does exercise at the gym.","كل يوم اثنين، يتمرن فريقه في النادي الرياضي."],
+  ["This Friday, they have a big match.","هذه الجمعة، عندهم مباراة كبيرة."],
+  ["His family and friends come to watch.","تأتي عائلته وأصدقاؤه للمشاهدة."],
+  ["In the first half, the other team is better.","في الشوط الأول، الفريق الآخر أفضل."],
+  ["But in the second half, Ali's team plays very well.","لكن في الشوط الثاني، يلعب فريق علي جيداً جداً."],
+  ["They win the match two to one!","يفوزون بالمباراة اثنين مقابل واحد!"],
+  ["\"We never lose when we play as a team,\" says Ali.","يقول علي: \"لا نخسر أبداً عندما نلعب كفريق.\""],
+  ["On Saturday, Ali relaxes. He swims in the pool and walks in the park.","يوم السبت، يرتاح علي. يسبح في المسبح ويمشي في الحديقة."],
+  ["Football is his sport, but swimming is his hobby.","كرة القدم رياضته، لكن السباحة هوايته."]]},
+ {t:'The Family Trip',a:'رحلة العائلة',s:[
+  ["This summer, Reem's family is going on holiday to London.","هذا الصيف، عائلة ريم ذاهبة في عطلة إلى لندن."],
+  ["They take a taxi to the airport.","يأخذون تاكسي إلى المطار."],
+  ["Her father has the passports and the tickets.","مع أبيها جوازات السفر والتذاكر."],
+  ["The flight is seven hours, and Reem sleeps on the plane.","الرحلة سبع ساعات، وتنام ريم في الطائرة."],
+  ["They arrive in the evening and stay at a hotel near a train station.","يصلون في المساء ويقيمون في فندق قرب محطة قطار."],
+  ["Every day, they visit a new place. They travel by bus, by train and by boat.","كل يوم، يزورون مكاناً جديداً. يتنقلون بالباص والقطار والقارب."],
+  ["The streets are busy, and there is a lot of traffic.","الشوارع مزدحمة، وفيه زحمة سير كثيرة."],
+  ["One day, they ride bikes in a big park.","في يوم من الأيام، يركبون الدراجات في حديقة كبيرة."],
+  ["After two weeks, they leave London and return home.","بعد أسبوعين، يغادرون لندن ويرجعون إلى البيت."],
+  ["\"It was a wonderful trip,\" says Reem.","تقول ريم: \"كانت رحلة رائعة.\""]]},
+ {t:'Two Sisters',a:'أختان',s:[
+  ["Hessa and Dana are sisters, but they are very different.","حصة ودانة أختان، لكنهما مختلفتان جداً."],
+  ["Hessa is tall and quiet. She likes reading and relaxing at home.","حصة طويلة وهادئة. تحب القراءة والراحة في البيت."],
+  ["Dana is short, funny and friendly. She loves exciting things.","دانة قصيرة ومضحكة وودودة. تحب الأشياء المثيرة."],
+  ["Hessa thinks parties are boring. Dana thinks they are fun.","حصة ترى أن الحفلات مملة. دانة ترى أنها ممتعة."],
+  ["Hessa wants an expensive bag. Dana prefers cheap and pretty things.","حصة تريد حقيبة غالية. دانة تفضّل الأشياء الرخيصة والحلوة."],
+  ["But they have the same favourite food, and they laugh at the same things.","لكن عندهما نفس الأكل المفضل، ويضحكان على نفس الأشياء."],
+  ["When Dana is sad, Hessa is there for her.","عندما تكون دانة حزينة، تكون حصة معها."],
+  ["When Hessa is busy or tired, Dana helps her.","عندما تكون حصة مشغولة أو متعبة، تساعدها دانة."],
+  ["\"My sister is my best friend,\" they both say.","تقولان كلتاهما: \"أختي هي أعز صديقة لي.\""]]},
+ {t:'Making a Cake',a:'نصنع كعكة',s:[
+  ["Today is Mum's birthday, so Sami and Layla decide to make a cake.","اليوم عيد ميلاد ماما، لذلك يقرر سامي وليلى أن يصنعا كعكة."],
+  ["First, they go to the shop and buy eggs, milk and sugar.","أولاً، يذهبان إلى المتجر ويشتريان بيضاً وحليباً وسكراً."],
+  ["At home, they open a cooking book and start.","في البيت، يفتحان كتاب طبخ ويبدآن."],
+  ["Layla puts the eggs in a dish, and Sami adds the sugar.","تضع ليلى البيض في طبق، ويضيف سامي السكر."],
+  ["\"Don't forget the milk!\" says Layla.","تقول ليلى: \"لا تنسَ الحليب!\""],
+  ["They wait for forty minutes. Then they take the cake out.","ينتظران أربعين دقيقة. ثم يخرجان الكعكة."],
+  ["Sami cuts it, and Layla carries it to the table.","يقطعها سامي، وتحملها ليلى إلى الطاولة."],
+  ["When Mum comes home, they say, \"Happy birthday!\"","عندما ترجع ماما إلى البيت، يقولان: \"عيد ميلاد سعيد!\""],
+  ["Mum is very happy. \"Thank you! You can help me in the kitchen every day,\" she says.","ماما سعيدة جداً. تقول: \"شكراً! تقدرون تساعدونني في المطبخ كل يوم.\""]]},
+ {t:'At the Supermarket',a:'في السوبرماركت',s:[
+  ["Faisal goes shopping at the supermarket with his father.","يذهب فيصل للتسوق في السوبرماركت مع أبيه."],
+  ["They need rice, bread, apples and milk.","يحتاجان أرزاً وخبزاً وتفاحاً وحليباً."],
+  ["Faisal looks at the price of every product.","ينظر فيصل إلى سعر كل منتج."],
+  ["\"This chocolate costs two dollars, but this one is free with the milk!\"","\"هذه الشوكولاتة تكلف دولارين، لكن هذه مجانية مع الحليب!\""],
+  ["There are many customers, so they wait.","يوجد زبائن كثيرون، لذلك ينتظران."],
+  ["The bill is forty dollars and fifty cents.","الفاتورة أربعون دولاراً وخمسون سنتاً."],
+  ["His father pays with his bank card.","يدفع أبوه ببطاقته البنكية."],
+  ["Next, they go to the market to buy fruit and fish.","بعد ذلك، يذهبان إلى السوق لشراء فواكه وسمك."],
+  ["\"Shopping is fun,\" says Faisal, \"when I don't pay!\"","يقول فيصل: \"التسوق ممتع، لما ما أدفع أنا!\""]]},
+ {t:'Where Is My Key?',a:'وين مفتاحي؟',s:[
+  ["Every morning, Huda can't find something.","كل صباح، هدى ما تلقى شيئاً."],
+  ["Today, it is her key. \"Where is my key?\" she asks.","اليوم، إنه مفتاحها. تسأل: \"أين مفتاحي؟\""],
+  ["She looks on the table, under the chair and behind the door.","تبحث على الطاولة، وتحت الكرسي، وخلف الباب."],
+  ["\"Is it in your bag?\" asks her brother. \"No, it isn't there.\"","يسأل أخوها: \"هل هو في حقيبتك؟\" \"لا، ليس هناك.\""],
+  ["\"Who has my key? Why does this always happen to me?\"","\"من عنده مفتاحي؟ لماذا يحدث لي هذا دائماً؟\""],
+  ["Her mother says, \"Maybe it is near the window, next to your phone.\"","تقول أمها: \"ربما هو قرب النافذة، بجانب هاتفك.\""],
+  ["Huda goes there, but there is nothing.","تذهب هدى إلى هناك، لكن لا يوجد شيء."],
+  ["Then her little sister comes into the room. Huda's key is in her hand!","ثم تدخل أختها الصغيرة الغرفة. مفتاح هدى في يدها!"],
+  ["\"I wanted to open the door,\" she says.","تقول: \"أردت أن أفتح الباب.\""],
+  ["Everyone laughs. \"From now on, my key is always in my bag!\" says Huda.","يضحك الجميع. تقول هدى: \"من الآن، مفتاحي دائماً في حقيبتي!\""]]}
+];
+
+/* ---------- state ---------- */
+var U = [], LOOK = {}, S = load(), view = { v: 'cover' }, dir = '';
+function load() { try { return JSON.parse(localStorage.getItem(LS)) || {}; } catch (e) { return {}; } }
+function save() { try { localStorage.setItem(LS, JSON.stringify(S)); } catch (e) { } }
+S.known = S.known || {}; S.best = S.best || {}; if (S.ar === undefined) S.ar = true;
+var $app = document.getElementById('app');
+function esc(t) { return String(t == null ? '' : t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+/* ---------- audio: the site's own Michael voice ---------- */
+function mHash(k) { var a = 0x811c9dc5 >>> 0, b = 5381 >>> 0; for (var i = 0; i < k.length; i++) { var c = k.charCodeAt(i); a = Math.imul(a ^ c, 0x01000193) >>> 0; b = ((Math.imul(b, 33) >>> 0) ^ c) >>> 0; } return ('0000000' + a.toString(16)).slice(-8) + ('0000000' + b.toString(16)).slice(-8); }
+var HET = { desert: 1, object: 1, present: 1, produce: 1, progress: 1, project: 1, survey: 1, separate: 1, house: 1, use: 1, discount: 1, minute: 1, wind: 1, address: 1 };
+function posTag(p) { p = String(p || '').toLowerCase(); return /^adj/.test(p) ? 'adj' : /^adv/.test(p) ? 'adv' : /^v/.test(p) ? 'v' : /^n/.test(p) ? 'n' : ''; }
+function vkey(t, pos) { t = String(t || '').trim(); if (t === 'IT') return 'i.t.'; var low = t.toLowerCase(), tag = posTag(pos); return (HET[low] && tag) ? low + '@' + tag : t; }
+function clean(t) { return String(t || '').replace(/[‘’]/g, "'").replace(/\s+/g, ' ').trim(); }
+function api(t) { return APP + '/api/voice?v=kk:am_michael&t=' + encodeURIComponent(clean(t)); }
+function wordSrc(w, pos) { var k = clean(vkey(w, pos)).toLowerCase(), h = mHash(k); return APP + '/voice/michael/' + h.slice(0, 2) + '/' + h + '.mp3'; }
+var AC = {}, cur = null, curBtn = null;
+function audioFor(text, pos, isWord) {
+  var id = (isWord ? 'w:' : 's:') + text + '|' + (pos || '');
+  if (AC[id]) return AC[id];
+  var a = new Audio(); a.preload = 'auto';
+  if (isWord) { a.src = wordSrc(text, pos); a.onerror = function () { if (a.src.indexOf('/api/') < 0) { a.src = api(text); a.load(); } }; }
+  else a.src = api(text);
+  AC[id] = a; return a;
+}
+function stop() { if (cur) { try { cur.pause(); cur.currentTime = 0; } catch (e) { } } if (curBtn) curBtn.classList.remove('on'); cur = null; curBtn = null; }
+function play(text, pos, isWord, btn, done) {
+  stop(); var a = audioFor(text, pos, isWord); cur = a; curBtn = btn || null; if (btn) btn.classList.add('on');
+  a.onended = function () { if (btn) btn.classList.remove('on'); if (cur === a) { cur = null; curBtn = null; } if (done) done(); };
+  var p = a.play(); if (p && p.catch) p.catch(function () { if (btn) btn.classList.remove('on'); });
+}
+
+/* ---------- helpers ---------- */
+var POS = { n: 'اسم', v: 'فعل', adj: 'صفة', adv: 'ظرف', prep: 'حرف جر', pron: 'ضمير', det: 'محدِّد', conj: 'أداة ربط', number: 'رقم', exclam: 'تعجّب', article: 'أداة', modal: 'فعل مساعد', aux: 'فعل مساعد', 'indefinite article': 'أداة', 'definite article': 'أداة' };
+function posAr(p) {
+  var out = []; String(p || '').split(/[,/;]+/).forEach(function (x) {
+    x = x.trim().replace(/\.$/, '').toLowerCase(); if (!x) return; var k = POS[x] || POS[x.split(' ')[0]] || POS[x.replace(/\..*$/, '')];
+    if (k && out.indexOf(k) < 0) out.push(k);
+  }); return out.join(' · ');
+}
+function mark(sent, w) {
+  var s = esc(sent); var forms = String(w).split(/,\s*/).filter(Boolean);
+  forms.forEach(function (f) {
+    var re = new RegExp('\\b(' + f.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?:s|es|ed|d|ing)?)\\b', 'i');
+    if (re.test(s)) s = s.replace(re, '<mark>$1</mark>');
+  }); return s;
+}
+function pic(w, big) { return w.e ? '<div class="pic">' + w.e + '</div>' : '<div class="pic l">' + esc(String(w.w).charAt(0).toUpperCase()) + '</div>'; }
+function arCls() { return S.ar ? '' : ' hideAr'; }
+function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+
+/* word lookup for tappable story words */
+var IRR = { children: 'child', men: 'man', women: 'woman', people: 'person', mice: 'mouse', feet: 'foot', teeth: 'tooth', is: 'be', are: 'be', am: 'be', was: 'be', were: 'be', has: 'have', had: 'have', went: 'go', goes: 'go', came: 'come', saw: 'see', took: 'take', made: 'make', gave: 'give', got: 'get', said: 'say', says: 'say', ran: 'run', ate: 'eat', drank: 'drink', wanted: 'want', does: 'do', did: 'do', "can't": 'cannot', "don't": 'do', "isn't": 'be', "i'm": 'I', its: 'its', wives: 'wife', lives: 'life', sheep: 'sheep', fish: 'fish', born: 'born', bought: 'buy', found: 'find', thought: 'think', sat: 'sit', put: 'put', cut: 'cut', woke: 'wake', slept: 'sleep', best: 'best', better: 'better' };
+function lemma(t) {
+  var x = t.toLowerCase().replace(/^'+|'+$/g, '').replace(/'s$/, '');
+  if (LOOK[x]) return x; if (IRR[x] && LOOK[IRR[x].toLowerCase()]) return IRR[x].toLowerCase();
+  var tries = [x.replace(/ies$/, 'y'), x.replace(/es$/, ''), x.replace(/s$/, ''), x.replace(/ed$/, ''), x.replace(/d$/, ''), x.replace(/ing$/, ''), x.replace(/ing$/, 'e'), x.replace(/(.)\1ing$/, '$1'), x.replace(/(.)\1ed$/, '$1'), x.replace(/ied$/, 'y'), x.replace(/ly$/, '')];
+  for (var i = 0; i < tries.length; i++) if (tries[i] && LOOK[tries[i]]) return tries[i];
+  return null;
+}
+
+/* ---------- unit pages ---------- */
+function pagesOf(ui) {
+  var u = U[ui], n = Math.ceil(u.words.length / PER), out = [{ k: 'open' }];
+  for (var i = 0; i < n; i++) out.push({ k: 'words', from: i * PER });
+  out.push({ k: 'story' }); out.push({ k: 'quiz' }); return out;
+}
+var START = [];
+function bookPage(ui, p) { return START[ui] + p + 1; }
+function knownIn(ui) { var c = 0; U[ui].words.forEach(function (w) { if (S.known[w.w]) c++; }); return c; }
+function totalKnown() { return Object.keys(S.known).length; }
+
+/* ---------- render: cover ---------- */
+function renderCover() {
+  var tw = 0; U.forEach(function (u) { tw += u.words.length; });
+  var resume = S.pos && U[S.pos.u] ? '<button class="btn line" data-a="resume">كمّل من الوحدة <bdi>' + (S.pos.u + 1) + '</bdi> ←</button>' : '';
+  $app.innerHTML = '<div class="cover-wrap">' +
+    '<div class="c3d"><div class="c-face"><div class="c-top"><span class="c-brand">كلمة</span><span class="c-no">1/5</span></div>' +
+    '<div class="c-lv">A1</div><div class="c-ar">المستوى المبتدئ</div><div class="c-en">Beginner</div>' +
+    '<div class="c-n"><bdi>' + tw + '</bdi> كلمة</div><div class="c-foot">KALIMA · WORD BOOK</div></div><div class="c-pages"></div></div>' +
+    '<h1>كتاب <span>A1</span> من سلسلة كلمة</h1><p>أهم كلمات المستوى المبتدئ، بشرح عربي وصوت لكل كلمة</p>' +
+    '<div class="c-stats"><div><b>' + tw + '</b>كلمة</div><div><b>' + U.length + '</b>وحدة</div><div><b>' + U.length + '</b>قصة</div><div><b>' + U.length + '</b>تمرين</div></div>' +
+    '<button class="btn gold" data-a="toc">افتح الكتاب 📖</button>' + resume + '</div>';
+}
+
+/* ---------- render: contents ---------- */
+function renderToc() {
+  var tw = 0; U.forEach(function (u) { tw += u.words.length; });
+  var pct = tw ? Math.round(100 * totalKnown() / tw) : 0;
+  var h = '<div class="shell"><div class="bar"><button class="ib" data-a="cover" aria-label="الغلاف">📕</button><div class="tt">الفهرس<small>كتاب A1 · المستوى المبتدئ</small></div>' + togHtml() + '</div><div class="toc">' +
+    '<div class="toc-head"><div class="lv">A1</div><div><b>المستوى المبتدئ</b><span>حفظت <bdi>' + totalKnown() + '</bdi> من <bdi>' + tw + '</bdi> كلمة</span></div>' +
+    '<div class="ring" style="background:conic-gradient(#F2C94C ' + pct * 3.6 + 'deg,rgba(255,255,255,.18) 0)"><span style="background:#3F6B4E;width:46px;height:46px;border-radius:50%;display:grid;place-items:center"><bdi>' + pct + '%</bdi></span></div></div>';
+  U.forEach(function (u, i) {
+    var k = knownIn(i), best = S.best[u.id];
+    h += '<button class="unit" data-a="unit" data-u="' + i + '"><span class="no">' + (i + 1) + '</span><span class="ic">' + u.icon + '</span>' +
+      '<span class="tx"><b>' + esc(u.nameAr) + '</b><small><bdi>' + u.words.length + '</bdi> كلمة · قصة: <bdi class="en">' + esc(STORIES[i] ? STORIES[i].t : '') + '</bdi></small>' +
+      '<span class="bar2" style="display:block"><i style="width:' + Math.round(100 * k / u.words.length) + '%"></i></span></span>' +
+      (best != null ? '<span class="st">✓ <bdi>' + best + '/10</bdi></span>' : '') + '</button>';
+  });
+  $app.innerHTML = h + '</div></div>';
+}
+function togHtml() { return '<button class="tog' + (S.ar ? ' on' : '') + '" data-a="ar">عربي<i></i></button>'; }
+
+/* ---------- render: unit ---------- */
+function renderUnit() {
+  var ui = view.u, u = U[ui], P = pagesOf(ui), p = view.p, pg = P[p];
+  S.pos = { u: ui, p: p }; save();
+  var head = '<div class="shell"><div class="bar"><button class="ib" data-a="toc" aria-label="الفهرس">☰</button>' +
+    '<div class="tt">' + u.icon + ' ' + esc(u.nameAr) + '<small>الوحدة <bdi>' + (ui + 1) + '</bdi> من <bdi>' + U.length + '</bdi></small></div>' + togHtml() + '</div>' +
+    '<div class="prog"><i style="width:' + Math.round(100 * (p + 1) / P.length) + '%"></i></div><div class="stage"><div class="page ' + (dir ? 'in-' + dir : '') + arCls() + '" id="pg">';
+  var body = '';
+  if (pg.k === 'open') body = openHtml(ui);
+  else if (pg.k === 'words') body = wordsHtml(ui, pg.from);
+  else if (pg.k === 'story') body = storyHtml(ui);
+  else body = '<div id="qz"></div>';
+  body += '<div class="pno">' + bookPage(ui, p) + '</div>';
+  var last = p === P.length - 1, nextLbl = last ? (ui < U.length - 1 ? 'الوحدة التالية ←' : 'الفهرس') : (P[p + 1].k === 'story' ? 'القصة ←' : P[p + 1].k === 'quiz' ? 'التمرين ←' : 'التالي ←');
+  var nav = '<div class="nav"><div class="nav-in"><button class="nb prev" data-a="prev"' + (p === 0 && ui === 0 ? ' disabled' : '') + '>→ السابق</button><button class="nb next" data-a="next">' + nextLbl + '</button></div></div>';
+  $app.innerHTML = head + body + '</div></div>' + nav + '</div>';
+  dir = '';
+  if (pg.k === 'quiz') startQuiz(ui);
+  if (pg.k === 'words') U[ui].words.slice(pg.from, pg.from + PER).forEach(function (w) { audioFor(w.w, w.pos, true); });
+  window.scrollTo(0, 0);
+}
+function openHtml(ui) {
+  var u = U[ui], st = STORIES[ui];
+  return '<div class="op"><div class="big">' + u.icon + '</div><div class="k">الوحدة ' + (ui + 1) + '</div><h2>' + esc(u.nameAr) + '</h2><div class="en2">' + esc(u.name) + '</div>' +
+    '<div class="ins"><div><b>' + u.words.length + '</b>كلمة</div><div>📖 قصة</div><div>✅ تمرين</div></div>' +
+    '<div class="chips">' + u.words.slice(0, 14).map(function (w) { return '<span>' + esc(w.w) + '</span>'; }).join('') + (u.words.length > 14 ? '<span>…</span>' : '') + '</div>' +
+    (st ? '<div class="tip">قصة الوحدة: <b class="en" style="direction:ltr;display:inline-block">' + esc(st.t) + '</b></div>' : '') + '</div>';
+}
+function wordHtml(w) {
+  var ex = w.ex ? '<div class="ex"><button class="say sm" data-a="s" data-t="' + esc(w.ex) + '">🔊</button><div class="t"><div class="ltr">' + mark(w.ex, w.w) + '</div><div class="a">' + esc(w.exAr) + '</div></div></div>' : '';
+  var more = (w.exs && w.exs.length) ? '<button class="more" data-a="more">＋ أمثلة أكثر (<bdi>' + w.exs.length + '</bdi>)</button><div class="mores" hidden>' +
+    w.exs.map(function (e) { return '<div class="ex"><button class="say sm" data-a="s" data-t="' + esc(e[0]) + '">🔊</button><div class="t"><div class="ltr">' + mark(e[0], w.w) + '</div><div class="a">' + esc(e[1]) + '</div></div></div>'; }).join('') + '</div>' : '';
+  var pa = posAr(w.pos);
+  return '<div class="wd">' +
+    '<div class="wd-top">' + pic(w) + '<div class="wd-h"><div class="wd-w"><button class="say" data-a="w" data-t="' + esc(w.w) + '" data-p="' + esc(w.pos || '') + '">🔊</button><b>' + esc(w.w) + '</b></div>' +
+    '<div class="wd-meta"><span class="wd-ar">' + esc(w.ar) + '</span>' + (pa ? '<span class="pos">' + pa + '</span>' : '') +
+    '<button class="known' + (S.known[w.w] ? ' on' : '') + '" data-a="known" data-t="' + esc(w.w) + '">' + (S.known[w.w] ? '✓ حفظتها' : 'حفظتها؟') + '</button></div></div></div>' +
+    (w.def ? '<div class="def"><div class="ltr">' + esc(w.def) + '</div><div class="a">' + esc(w.defAr) + '</div></div>' : '') + ex + more + '</div>';
+}
+function wordsHtml(ui, from) {
+  var ws = U[ui].words.slice(from, from + PER);
+  return '<div class="ph">كلمات <bdi>' + (from + 1) + '–' + (from + ws.length) + '</bdi> من <bdi>' + U[ui].words.length + '</bdi></div>' + ws.map(wordHtml).join('');
+}
+function storyHtml(ui) {
+  var st = STORIES[ui]; if (!st) return '<div class="tip">القصة قريباً</div>';
+  var set = {}; U[ui].words.forEach(function (w) { set[String(w.w).toLowerCase()] = 1; });
+  var h = '<div class="st-h"><div class="k">📖 قصة الوحدة</div><h2>' + esc(st.t) + '</h2><div class="ta">' + esc(st.a) + '</div></div>' +
+    '<div class="st-play"><button class="btn soft" data-a="all">▶ اسمع القصة كاملة</button></div>';
+  st.s.forEach(function (s, i) {
+    var en = esc(s[0]).replace(/[A-Za-z][A-Za-z']*/g, function (t) {
+      var l = lemma(t); if (!l) return t; return '<span class="tw' + (set[l] ? ' u' : '') + '" data-a="tw" data-l="' + esc(l) + '">' + t + '</span>';
+    });
+    h += '<div class="sn" id="sn' + i + '"><button class="say sm" data-a="s" data-t="' + esc(s[0]) + '">🔊</button><div class="t"><div class="ltr">' + en + '</div><div class="s-ar">' + esc(s[1]) + '</div></div></div>';
+  });
+  return h + '<div class="tip">اضغط على أي كلمة عشان تشوف معناها · كلمات الوحدة باللون الأخضر</div>';
+}
+
+/* ---------- quiz ---------- */
+var Q = null;
+function startQuiz(ui) {
+  var ws = U[ui].words.filter(function (w) { return w.ar && w.w; }), pick = shuffle(ws).slice(0, Math.min(10, ws.length)), types = ['ar', 'en', 'gap', 'listen'];
+  Q = { ui: ui, i: 0, ok: 0, res: [], qs: pick.map(function (w, i) {
+    var t = types[i % 4];
+    if (t === 'gap') { var re = gapRe(w.w); if (!w.ex || !re.test(w.ex)) t = 'ar'; }
+    var pool = shuffle(ws.filter(function (x) { return x.w !== w.w && x.ar !== w.ar; })).slice(0, 3);
+    return { w: w, t: t, opts: shuffle(pool.concat([w])) };
+  }) };
+  drawQ();
+}
+function gapRe(w) { return new RegExp('\\b' + String(w).split(/,\s*/)[0].replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i'); }
+function drawQ() {
+  var box = document.getElementById('qz'); if (!box) return;
+  if (Q.i >= Q.qs.length) return drawRes(box);
+  var q = Q.qs[Q.i], w = q.w, k, qh, en = q.t !== 'ar';
+  if (q.t === 'ar') { k = 'شنو معنى الكلمة؟'; qh = (w.e ? '<div class="em">' + w.e + '</div>' : '') + '<div class="w">' + esc(w.w) + '</div>'; }
+  else if (q.t === 'en') { k = 'اختر الكلمة الإنجليزية'; qh = (w.e ? '<div class="em">' + w.e + '</div>' : '') + '<div class="ar">' + esc(w.ar) + '</div>'; }
+  else if (q.t === 'gap') { k = 'كمّل الجملة بالكلمة الصح'; qh = '<div class="s">' + esc(w.ex).replace(gapRe(w.w), '<u>&nbsp;</u>') + '</div>'; }
+  else { k = 'اسمع واختر الكلمة'; qh = '<button class="bigsay" data-a="qs">🔊</button>'; }
+  var dots = Q.qs.map(function (_, i) { return '<i class="' + (i < Q.i ? (Q.res[i] ? 'ok' : 'no') : i === Q.i ? 'cur' : '') + '"></i>'; }).join('');
+  box.innerHTML = '<div class="qz-top"><span>✅ تمرين الوحدة</span><span class="qz-dots">' + dots + '</span></div><div class="qz-k">' + k + '</div><div class="qz-q">' + qh + '</div>' +
+    '<div class="opts">' + q.opts.map(function (o, i) { return '<button class="opt' + (en ? ' en' : '') + '" data-a="opt" data-i="' + i + '">' + esc(en ? o.w : o.ar) + '</button>'; }).join('') + '</div><div class="fb" id="fb"></div>';
+  if (q.t === 'listen') setTimeout(function () { play(w.w, w.pos, true, box.querySelector('.bigsay')); }, 250);
+}
+function answer(i) {
+  var q = Q.qs[Q.i], btns = document.querySelectorAll('.opt'), right = q.opts[i] === q.w, fb = document.getElementById('fb');
+  btns.forEach(function (b, j) { b.disabled = true; if (q.opts[j] === q.w) b.classList.add('ok'); });
+  if (!right) btns[i].classList.add('no');
+  Q.res[Q.i] = right; if (right) Q.ok++;
+  fb.className = 'fb ' + (right ? 'ok' : 'no');
+  fb.innerHTML = right ? 'صح! 👏' : 'الجواب الصح: <span class="en" style="direction:ltr;display:inline-block">' + esc(q.w.w) + '</span> = ' + esc(q.w.ar);
+  play(q.w.w, q.w.pos, true);
+  setTimeout(function () { Q.i++; drawQ(); }, right ? 900 : 1900);
+}
+function drawRes(box) {
+  var n = Q.qs.length, sc = Math.round(10 * Q.ok / n), u = U[Q.ui];
+  if (S.best[u.id] == null || sc > S.best[u.id]) { S.best[u.id] = sc; save(); }
+  var stars = sc >= 9 ? '⭐⭐⭐' : sc >= 7 ? '⭐⭐' : sc >= 4 ? '⭐' : '';
+  var msg = sc >= 9 ? 'ممتاز! أنت جاهز للوحدة الجاية' : sc >= 7 ? 'حلو جداً! راجع الكلمات اللي غلطت فيها' : 'لا بأس، راجع كلمات الوحدة وجرّب مرة ثانية';
+  box.innerHTML = '<div class="res"><div class="qz-k">نتيجتك</div><div class="sc">' + sc + '<small>/10</small></div><div class="stars">' + (stars || '💪') + '</div><p>' + msg + '</p>' +
+    '<div class="row"><button class="btn green full" data-a="next">' + (Q.ui < U.length - 1 ? 'الوحدة التالية ←' : 'الفهرس') + '</button><button class="btn soft full" data-a="retry">↻ أعد التمرين</button></div></div>';
+}
+
+/* ---------- word sheet ---------- */
+function openSheet(l) {
+  var w = LOOK[l]; if (!w) return;
+  var sh = document.getElementById('sheet');
+  sh.innerHTML = '<div class="grab"></div><div class="' + arCls() + '">' + wordHtml(w) + '</div>';
+  sh.classList.add('on'); document.getElementById('sbg').classList.add('on');
+  play(w.w, w.pos, true, sh.querySelector('.say'));
+}
+function closeSheet() { document.getElementById('sheet').classList.remove('on'); document.getElementById('sbg').classList.remove('on'); }
+
+/* ---------- navigation ---------- */
+function go(d) {
+  stop();
+  var P = pagesOf(view.u);
+  if (d > 0) { if (view.p < P.length - 1) view.p++; else if (view.u < U.length - 1) { view.u++; view.p = 0; } else { view = { v: 'toc' }; return render(); } dir = 'next'; }
+  else { if (view.p > 0) view.p--; else if (view.u > 0) { view.u--; view.p = pagesOf(view.u).length - 1; } else return; dir = 'prev'; }
+  render();
+}
+function render() { if (view.v === 'cover') renderCover(); else if (view.v === 'toc') renderToc(); else renderUnit(); }
+
+document.addEventListener('click', function (e) {
+  var el = e.target.closest('[data-a]');
+  var hid = e.target.closest('.hideAr .a,.hideAr .wd-ar,.hideAr .s-ar');
+  if (hid && !el) { hid.classList.toggle('show'); return; }
+  if (!el) return; var a = el.getAttribute('data-a');
+  if (a === 'toc') { stop(); view = { v: 'toc' }; render(); }
+  else if (a === 'cover') { view = { v: 'cover' }; render(); }
+  else if (a === 'resume') { view = { v: 'unit', u: S.pos.u, p: Math.min(S.pos.p, pagesOf(S.pos.u).length - 1) }; render(); }
+  else if (a === 'unit') { view = { v: 'unit', u: +el.getAttribute('data-u'), p: 0 }; dir = 'next'; render(); }
+  else if (a === 'next') go(1);
+  else if (a === 'prev') go(-1);
+  else if (a === 'ar') { S.ar = !S.ar; save(); el.classList.toggle('on', S.ar); document.querySelectorAll('.page,.sheet>div').forEach(function (p) { if (p.classList.contains('page') || p.parentNode.id === 'sheet') p.classList.toggle('hideAr', !S.ar); }); }
+  else if (a === 'w') play(el.getAttribute('data-t'), el.getAttribute('data-p'), true, el);
+  else if (a === 's') play(el.getAttribute('data-t'), '', false, el);
+  else if (a === 'more') { var m = el.nextElementSibling; m.hidden = !m.hidden; el.textContent = m.hidden ? el.textContent.replace('－ أخفِ', '＋') : '－ أخفِ الأمثلة'; }
+  else if (a === 'known') { var t = el.getAttribute('data-t'); if (S.known[t]) delete S.known[t]; else S.known[t] = 1; save(); document.querySelectorAll('.known[data-t="' + CSS.escape(t) + '"]').forEach(function (b) { b.classList.toggle('on', !!S.known[t]); b.textContent = S.known[t] ? '✓ حفظتها' : 'حفظتها؟'; }); }
+  else if (a === 'tw') openSheet(el.getAttribute('data-l'));
+  else if (a === 'all') { var st = STORIES[view.u], i = 0; (function nx() { document.querySelectorAll('.sn').forEach(function (x) { x.classList.remove('on'); }); if (i >= st.s.length) return; var row = document.getElementById('sn' + i); if (!row) return; row.classList.add('on'); row.scrollIntoView({ block: 'center', behavior: 'smooth' }); var t = st.s[i++][0]; play(t, '', false, row.querySelector('.say'), nx); })(); }
+  else if (a === 'opt') answer(+el.getAttribute('data-i'));
+  else if (a === 'qs') { var q = Q.qs[Q.i]; play(q.w.w, q.w.pos, true, el); }
+  else if (a === 'retry') startQuiz(view.u);
+});
+document.getElementById('sbg').addEventListener('click', closeSheet);
+document.addEventListener('keydown', function (e) { if (view.v !== 'unit') return; if (e.key === 'ArrowLeft') go(1); if (e.key === 'ArrowRight') go(-1); if (e.key === 'Escape') closeSheet(); });
+var tx = null, ty = null;
+document.addEventListener('touchstart', function (e) { if (view.v !== 'unit' || e.target.closest('.sheet')) { tx = null; return; } tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+document.addEventListener('touchend', function (e) {
+  if (tx == null) return; var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; tx = null;
+  if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.6 && !(document.getElementById('qz') && Q && Q.i < Q.qs.length)) go(dx > 0 ? 1 : -1);
+}, { passive: true });
+
+/* ---------- load ---------- */
+function fail(msg) { $app.innerHTML = '<div class="msg"><div style="font-size:44px">📕</div><div style="font-weight:800;font-size:18px">' + msg + '</div></div>'; }
+var qk = new URLSearchParams(location.search).get('k'); if (qk) { try { localStorage.setItem(LS + '-k', qk); } catch (e) { } history.replaceState(null, '', location.pathname); }
+var key = qk; if (!key) { try { key = localStorage.getItem(LS + '-k'); } catch (e) { } }
+if (!key) return fail('هذا الكتاب لمشتركي كلمة فقط');
+fetch(SB + '/rest/v1/rpc/book_words', { method: 'POST', headers: { apikey: SBK, 'Content-Type': 'application/json' }, body: JSON.stringify({ lv: 'A1', k: key }) })
+  .then(function (r) { if (!r.ok) throw r.status; return r.json(); })
+  .then(function (d) {
+    U = (d || []).filter(function (u) { return u && u.words && u.words.length; });
+    if (!U.length) throw 0;
+    var acc = 0; U.forEach(function (u, i) { START[i] = acc; acc += pagesOf(i).length; u.words.forEach(function (w) { var k = String(w.w).toLowerCase(); if (!LOOK[k]) LOOK[k] = w; }); });
+    render();
+  })
+  .catch(function (e) { fail(e === 400 || e === 404 ? 'الرابط غير صالح' : 'تعذّر فتح الكتاب. تأكد من الاتصال وحدّث الصفحة.'); });
+})();
+</script>
+</body>
+</html>
