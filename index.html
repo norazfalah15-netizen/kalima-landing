@@ -2790,16 +2790,19 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   var narBtn=$('#narBtn'), narBar=$('#narBar'), narPool={};
   function narClip(i){ var sp=nar.spans[i], h=sp.getAttribute('data-h'); if(narPool[h]) return narPool[h]; var a=new Audio(); a.setAttribute('playsinline',''); a.preload='auto'; a.src=MB+'/voice/books/'+h.slice(0,2)+'/'+h+'.mp3'; try{a.load()}catch(e){} narPool[h]=a; return a; }
   var narRate=1, narSpd=$('#narSpd');
-  function narStop(){ nar.on=false; if(nar.a){ try{nar.a.pause()}catch(e){} nar.a=null; } nar.spans.forEach(function(s){s.classList.remove('reading')}); if(narBtn){ narBtn.textContent='▶'; narBtn.classList.remove('on'); } }
-  function narPause(){ nar.on=false; if(nar.a){ try{nar.a.pause()}catch(e){} } if(narBtn){ narBtn.textContent='▶'; narBtn.classList.remove('on'); } }
+  /* silence every clip of the pool (one sentence at a time, never two together) */
+  function narHush(){ Object.keys(narPool).forEach(function(h){ var c=narPool[h]; try{ if(!c.paused) c.pause(); }catch(e){} }); }
+  function narStop(){ nar.on=false; narHush(); nar.a=null; nar.spans.forEach(function(s){s.classList.remove('reading')}); if(narBtn){ narBtn.textContent='▶'; narBtn.classList.remove('on'); } }
+  function narPause(){ nar.on=false; narHush(); if(narBtn){ narBtn.textContent='▶'; narBtn.classList.remove('on'); } }
   function narPlay(i){
     if(i>=nar.spans.length){ narStop(); var pq=$('#pgQuiz'); if(pq){ pq.scrollIntoView({behavior:'smooth',block:'start'}); } return; }
     nar.i=i; nar.spans.forEach(function(s,k){s.classList.toggle('reading',k===i)});
     var sp=nar.spans[i]; try{ sp.scrollIntoView({behavior:'smooth',block:'center'}); }catch(e){}
+    narHush();
     var a=narClip(i); nar.a=a; try{ a.currentTime=0; a.playbackRate=narRate; a.defaultPlaybackRate=narRate; a.preservesPitch=true; a.webkitPreservesPitch=true; }catch(e){}
     if(i+1<nar.spans.length) narClip(i+1);
-    a.onended=function(){ if(nar.on) setTimeout(function(){ if(nar.on) narPlay(i+1); },260); };
-    a.onerror=function(){ if(nar.on) narPlay(i+1); };
+    a.onended=function(){ if(nar.on&&nar.a===a) setTimeout(function(){ if(nar.on&&nar.a===a) narPlay(i+1); },260); };
+    a.onerror=function(){ if(nar.on&&nar.a===a) narPlay(i+1); };
     var p=a.play(); if(p&&p.catch) p.catch(function(){ narStop(); });
   }
   if(narBtn){
