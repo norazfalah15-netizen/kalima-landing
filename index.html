@@ -2885,19 +2885,19 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   var spkG=-1;
   function drawSpeak(){
     if(spkG<0){
-      pracBody.innerHTML='<div class="pr-note">اختر مجموعة، واسمع السؤال، وجاوب بصوتك. كل سؤال معه كلمات تساعدك.</div>'+SPK.map(function(g,i){return '<button type="button" class="pr-row" data-g="'+i+'"><span class="pr-n">'+(i+1)+'</span><span><b>'+esc(g.t)+'</b><small>'+g.q.length+' أسئلة للتجربة · 20 في التطبيق</small></span></button>'}).join('')+
+      pracBody.innerHTML=SPK.map(function(g,i){return '<button type="button" class="pr-row" data-g="'+i+'"><span class="pr-n">'+(i+1)+'</span><span><b>'+esc(g.t)+'</b><small>'+g.q.length+' أسئلة للتجربة · 20 في التطبيق</small></span></button>'}).join('')+
         '<button type="button" class="pr-row pr-lock" data-lock="1"><span class="pr-n">🔒</span><span><b>7 مجموعات أخرى</b><small>يومك · بيتك ومكانك · الناس حولك · …</small></span></button>';
       return;
     }
     var g=SPK[spkG];
     pracBody.innerHTML='<button type="button" class="pr-back" data-back="1">→ كل المجموعات</button><div class="pr-title">'+esc(g.t)+'</div>'+g.q.map(function(q,i){return '<div class="sq" data-i="'+i+'"><button type="button" class="sh-mini" data-say="'+esc(q[0])+'" aria-label="اسمع السؤال">🔊</button><div><span dir="ltr">'+esc(q[0])+'</span><small>'+esc(q[1])+'</small><div class="sq-k">كلمات تساعدك: '+q[2].map(function(w){return '<em dir="ltr">'+esc(w)+'</em>'}).join('')+'</div></div></div>'}).join('')+
-      '<div class="pr-note">في التطبيق: 20 سؤال في كل مجموعة، وتقدر تسجل جوابك وتسمع نفسك.</div>';
+      '';
   }
   /* writing: pick a topic, write, and see the suggested words light up as you use them (no AI in this package) */
   var wrT=-1;
   function drawWrite(){
     if(wrT<0){
-      pracBody.innerHTML='<div class="pr-note">اختر موضوع واكتب عنه. التطبيق يعطيك كلمات وعبارات مقترحة لكل موضوع.</div>'+WR.map(function(w,i){return '<button type="button" class="pr-row" data-w="'+i+'"><span class="pr-n">'+w.i+'</span><span><b>'+esc(w.ar)+'</b><small dir="ltr">'+esc(w.en)+'</small></span></button>'}).join('')+
+      pracBody.innerHTML=WR.map(function(w,i){return '<button type="button" class="pr-row" data-w="'+i+'"><span class="pr-n">'+w.i+'</span><span><b>'+esc(w.ar)+'</b><small dir="ltr">'+esc(w.en)+'</small></span></button>'}).join('')+
         '<button type="button" class="pr-row pr-lock" data-lock="2"><span class="pr-n">🔒</span><span><b>47 موضوعاً آخر</b><small>يومي · أكلتي المفضلة · مدرستي · صديقي · …</small></span></button>';
       return;
     }
@@ -2915,8 +2915,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   var dcI=0;
   function drawDict(){
     var d=DIC[dcI%DIC.length];
-    pracBody.innerHTML='<div class="pr-note">من «تمارين اليوم»: اسمع الجملة واكتبها، وبعدين تحقق.</div><div class="dc"><button type="button" class="dc-play" data-say="'+esc(d[0])+'">🔊 اسمع الجملة</button><input class="dc-in" id="dcIn" dir="ltr" type="text" autocomplete="off" placeholder="Type what you hear…"><button type="button" class="dc-chk" id="dcChk">تحقق</button><div class="dc-res" id="dcRes"></div></div>'+
-      '<div class="pr-note">تمارين اليوم في التطبيق: اقرأ بصوتك · إملاء · مراجعة ذكية · مهام يومية.</div>';
+    pracBody.innerHTML='<div class="dc"><button type="button" class="dc-play" data-say="'+esc(d[0])+'">🔊 اسمع الجملة</button><input class="dc-in" id="dcIn" dir="ltr" type="text" autocomplete="off" placeholder="Type what you hear…"><button type="button" class="dc-chk" id="dcChk">تحقق</button><div class="dc-res" id="dcRes"></div></div>';
     $('#dcChk').addEventListener('click',function(){
       var v=key($('#dcIn').value).replace(/[^a-z' ]/g,''), t=key(d[0]).replace(/[^a-z' ]/g,''), r=$('#dcRes');
       if(!v){ r.innerHTML='اكتب الجملة أول 🙂'; return; }
