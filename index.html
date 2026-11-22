@@ -2787,7 +2787,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
     if(b.id==='shSayDef'){ box=$('#shDef'); } else if(b.id==='shSayEx'){ box=$('#shEx'); }
     else if(b.classList.contains('sh-mini')){ box=b.parentNode.querySelector('span'); }
     else if(b.classList.contains('bk-say')){ var back=b.closest('.back'); box=b.getAttribute('data-say')==='def'?back.querySelector('.b-def'):back.querySelector('.b-ex span'); }
-    if(!box) return; text=box.textContent; setTimeout(function(){ hlStart(box,text); },30);
+    if(!box) return; /* the word card plays the voice only, with no word-by-word colouring */
   },true);
 
   /* ───────── book narrator (reads the page sentence by sentence from the site's recordings) ───────── */
