@@ -2963,7 +2963,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   var dcI=0;
   function drawDict(){
     var d=DIC[dcI%DIC.length];
-    pracBody.innerHTML='<div class="dc"><button type="button" class="dc-play" data-say="'+esc(d[0])+'">🔊 اسمع الجملة</button><input class="dc-in" id="dcIn" dir="ltr" type="text" autocomplete="off" placeholder="Type what you hear…"><button type="button" class="dc-chk" id="dcChk">تحقق</button><div class="dc-res" id="dcRes"></div></div>';
+    pracBody.innerHTML='<div class="dc"><button type="button" class="dc-play" data-say="'+esc(d[0])+'">🔊 اكتب اللي تسمعه</button><input class="dc-in" id="dcIn" dir="ltr" type="text" autocomplete="off" placeholder="Type what you hear…"><button type="button" class="dc-chk" id="dcChk">تحقق</button><div class="dc-res" id="dcRes"></div></div>';
     $('#dcChk').addEventListener('click',function(){
       var v=key($('#dcIn').value).replace(/[^a-z' ]/g,''), t=key(d[0]).replace(/[^a-z' ]/g,''), r=$('#dcRes');
       if(!v){ r.innerHTML='اكتب الجملة أول 🙂'; return; }
