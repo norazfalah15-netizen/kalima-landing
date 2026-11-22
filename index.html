@@ -2907,7 +2907,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   function drawWrite(){
     if(wrT<0){
       pracBody.innerHTML=WR.map(function(w,i){return '<button type="button" class="pr-row" data-w="'+i+'"><span class="pr-n">'+w.i+'</span><span><b>'+esc(w.ar)+'</b><small dir="ltr">'+esc(w.en)+'</small></span></button>'}).join('')+
-        '<button type="button" class="pr-row pr-lock" data-lock="2"><span class="pr-n">🔒</span><span><b>47 موضوعاً آخر</b><small>يومي · أكلتي المفضلة · مدرستي · صديقي · …</small></span></button>';
+        '<button type="button" class="pr-row pr-lock" data-lock="2"><span class="pr-n">🔒</span><span><b>47 موضوعاً آخر</b></span></button>';
       return;
     }
     var w=WR[wrT];
