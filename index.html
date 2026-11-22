@@ -2031,7 +2031,7 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
                 <div class="st-body" id="stBody" dir="ltr"></div>
                 <div class="pg-quiz" id="pgQuiz"></div>
               </div>
-              <div class="nar-bar"><button type="button" class="nar-btn" id="narBtn">🎧 اسمع القصة</button><span class="nar-note">بنفس صوت الكلمات</span></div>
+              <div class="nar-bar" dir="ltr"><button type="button" class="nar-sk" id="narPrev" aria-label="الجملة السابقة">⟨</button><button type="button" class="nar-btn" id="narBtn" aria-label="اسمع القصة">▶</button><button type="button" class="nar-sk" id="narNext" aria-label="الجملة التالية">⟩</button><button type="button" class="nar-spd" id="narSpd" data-v="1" aria-label="السرعة">1×</button></div>
             </div>
           </div>
 
@@ -2102,7 +2102,6 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
           </nav>
         </div>
       </div>
-      <div class="demo-try">جرّب بهذا الهاتف وغيّر بين الأقسام — كل اللي تشوفه موجود فعلاً في التطبيق</div>
       <div class="demo-hint" id="demoHint">👆 كل كلمة بنطقها الصوتي ومعناها وتعريفها وخمسة أمثلة</div>
       <a class="demo-free" href="https://kalima-free.vercel.app/">اضغط هنا لرؤية التدريب المجاني ←</a>
     </div>
@@ -2642,10 +2641,10 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
 /* ── demo additions ── */
 .hw{border-radius:4px;transition:background .1s}.hw.on{background:#F0C64A;color:#23332F}
 .sentence{cursor:pointer}.sentence.reading{background:rgba(199,154,60,.22);box-shadow:0 0 0 3px rgba(199,154,60,.22);border-radius:4px}
-.nar-bar{display:flex;align-items:center;gap:8px;padding:8px 12px;border-top:1px solid var(--line-soft);background:var(--card)}
-.nar-btn{flex:1;font:700 12.5px var(--ar);border:1.5px solid var(--line);background:#FBF3E2;color:var(--gold-d);border-radius:12px;padding:9px;cursor:pointer}
-.nar-btn.on{background:#22313A;color:#fff;border-color:#22313A}
-.nar-note{font:600 10px var(--ar);color:var(--soft);white-space:nowrap}
+.nar-bar{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;padding:8px 12px 10px;border-top:1px solid var(--line-soft);background:var(--card)}
+.nar-btn{width:46px;height:46px;border-radius:50%;border:0;background:#22313A;color:#fff;font-size:17px;cursor:pointer;display:grid;place-items:center;box-shadow:0 6px 14px rgba(20,28,33,.25)}
+.nar-sk{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font-size:16px;cursor:pointer;display:grid;place-items:center}
+.nar-spd{min-width:48px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:6px 8px;font:700 11.5px var(--mono);cursor:pointer;position:absolute;right:12px}
 .pg-quiz{margin:14px 0 6px;background:var(--card);border:1.5px solid var(--line-soft);border-radius:16px;padding:12px;direction:rtl;text-align:right}
 .pg-lbl{font:600 10.5px var(--ar);color:#8B7D5A;margin-bottom:4px}
 .pg-q{font:700 15px var(--ar);color:var(--ink);margin-bottom:8px}
@@ -2771,12 +2770,14 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   }
   var narBtn=$('#narBtn'), narBar=$('#narBar'), narPool={};
   function narClip(i){ var sp=nar.spans[i], h=sp.getAttribute('data-h'); if(narPool[h]) return narPool[h]; var a=new Audio(); a.setAttribute('playsinline',''); a.preload='auto'; a.src=MB+'/voice/books/'+h.slice(0,2)+'/'+h+'.mp3'; try{a.load()}catch(e){} narPool[h]=a; return a; }
-  function narStop(){ nar.on=false; if(nar.a){ try{nar.a.pause()}catch(e){} nar.a=null; } nar.spans.forEach(function(s){s.classList.remove('reading')}); if(narBtn){ narBtn.textContent='🎧 اسمع القصة'; narBtn.classList.remove('on'); } }
+  var narRate=1, narSpd=$('#narSpd');
+  function narStop(){ nar.on=false; if(nar.a){ try{nar.a.pause()}catch(e){} nar.a=null; } nar.spans.forEach(function(s){s.classList.remove('reading')}); if(narBtn){ narBtn.textContent='▶'; narBtn.classList.remove('on'); } }
+  function narPause(){ nar.on=false; if(nar.a){ try{nar.a.pause()}catch(e){} } if(narBtn){ narBtn.textContent='▶'; narBtn.classList.remove('on'); } }
   function narPlay(i){
     if(i>=nar.spans.length){ narStop(); var pq=$('#pgQuiz'); if(pq){ pq.scrollIntoView({behavior:'smooth',block:'start'}); } return; }
     nar.i=i; nar.spans.forEach(function(s,k){s.classList.toggle('reading',k===i)});
     var sp=nar.spans[i]; try{ sp.scrollIntoView({behavior:'smooth',block:'center'}); }catch(e){}
-    var a=narClip(i); nar.a=a; try{ a.currentTime=0; }catch(e){}
+    var a=narClip(i); nar.a=a; try{ a.currentTime=0; a.playbackRate=narRate; a.defaultPlaybackRate=narRate; a.preservesPitch=true; a.webkitPreservesPitch=true; }catch(e){}
     if(i+1<nar.spans.length) narClip(i+1);
     a.onended=function(){ if(nar.on) setTimeout(function(){ if(nar.on) narPlay(i+1); },260); };
     a.onerror=function(){ if(nar.on) narPlay(i+1); };
@@ -2784,12 +2785,16 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   }
   if(narBtn){
     narBtn.addEventListener('click',function(){
-      if(nar.on){ narStop(); return; }
+      if(nar.on){ narPause(); return; }
       if(window.KalimaMichael) KalimaMichael.stop(); if(window.__pdPause) window.__pdPause();
       for(var k=0;k<3&&k<nar.spans.length;k++) narClip(k);
-      nar.on=true; narBtn.textContent='⏸ إيقاف'; narBtn.classList.add('on'); narPlay(nar.i>=0&&nar.i<nar.spans.length-1?nar.i:0);
+      nar.on=true; narBtn.textContent='❚❚'; narBtn.classList.add('on'); narPlay(nar.i>=0&&nar.i<nar.spans.length-1?nar.i:0);
     });
-    body.addEventListener('click',function(e){ var s=e.target.closest('.sentence'); if(!s||e.target.closest('.tw')) return; var i=nar.spans.indexOf(s); if(i<0) return; if(!nar.on){ nar.on=true; narBtn.textContent='⏸ إيقاف'; narBtn.classList.add('on'); } narPlay(i); });
+    function narStep(d){ var i=Math.max(0,Math.min(nar.spans.length-1,(nar.i<0?0:nar.i)+d)); if(window.KalimaMichael) KalimaMichael.stop(); nar.on=true; narBtn.textContent='❚❚'; narBtn.classList.add('on'); narPlay(i); }
+    $('#narPrev').addEventListener('click',function(){ narStep(-1); });
+    $('#narNext').addEventListener('click',function(){ narStep(1); });
+    narSpd.addEventListener('click',function(){ var R=[1,1.25,0.75], v=+narSpd.getAttribute('data-v')||1, n=R[(R.indexOf(v)+1)%R.length]; narRate=n; narSpd.setAttribute('data-v',n); narSpd.textContent=n+'×'; if(nar.a){ try{ nar.a.playbackRate=n; }catch(e){} } });
+    body.addEventListener('click',function(e){ var s=e.target.closest('.sentence'); if(!s||e.target.closest('.tw')) return; var i=nar.spans.indexOf(s); if(i<0) return; if(!nar.on){ nar.on=true; narBtn.textContent='❚❚'; narBtn.classList.add('on'); } narPlay(i); });
   }
   window.__narStop=narStop;
 
