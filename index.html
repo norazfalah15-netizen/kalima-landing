@@ -2872,7 +2872,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
       var row=e.target.closest('.lv'); if(!row) return;
       var b=row.querySelector('.lv-b'); var lv=b?b.textContent.trim():'';
       if(lv!=='A1'){ lock('مستوى '+lv+' للمشتركين','اشترك في كلمة وافتح كل المستويات من A1 إلى C1 ومعها الأفعال المركّبة.'); return; }
-      secScr.innerHTML='<div class="sec-top"><button type="button" class="qz-back" id="secBack" aria-label="رجوع">→</button><div><b>اختر القسم</b><small>A1 · مبتدئ</small></div></div><div class="sec-list">'+SECS.map(function(s,i){return '<button type="button" class="sec" data-s="'+s[3]+'" style="animation-delay:'+(i*50)+'ms"><span class="sec-ic">'+s[0]+'</span><span><b>'+s[1]+'</b><small>'+s[2]+'</small></span></button>'}).join('')+'</div>';
+      secScr.innerHTML='<div class="sec-top"><button type="button" class="qz-back" id="secBack" aria-label="رجوع">→</button><div><b>اختر القسم</b><small>A1 · مبتدئ</small></div></div><div class="sec-list">'+SECS.map(function(s,i){return '<button type="button" class="sec" data-s="'+s[3]+'" style="animation-delay:'+(i*50)+'ms"><span class="sec-ic">'+s[0]+'</span><span><b>'+s[1]+'</b></span></button>'}).join('')+'</div>';
       secScr.hidden=false;
     });
     secScr.addEventListener('click',function(e){
