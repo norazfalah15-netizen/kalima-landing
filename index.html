@@ -1820,7 +1820,7 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
     next();
   }
   function stop() { tok++; try { if (a) a.pause(); } catch (e) {} }
-  window.KalimaMichael = { say: say, stop: stop };
+  window.KalimaMichael = { say: say, stop: stop, audio: el };
 })();
 </script>
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
@@ -1971,13 +1971,16 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
           <span class="ds-ic">📖</span><span><b>بطاقات الكلمات</b><small>اضغط البطاقة تنقلب، والأسهم تنقلك للي بعدها</small></span>
         </button>
         <button class="ds" data-go="story" role="tab" aria-selected="false">
-          <span class="ds-ic">📚</span><span><b>القصص</b><small>المس أي كلمة في القصة وتطلع لك بطاقتها</small></span>
+          <span class="ds-ic">📚</span><span><b>الكتب والقارئ</b><small>المس أي كلمة تطلع بطاقتها، واضغط «اسمع القصة» يقرأها لك جملة جملة</small></span>
         </button>
         <button class="ds" data-go="pod" role="tab" aria-selected="false">
-          <span class="ds-ic">🎧</span><span><b>البودكاست</b><small>اسمع مايا وآدم، والكلام يطلع قدامك مع الترجمة</small></span>
+          <span class="ds-ic">🎧</span><span><b>البودكاست</b><small>اسمع مايا وآدم مع الترجمة، وبعدها اختبار الحلقة</small></span>
+        </button>
+        <button class="ds" data-go="prac" role="tab" aria-selected="false">
+          <span class="ds-ic">🎙️</span><span><b>التحدث والكتابة والإملاء</b><small>أسئلة محادثة، ورشة كتابة بكلمات مقترحة، وإملاء</small></span>
         </button>
         <button class="ds" data-go="levels" role="tab" aria-selected="false">
-          <span class="ds-ic">🪜</span><span><b>المستويات</b><small>من A1 لين C1، ومعها الأفعال المركّبة</small></span>
+          <span class="ds-ic">🪜</span><span><b>المستويات وأقسامها</b><small>اضغط A1 وشوف كل أقسام المستوى</small></span>
         </button>
       </div>
     </div>
@@ -2020,7 +2023,9 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
                 <h3 class="st-title" dir="ltr" id="stTitle"></h3>
                 <div class="st-note">اضغط على أي كلمة في القصة لترى معناها — والكلمات <span class="kw-chip">المظللة</span> هي كلمات الفصل الجديدة</div>
                 <div class="st-body" id="stBody" dir="ltr"></div>
+                <div class="pg-quiz" id="pgQuiz"></div>
               </div>
+              <div class="nar-bar"><button type="button" class="nar-btn" id="narBtn">🎧 اسمع القصة</button><span class="nar-note">بنفس صوت الكلمات</span></div>
             </div>
           </div>
 
@@ -2031,6 +2036,8 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
             <div class="mk-av" id="pdAv"><span data-sp="Maya" class="act">M<em>مايا</em></span><span data-sp="Adam">A<em>آدم</em></span></div>
             <div class="mk-wave" id="pdWave"><i style="animation-delay:0s"></i><i style="animation-delay:.15s"></i><i style="animation-delay:.3s"></i><i style="animation-delay:.1s"></i><i style="animation-delay:.4s"></i><i style="animation-delay:.2s"></i><i style="animation-delay:.35s"></i><i style="animation-delay:.05s"></i><i style="animation-delay:.25s"></i><i style="animation-delay:.45s"></i><i style="animation-delay:.12s"></i><i style="animation-delay:.32s"></i></div>
             <div class="pd-lines ar" id="pdLines"><div class="pl" data-s="0.0"><b>Maya</b><span class="pl-en" dir="ltr"><i data-t="0.04">Hello,</i> <i data-t="0.58">everyone,</i> <i data-t="1.36">and</i> <i data-t="1.6">welcome</i> <i data-t="2.02">to</i> <i data-t="2.2">the</i> <i data-t="2.38">Kalima</i> <i data-t="2.8">show!</i> <i data-t="3.4">I'm</i> <i data-t="3.66">Maya.</i> </span><span class="pl-ar">مرحباً بالجميع، وأهلاً بكم في برنامج كلمة! أنا مايا.</span></div><div class="pl" data-s="4.85"><b>Adam</b><span class="pl-en" dir="ltr"><i data-t="4.89">And</i> <i data-t="5.19">I'm</i> <i data-t="5.42">Adam.</i> <i data-t="6.23">Hi,</i> <i data-t="6.72">everybody!</i> <i data-t="7.83">Maya,</i> <i data-t="8.32">what</i> <i data-t="8.57">do</i> <i data-t="8.75">we</i> <i data-t="8.94">talk</i> <i data-t="9.18">about</i> <i data-t="9.49">today?</i> </span><span class="pl-ar">وأنا آدم. مرحباً بالجميع! مايا، عمّ نتحدث اليوم؟</span></div><div class="pl" data-s="10.63"><b>Maya</b><span class="pl-en" dir="ltr"><i data-t="10.67">Today,</i> <i data-t="11.22">we</i> <i data-t="11.4">discuss</i> <i data-t="11.83">the</i> <i data-t="12.01">weather.</i> <i data-t="12.8">Everybody</i> <i data-t="13.38">talks</i> <i data-t="13.68">about</i> <i data-t="13.97">the</i> <i data-t="14.15">weather,</i> <i data-t="14.73">every</i> <i data-t="15.03">day!</i> </span><span class="pl-ar">اليوم نتناقش عن الطقس. الجميع يتحدث عن الطقس كل يوم!</span></div><div class="pl" data-s="16.03"><b>Adam</b><span class="pl-en" dir="ltr"><i data-t="16.07">That's</i> <i data-t="16.54">true.</i> <i data-t="17.33">People</i> <i data-t="17.75">discuss</i> <i data-t="18.23">the</i> <i data-t="18.44">weather</i> <i data-t="18.86">at</i> <i data-t="19.07">the</i> <i data-t="19.27">bus</i> <i data-t="19.55">station,</i> <i data-t="20.31">at</i> <i data-t="20.52">work,</i> <i data-t="21.15">at</i> <i data-t="21.35">home,</i> <i data-t="21.91">in</i> <i data-t="22.12">every</i> <i data-t="22.46">place.</i> </span><span class="pl-ar">هذا صحيح. الناس يتناقشون عن الطقس في محطة الحافلات، وفي العمل، وفي البيت، وفي كل مكان.</span></div><div class="pl" data-s="23.64"><b>Maya</b><span class="pl-en" dir="ltr"><i data-t="23.68">I</i> <i data-t="23.81">say</i> <i data-t="24.02">my</i> <i data-t="24.22">ideas,</i> <i data-t="24.9">and</i> <i data-t="25.17">you</i> <i data-t="25.37">say</i> <i data-t="25.57">your</i> <i data-t="25.84">ideas.</i> <i data-t="26.67">We</i> <i data-t="26.85">discuss</i> <i data-t="27.28">them</i> <i data-t="27.53">together,</i> <i data-t="28.26">like</i> <i data-t="28.51">two</i> <i data-t="28.69">good</i> <i data-t="28.94">friends.</i> </span><span class="pl-ar">أنا أقول أفكاري، وأنت تقول أفكارك. نتناقش فيها معاً، مثل صديقين طيبين.</span></div><div class="pl" data-s="30.2"><b>Adam</b><span class="pl-en" dir="ltr"><i data-t="30.24">OK,</i> <i data-t="30.8">let's</i> <i data-t="31.12">discuss</i> <i data-t="31.56">it.</i> <i data-t="32.17">The</i> <i data-t="32.35">sun,</i> <i data-t="32.84">the</i> <i data-t="33.02">rain,</i> <i data-t="33.51">the</i> <i data-t="33.69">snow,</i> <i data-t="34.18">hot</i> <i data-t="34.42">or</i> <i data-t="34.61">cold.</i> <i data-t="35.33">I</i> <i data-t="35.49">have</i> <i data-t="35.82">so</i> <i data-t="36.06">many</i> <i data-t="36.46">ideas!</i> </span><span class="pl-ar">حسناً، لنتناقش. الشمس، والمطر، والثلج، الحر أو البرد. عندي أفكار كثيرة جداً!</span></div><div class="pl" data-s="37.77"><b>Maya</b><span class="pl-en" dir="ltr"><i data-t="37.81">Before</i> <i data-t="38.15">we</i> <i data-t="38.32">start,</i> <i data-t="38.89">did</i> <i data-t="39.11">you</i> <i data-t="39.28">hear</i> <i data-t="39.51">the</i> <i data-t="39.68">news</i> <i data-t="39.91">this</i> <i data-t="40.13">morning?</i> <i data-t="40.95">The</i> <i data-t="41.13">main</i> <i data-t="41.38">news</i> <i data-t="41.62">was</i> <i data-t="41.87">the</i> <i data-t="42.05">weather!</i> </span><span class="pl-ar">قبل أن نبدأ، هل سمعت الأخبار هذا الصباح؟ الخبر الرئيسي كان عن الطقس!</span></div><div class="pl" data-s="43.25"><b>Adam</b><span class="pl-en" dir="ltr"><i data-t="43.29">I</i> <i data-t="43.41">heard</i> <i data-t="43.7">it</i> <i data-t="43.88">on</i> <i data-t="44.06">the</i> <i data-t="44.24">radio</i> <i data-t="44.65">in</i> <i data-t="44.83">the</i> <i data-t="45.01">car.</i> <i data-t="45.67">They</i> <i data-t="45.87">said</i> <i data-t="46.14">the</i> <i data-t="46.34">weather</i> <i data-t="46.75">becomes</i> <i data-t="47.22">cold</i> <i data-t="47.55">at</i> <i data-t="47.75">the</i> <i data-t="47.96">end</i> <i data-t="48.23">of</i> <i data-t="48.43">this</i> <i data-t="48.7">week.</i> </span><span class="pl-ar">سمعته في الراديو في السيارة. قالوا إن الطقس يصبح بارداً في نهاية هذا الأسبوع.</span></div><div class="pl" data-s="49.8"><b>Maya</b><span class="pl-en" dir="ltr"><i data-t="49.84">Cold</i> <i data-t="50.12">at</i> <i data-t="50.28">the</i> <i data-t="50.45">end</i> <i data-t="50.68">of</i> <i data-t="50.84">the</i> <i data-t="51.01">week?</i> <i data-t="51.65">I'm</i> <i data-t="51.86">so</i> <i data-t="52.06">interested.</i> <i data-t="53.14">Is</i> <i data-t="53.39">it</i> <i data-t="53.64">true?</i> <i data-t="54.4">If</i> <i data-t="54.58">it's</i> <i data-t="54.83">true,</i> <i data-t="55.32">I</i> <i data-t="55.44">need</i> <i data-t="55.69">my</i> <i data-t="55.87">coat.</i> </span><span class="pl-ar">بارد في نهاية الأسبوع؟ هذا يهمّني جداً. هل هذا صحيح؟ إذا كان صحيحاً، فأنا أحتاج معطفي.</span></div><div class="pl" data-s="56.95"><b>Adam</b><span class="pl-en" dir="ltr"><i data-t="56.99">Only</i> <i data-t="57.29">for</i> <i data-t="57.53">a</i> <i data-t="57.65">few</i> <i data-t="57.89">days,</i> <i data-t="58.37">I</i> <i data-t="58.49">think.</i> <i data-t="59.21">Then</i> <i data-t="59.49">it</i> <i data-t="59.69">becomes</i> <i data-t="60.17">warm</i> <i data-t="60.51">again.</i> <i data-t="61.28">So,</i> <i data-t="61.73">Maya,</i> <i data-t="62.25">a</i> <i data-t="62.38">big</i> <i data-t="62.64">question</i> <i data-t="63.16">for</i> <i data-t="63.42">you.</i> <i data-t="64.03">Hot</i> <i data-t="64.3">weather</i> <i data-t="64.72">or</i> <i data-t="64.92">cold</i> <i data-t="65.27">weather.</i> <i data-t="66.1">What</i> <i data-t="66.36">do</i> <i data-t="66.56">you</i> <i data-t="66.76">like?</i> </span><span class="pl-ar">لبضعة أيام فقط، على ما أظن. ثم يصبح دافئاً مرة أخرى. إذن يا مايا، سؤال كبير لك. الطقس الحار أم الطقس البارد؟ ماذا تحبين؟</span></div><div class="pl" data-s="67.85"><b>Maya</b><span class="pl-en" dir="ltr"><i data-t="67.89">Well,</i> <i data-t="68.34">I'm</i> <i data-t="68.51">not</i> <i data-t="68.73">sure.</i> <i data-t="69.38">I</i> <i data-t="69.5">like</i> <i data-t="69.75">the</i> <i data-t="69.93">sun,</i> <i data-t="70.43">but</i> <i data-t="70.68">I</i> <i data-t="70.8">don't</i> <i data-t="71.11">like</i> <i data-t="71.36">very</i> <i data-t="71.67">hot</i> <i data-t="71.91">days.</i> </span><span class="pl-ar">حسناً، لست متأكدة. أحب الشمس، لكني لا أحب الأيام الحارة جداً.</span></div><div class="pl" data-s="72.99"><b>Adam</b><span class="pl-en" dir="ltr"><i data-t="73.03">You're</i> <i data-t="73.33">not</i> <i data-t="73.63">sure?</i> <i data-t="74.36">I'm</i> <i data-t="74.6">very</i> <i data-t="75.02">sure.</i> <i data-t="75.77">I</i> <i data-t="75.91">like</i> <i data-t="76.2">cold</i> <i data-t="76.56">weather.</i> <i data-t="77.41">I</i> <i data-t="77.56">love</i> <i data-t="77.86">winter!</i> </span><span class="pl-ar">لستِ متأكدة؟ أنا متأكد جداً. أحب الطقس البارد. أحب الشتاء!</span></div><div class="pl" data-s="79.23"><b>Maya</b><span class="pl-en" dir="ltr"><i data-t="79.27">Really?</i> <i data-t="80.25">Why</i> <i data-t="80.42">do</i> <i data-t="80.6">you</i> <i data-t="80.77">love</i> <i data-t="81.01">winter</i> <i data-t="81.41">so</i> <i data-t="81.59">much?</i> </span><span class="pl-ar">حقاً؟ لماذا تحب الشتاء كثيراً؟</span></div><div class="pl" data-s="82.65"><b>Adam</b><span class="pl-en" dir="ltr"><i data-t="82.69">In</i> <i data-t="82.87">winter,</i> <i data-t="83.52">the</i> <i data-t="83.69">air</i> <i data-t="83.87">is</i> <i data-t="84.05">cold</i> <i data-t="84.34">and</i> <i data-t="84.58">clean.</i> <i data-t="85.29">I</i> <i data-t="85.43">wear</i> <i data-t="85.71">my</i> <i data-t="85.92">big</i> <i data-t="86.2">coat,</i> <i data-t="86.76">and</i> <i data-t="87.04">I</i> <i data-t="87.17">drink</i> <i data-t="87.59">hot</i> <i data-t="87.87">tea</i> <i data-t="88.08">outside</i> <i data-t="88.5">in</i> <i data-t="88.71">the</i> <i data-t="88.92">garden.</i> <i data-t="89.83">It's</i> <i data-t="90.16">so</i> <i data-t="90.42">nice!</i> </span><span class="pl-ar">في الشتاء يكون الهواء بارداً ونظيفاً. ألبس معطفي الكبير، وأشرب الشاي الساخن في الخارج في الحديقة. هذا جميل جداً!</span></div><div class="pl" data-s="91.58"><b>Maya</b><span class="pl-en" dir="ltr"><i data-t="91.62">Hot</i> <i data-t="91.89">tea</i> <i data-t="92.1">outside</i> <i data-t="92.5">in</i> <i data-t="92.7">the</i> <i data-t="92.91">cold?</i> <i data-t="93.66">That</i> <i data-t="93.9">sounds</i> <i data-t="94.24">nice,</i> <i data-t="94.71">but</i> <i data-t="94.94">I</i> <i data-t="95.05">want</i> <i data-t="95.34">to</i> <i data-t="95.51">be</i> <i data-t="95.69">in</i> <i data-t="95.86">the</i> <i data-t="96.04">house,</i> <i data-t="96.5">near</i> <i data-t="96.73">a</i> <i data-t="96.84">warm</i> <i data-t="97.13">window.</i> </span><span class="pl-ar">شاي ساخن في الخارج في البرد؟ يبدو جميلاً، لكني أريد أن أكون في البيت، قرب نافذة دافئة.</span></div><div class="pl" data-s="98.31"><b>Adam</b><span class="pl-en" dir="ltr"><i data-t="98.35">Here,</i> <i data-t="98.93">our</i> <i data-t="99.22">winter</i> <i data-t="99.73">is</i> <i data-t="99.95">not</i> <i data-t="100.24">very</i> <i data-t="100.6">cold.</i> <i data-t="101.38">We</i> <i data-t="101.6">have</i> <i data-t="101.89">only</i> <i data-t="102.25">a</i> <i data-t="102.4">few</i> <i data-t="102.69">cold</i> <i data-t="103.05">days.</i> <i data-t="103.76">A</i> <i data-t="103.9">few</i> <i data-t="104.18">days</i> <i data-t="104.47">in</i> <i data-t="104.68">January,</i> <i data-t="105.66">and</i> <i data-t="105.94">a</i> <i data-t="106.09">few</i> <i data-t="106.37">days</i> <i data-t="106.65">in</i> <i data-t="106.86">February.</i> </span><span class="pl-ar">هنا، شتاؤنا ليس بارداً جداً. عندنا بضعة أيام باردة فقط. بضعة أيام في يناير، وبضعة أيام في فبراير.</span></div><div class="pl" data-s="108.39"><b>Maya</b><span class="pl-en" dir="ltr"><i data-t="108.43">Only</i> <i data-t="108.85">a</i> <i data-t="109.02">few?</i> <i data-t="109.77">I</i> <i data-t="109.9">want</i> <i data-t="110.21">more</i> <i data-t="110.46">cold</i> <i data-t="110.77">days</i> <i data-t="111.02">too,</i> <i data-t="111.46">if</i> <i data-t="111.65">that's</i> <i data-t="111.96">possible.</i> <i data-t="112.88">But</i> <i data-t="113.12">in</i> <i data-t="113.3">summer,</i> <i data-t="113.9">it's</i> <i data-t="114.14">very</i> <i data-t="114.43">hot</i> <i data-t="114.67">here.</i> </span><span class="pl-ar">بضعة أيام فقط؟ أنا أيضاً أريد أياماً باردة أكثر، إذا كان ذلك ممكناً. لكن في الصيف يكون الجو حاراً جداً هنا.</span></div><div class="pl" data-s="115.74"><b>Adam</b><span class="pl-en" dir="ltr"><i data-t="115.78">Yes!</i> <i data-t="116.75">When</i> <i data-t="117.03">I'm</i> <i data-t="117.24">outside</i> <i data-t="117.65">in</i> <i data-t="117.86">summer,</i> <i data-t="118.55">I'm</i> <i data-t="118.76">always</i> <i data-t="119.18">thirsty.</i> <i data-t="120.08">After</i> <i data-t="120.45">ten</i> <i data-t="120.7">minutes,</i> <i data-t="121.37">I'm</i> <i data-t="121.56">thirsty</i> <i data-t="121.99">again!</i> </span><span class="pl-ar">نعم! عندما أكون في الخارج في الصيف، أكون عطشاناً دائماً. بعد عشر دقائق، أعطش مرة أخرى!</span></div></div>
+            <button type="button" class="pd-quizbtn" id="pdQuizBtn">📝 اختبار الحلقة · 5 أسئلة</button>
+            <div class="pd-quiz" id="pdQuiz" hidden></div>
             <div class="pd-core"><span>كلمات الحلقة:</span><em dir="ltr">hear</em><em dir="ltr">discuss</em><em dir="ltr">weather</em><em dir="ltr">main</em><em dir="ltr">cold</em><em dir="ltr">so</em><em dir="ltr">end</em><em dir="ltr">station</em></div>
             <div class="pd-bar">
               <div class="pd-prog"><i id="pdProg"></i></div>
@@ -2051,9 +2058,17 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
             <div class="ai-d" id="aiChat"></div>
             <div class="ai-pick" id="aiPick"></div>
           </div>
+          <!-- practice -->
+          <div class="pane" data-pane="prac">
+            <div class="prac">
+              <div class="pr-tabs" id="pracTabs"><button type="button" data-p="speak" class="on">🎙️ التحدث</button><button type="button" data-p="write">✍️ الكتابة</button><button type="button" data-p="dict">🎯 الإملاء</button></div>
+              <div class="pr-body" id="pracBody"></div>
+            </div>
+          </div>
           <!-- levels -->
           <div class="pane" data-pane="levels">
             <div class="lv-list" id="lvList"></div>
+            <div class="sec-scr" id="secScr" hidden></div>
             <a class="lv-cta" href="#price">🔓 افتح كل المستويات</a>
           </div>
 
@@ -2076,11 +2091,12 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
             <button class="tb on" data-go="words"><span>📖</span>الكلمات</button>
             <button class="tb" data-go="story"><span>📚</span>القصص</button>
             <button class="tb" data-go="pod"><span>🎧</span>البودكاست</button>
+            <button class="tb" data-go="prac"><span>🎙️</span>تدريب</button>
             <button class="tb" data-go="levels"><span>🪜</span>المستويات</button>
           </nav>
         </div>
       </div>
-      <div class="demo-try">جرّب بهذا الهاتف وغيّر بين الأقسام</div>
+      <div class="demo-try">جرّب بهذا الهاتف وغيّر بين الأقسام — كل اللي تشوفه موجود فعلاً في التطبيق</div>
       <div class="demo-hint" id="demoHint">👆 كل كلمة بنطقها الصوتي ومعناها وتعريفها وخمسة أمثلة</div>
       <a class="demo-free" href="https://kalima-free.vercel.app/">اضغط هنا لرؤية التدريب المجاني ←</a>
     </div>
@@ -2470,8 +2486,8 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   }
 
   /* ── tabs ── */
-  var titles = {words:'مكتبة الكلمات', story:'القصص', pod:'البودكاست', ai:'كلمة AI', levels:'المستويات'};
-  var hints  = {words:'👆 كل كلمة بنطقها الصوتي ومعناها وتعريفها وخمسة أمثلة', story:'👆 المس أي كلمة في القصة لترى معناها', pod:'▶ شغّل الحلقة، وجرّب الترجمة والسرعة وأصوات الخلفية — 👆 المس أي كلمة في الحلقة لترى معناها', ai:'👇 اختر جملة وشوف كيف يصححها كلمة AI', levels:'🔓 التجربة الواقعية لمستوى A1 فقط — باقي المستويات قريباً'};
+  var titles = {words:'مكتبة الكلمات', story:'مكتبة القراءة', pod:'الاستماع', ai:'كلمة AI', prac:'التدريب', levels:'المستويات'};
+  var hints  = {words:'👆 كل كلمة بنطقها الصوتي ومعناها وتعريفها وخمسة أمثلة', story:'👆 المس أي كلمة لترى معناها، واضغط «اسمع القصة» يقرأها لك جملة جملة', prac:'👆 اسمع السؤال وجاوب بصوتك، أو اكتب عن موضوع، أو جرّب الإملاء', pod:'▶ شغّل الحلقة وجرّب الترجمة والسرعة، وبعدها اختبار الحلقة', ai:'👇 اختر جملة وشوف كيف يصححها كلمة AI', levels:'👆 اضغط A1 وشوف كل أقسام المستوى'};
   var levelsDrawn = false;
   function go(name){
     $$('.pane').forEach(function(p){p.classList.toggle('on', p.getAttribute('data-pane')===name)});
@@ -2483,6 +2499,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
     if(name==='story') nudgeWords();
     if(name!=='pod' && window.__pdPause) window.__pdPause();
     if(name==='ai' && window.__aiStart) window.__aiStart();
+    if(window.__demoGo) window.__demoGo(name);
   }
   $$('[data-go]').forEach(function(b){ b.addEventListener('click', function(){ go(b.getAttribute('data-go')) }) });
 
@@ -2582,7 +2599,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
     dim.hidden=false; sheet.classList.add('on'); sheet.setAttribute('aria-hidden','false');
     say(c.w, null, c.pos);
   }
-  window.__kSheet={ key:function(w){ var lw=String(w).toLowerCase().replace('’',"'"); var k=AMAP[lw]||(lw.indexOf("'")>-1?(/n't$/.test(lw)?null:AMAP[lw.split("'")[0]]):null); return (k&&DICT[k])?k:null; }, open:function(k){ openSheet(k,null); } };
+  window.__kSheet={ wrap:wrap, key:function(w){ var lw=String(w).toLowerCase().replace('’',"'"); var k=AMAP[lw]||(lw.indexOf("'")>-1?(/n't$/.test(lw)?null:AMAP[lw.split("'")[0]]):null); return (k&&DICT[k])?k:null; }, open:function(k){ openSheet(k,null); } };
   function closeSheet(){ sheet.classList.remove('on'); sheet.setAttribute('aria-hidden','true'); dim.hidden=true; $$('.tw.on').forEach(function(x){x.classList.remove('on')}); }
   body.addEventListener('click', function(e){ var t=e.target.closest('.tw'); if(t) openSheet(t.getAttribute('data-w'), t); });
   body.addEventListener('keydown', function(e){ var t=e.target.closest('.tw'); if(t && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); openSheet(t.getAttribute('data-w'), t);} });
@@ -2597,7 +2614,7 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
   sheet.addEventListener('pointerup', function(e){ if(sy0!==null&&e.clientY-sy0>40) closeSheet(); sy0=null; });
   function nudgeWords(){}
 
-  function stopReading(){}
+  function stopReading(){ if(window.__narStop) window.__narStop(); }
 
   /* ── levels ── */
   var LV=[['A1','مبتدئ','#4A6B52',897,30,38],['A2','أساسي','#5E8466',817,27,0],['B1','متوسط','#C79A3C',807,27,0],
@@ -2611,6 +2628,307 @@ var AMAP={"flour":"flour","communicated":"communicate","feet":"foot","sales":"sa
     }).join('');
     setTimeout(function(){ $$('.lv-p i').forEach(function(i){ i.style.width=i.getAttribute('data-w')+'%' }) }, 60);
   }
+})();
+</script>
+<style id="kalima-demo2-css">
+/* ── demo additions ── */
+.hw{border-radius:4px;transition:background .1s}.hw.on{background:#F0C64A;color:#23332F}
+.sentence{cursor:pointer}.sentence.reading{background:rgba(199,154,60,.22);box-shadow:0 0 0 3px rgba(199,154,60,.22);border-radius:4px}
+.nar-bar{display:flex;align-items:center;gap:8px;padding:8px 12px;border-top:1px solid var(--line-soft);background:var(--card)}
+.nar-btn{flex:1;font:700 12.5px var(--ar);border:1.5px solid var(--line);background:#FBF3E2;color:var(--gold-d);border-radius:12px;padding:9px;cursor:pointer}
+.nar-btn.on{background:#22313A;color:#fff;border-color:#22313A}
+.nar-note{font:600 10px var(--ar);color:var(--soft);white-space:nowrap}
+.pg-quiz{margin:14px 0 6px;background:var(--card);border:1.5px solid var(--line-soft);border-radius:16px;padding:12px;direction:rtl;text-align:right}
+.pg-lbl{font:600 10.5px var(--ar);color:#8B7D5A;margin-bottom:4px}
+.pg-q{font:700 15px var(--ar);color:var(--ink);margin-bottom:8px}
+.pg-opts{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.pg-opts button{font:600 13px var(--en);border:1.5px solid var(--line-soft);background:#fff;color:var(--ink);border-radius:12px;padding:9px 6px;cursor:pointer;text-align:center}
+.pg-opts button.ok{background:#E3F1E6;border-color:#4A6B52;color:#2F4A38}.pg-opts button.bad{background:#F9E3E0;border-color:#C9655B;color:#8A3A32}
+.pg-done{text-align:center;padding:6px 0}.pg-ic{font-size:30px}.pg-done b{display:block;font:700 15px var(--ar);margin:4px 0 2px}.pg-done p{font:600 11.5px var(--ar);color:var(--soft);margin:0 0 8px}
+.pg-next{font:700 12.5px var(--ar);border:0;background:#22313A;color:#fff;border-radius:12px;padding:9px 14px;cursor:pointer}
+.qz-lock.lk2{z-index:12}
+.sec-scr{position:absolute;inset:0;z-index:7;background:#FAF6EC;display:flex;flex-direction:column;padding:6px 12px 10px;direction:rtl}
+.sec-top{display:flex;align-items:center;gap:10px;flex-direction:row-reverse;justify-content:flex-start;padding:2px 0 8px}
+.sec-top b{display:block;font:700 14px var(--ar)}.sec-top small{font:600 10.5px var(--ar);color:var(--soft)}
+.sec-list{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:7px;padding-bottom:6px}
+.sec{display:flex;align-items:center;gap:10px;text-align:right;background:var(--card);border:1.5px solid var(--line-soft);border-radius:14px;padding:9px 11px;cursor:pointer;font-family:var(--ar);color:var(--ink);opacity:0;transform:translateY(8px);animation:lvIn .4s forwards}
+.sec-ic{width:38px;height:38px;border-radius:12px;background:#F2E4C6;display:grid;place-items:center;font-size:18px;flex-shrink:0}
+.sec b{display:block;font-size:12.5px}.sec small{display:block;font-size:10px;color:var(--soft);line-height:1.5}
+.prac{flex:1;min-height:0;display:flex;flex-direction:column;direction:rtl}
+.pr-tabs{display:flex;gap:6px;padding:4px 12px 8px}
+.pr-tabs button{flex:1;font:700 11px var(--ar);border:1.5px solid var(--line-soft);background:var(--card);color:var(--soft);border-radius:99px;padding:6px 4px;cursor:pointer}
+.pr-tabs button.on{background:#22313A;color:#fff;border-color:#22313A}
+.pr-body{flex:1;min-height:0;overflow-y:auto;padding:2px 12px 12px;display:flex;flex-direction:column;gap:7px;text-align:right}
+.pr-note{font:600 10.5px var(--ar);color:#5D7186;background:#F2F3F2;border:1px solid #DCE2E4;border-radius:10px;padding:7px 10px;line-height:1.8}
+.pr-row{display:flex;align-items:center;gap:10px;text-align:right;background:var(--card);border:1.5px solid var(--line-soft);border-radius:14px;padding:9px 11px;cursor:pointer;font-family:var(--ar);color:var(--ink)}
+.pr-row b{display:block;font-size:12.5px}.pr-row small{display:block;font-size:10px;color:var(--soft)}
+.pr-n{width:34px;height:34px;border-radius:11px;background:#F2E4C6;display:grid;place-items:center;font:700 13px var(--ar);flex-shrink:0}
+.pr-lock{opacity:.75}
+.pr-back{align-self:flex-start;font:700 11px var(--ar);border:0;background:none;color:var(--gold-d);cursor:pointer;padding:2px 0}
+.pr-title{font:700 14px var(--ar);color:var(--ink)}
+.sq{display:flex;gap:8px;align-items:flex-start;background:var(--card);border:1.5px solid var(--line-soft);border-radius:14px;padding:9px 10px}
+.sq.on{border-color:var(--gold)}
+.sq span{display:block;font:600 12.5px var(--en);color:var(--ink);text-align:left}.sq small{display:block;font:600 10.5px var(--ar);color:var(--soft);margin-top:2px}
+.sq-k{font:600 9.5px var(--ar);color:#8B7D5A;margin-top:5px;display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.sq-k em,.wr-k em{font:600 10px var(--en);font-style:normal;background:#F6E6BE;border-radius:5px;padding:1px 5px;color:#24333B}
+.wr-b{font:600 11.5px var(--ar);color:var(--ink);line-height:1.8;background:var(--card);border:1.5px solid var(--line-soft);border-radius:12px;padding:8px 10px}
+.wr-b small{display:block;font:500 10.5px var(--en);color:var(--soft);text-align:left;margin-top:3px}
+.wr-k{display:flex;flex-wrap:wrap;gap:4px;align-items:center;font:600 10px var(--ar);color:#8B7D5A}
+.wr-k em{transition:background .2s,color .2s}.wr-k em.on{background:#4A6B52;color:#fff}
+.wr-ta{width:100%;box-sizing:border-box;font:500 13px var(--en);border:1.5px solid var(--line);border-radius:12px;padding:9px;background:#fff;resize:none;color:var(--ink)}
+.wr-ct{font:600 10.5px var(--ar);color:var(--soft)}
+.dc{display:flex;flex-direction:column;gap:8px;background:var(--card);border:1.5px solid var(--line-soft);border-radius:14px;padding:10px}
+.dc-play{font:700 12.5px var(--ar);border:1.5px solid var(--line);background:#FBF3E2;color:var(--gold-d);border-radius:12px;padding:9px;cursor:pointer}
+.dc-in{font:500 13px var(--en);border:1.5px solid var(--line);border-radius:12px;padding:9px;background:#fff;color:var(--ink);width:100%;box-sizing:border-box}
+.dc-chk{font:700 12.5px var(--ar);border:0;background:#22313A;color:#fff;border-radius:12px;padding:9px;cursor:pointer}
+.dc-res{font:600 11.5px var(--ar);line-height:1.8}.dc-res b{display:block}.dc-res b.ok{color:#2F4A38}.dc-res b.bad{color:#8A3A32}
+.dc-res span{display:block;font:600 12.5px var(--en);text-align:left}.dc-res i{font-style:normal;border-radius:4px;padding:0 2px}.dc-res i.ok{color:#2F4A38}.dc-res i.bad{background:#F9E3E0;color:#8A3A32}
+.dc-res small{display:block;color:var(--soft)}.dc-next{margin-top:6px;font:700 11.5px var(--ar);border:0;background:#F2E4C6;color:var(--ink);border-radius:10px;padding:7px 10px;cursor:pointer}
+.pd-quizbtn{margin:0 12px 6px;font:700 11.5px var(--ar);border:1.5px solid var(--line);background:#FBF3E2;color:var(--gold-d);border-radius:12px;padding:7px;cursor:pointer}
+.pd-quiz{position:absolute;inset:0;z-index:7;background:#FAF6EC;display:flex;flex-direction:column;padding:6px 12px 10px;direction:rtl;overflow-y:auto}
+.pq-top{display:flex;align-items:center;gap:10px;flex-direction:row-reverse;justify-content:flex-start;padding:2px 0 8px}
+.pq-top b{display:block;font:700 14px var(--ar)}.pq-top small{font:600 10.5px var(--ar);color:var(--soft)}
+.pq-q{background:var(--card);border:1.5px solid var(--line-soft);border-radius:14px;padding:10px;margin-bottom:8px}
+.pq-q span{display:block;font:600 13px var(--en);text-align:left;color:var(--ink)}.pq-q small{display:block;font:600 11px var(--ar);color:var(--soft);margin-top:4px;text-align:right}
+.pq-opts{grid-template-columns:1fr}.pq-opts button{text-align:left;font-size:12.5px}
+.pq-quote{display:block;font:600 12px var(--en);color:var(--ink);text-align:left;margin:4px 0}
+.pq-ex{margin-top:8px;font:600 11px var(--ar);color:#5D7186;background:#F2F3F2;border:1px solid #DCE2E4;border-radius:10px;padding:7px 10px;line-height:1.8;text-align:right}
+.tabbar .tb{font-size:10px}
+.pd-quiz[hidden],.sec-scr[hidden],.qz-lock[hidden]{display:none}
+</style>
+<script>window.__DEMO2={"TIM":{"a84c18e905e9acdf":"51,314,474,669,754,840,1000","c0eb77de2d867e26":"111,363,704,1000","64603ad62a365ea6":"118,389,659,777,1000","be2f3657b79d08fd":"141,241,470,610,711,771,1000","3c41c7ec4f27a904":"51,169,294,345,537,689,774,1000","9e4ce029666c4929":"113,416,629,742,1000","7f38257003d68176":"85,352,676,1000","fbad214694a74224":"81,234,282,532,750,1000","abadb0988419a404":"310,399,488,797,1000","c591766e30e944bc":"175,294,564,635,1000","5157b0039e4db7c1":"77,153,359,405,641,748,825,1000","cfbe10fa6930fa00":"80,230,412,690,770,850,1000","2c7a90d0ec8383ae":"41,195,262,443,678,746,846,1000","4600cb98d1436250":"91,378,530,1000","63e66c965d2b3d24":"80,264,479,559,640,752,1000","a9714e020db36b64":"75,186,387,649,724,769,1000","8f06f92b76ac77d7":"83,337,525,607,657,845,1000","835da6d67fca33f4":"126,302,377,613,1000","7ab12525afc55d1d":"49,201,419,701,847,1000","0c83cba4eea38f58":"53,290,491,728,1000","4b3453646582dfe6":"118,203,361,480,672,757,875,1000","ae880b4da1501c89":"100,327,426,773,1000","291230ba8010ff20":"113,371,529,742,1000","46512d835d1585f1":"256,394,562,665,862,1000","80ef691802354902":"584,752,1000","0e91dab3d58f14bf":"71,190,460,825,1000","9ce0219727de6275":"79,158,402,741,820,1000","c88f5488fd909c54":"144,345,787,1000","eeba7541b67c57eb":"72,322,422,644,836,1000","4090ac179feb6559":"68,196,264,473,709,777,872,1000","d5b664c3de1ec645":"98,320,457,594,738,1000","c938441cd8f10bca":"83,343,481,796,1000","b05d9c207b9e4b98":"86,282,368,632,718,838,1000","b1e34593c5f49bdd":"50,307,497,653,843,1000","db8a70ebd73facd1":"139,327,474,574,673,773,1000","89dea959df378b51":"187,374,423,577,797,879,1000","36bfbfd258fe5708":"62,299,618,722,1000","07fb050698254ef0":"235,400,635,870,1000","9a0a23d64ebbf710":"104,149,253,298,467,542,741,1000","4c5afc9525296443":"76,280,357,433,576,652,826,1000","f6061c608dee975e":"62,227,264,430,491,657,822,884,1000","977be7064b7ee9d8":"247,450,602,710,1000","4206db7e05a182e8":"54,223,500,626,795,1000","c4468ec232eeaf68":"124,458,532,766,1000","919f07b849ce8256":"67,245,424,517,643,821,1000","d48e8b85871a91c7":"176,423,669,1000","4da5ff85d45e4e15":"100,327,426,526,713,813,1000","bf367a09fe16395f":"89,426,633,722,1000","22289c86b3124bc8":"41,168,264,386,541,723,818,1000","578ceee47aff8e4c":"89,221,425,629,868,1000","0c8abddfb3575b0f":"105,180,291,396,568,643,748,859,1000","9f92325a9d068dc6":"75,308,592,766,1000","8a7142a7840870f3":"70,257,327,514,673,743,813,1000","ba8751b99760f2f5":"166,284,460,730,1000","bcce16286a9cf88c":"64,211,276,314,436,500,647,711,776,840,905,1000","1cd8e026b6c56adc":"306,613,747,1000","4654512735803c3b":"387,513,638,764,1000","7eb85b76f791d0cc":"127,217,424,514,685,1000","c11ec40eb6096b22":"104,299,402,506,701,805,1000","3fd0fcd394a83503":"106,305,453,695,801,1000","1b855a3840db10b4":"36,175,362,422,459,573,687,825,886,1000","82729196776b5fc8":"242,347,631,1000","0db5fea558d3ae5f":"72,264,336,408,629,701,865,1000","475a397384096d7b":"98,169,329,399,587,770,840,1000","0822463ccd38c2aa":"89,256,345,584,673,762,1000","8dc003fe85de3b4a":"76,280,393,470,704,1000","f34791aaa08f677e":"145,235,406,551,696,760,855,1000","56441a91e171b78d":"71,341,507,730,1000","a483585d8e0b242d":"64,178,267,412,476,539,684,855,1000","d2571bbaf1ec08ee":"184,308,483,716,1000","dcbddad499fbde92":"80,294,412,524,706,786,1000","6c36310507392815":"266,383,547,1000","b56050768c12f4fe":"43,209,374,446,583,655,728,864,1000","b23aade8ab72af88":"94,314,547,642,1000","a15701dcc9a5f388":"139,239,466,733,1000","5a5230b75a6d1475":"148,426,574,663,1000","382580f2017e5376":"79,259,339,418,630,772,851,1000","358b4752cfd361c0":"196,335,598,682,1000","245d2cf3a7cecbb1":"38,207,350,413,531,594,763,882,1000","adb55c87b622164b":"152,439,591,1000","2aec8299e9a05df1":"196,279,542,737,1000","f94b5d15fd3ee7ab":"69,333,449,667,782,1000","e5b26d2d4a0e39d9":"117,234,547,664,780,1000","49f966b7713538ef":"217,395,490,745,1000","5c23f274c8deb1f4":"36,173,285,470,583,743,1000","3ff6a4ba18b653ba":"77,206,335,629,758,1000","d4f5bdbb3a4082d7":"124,358,483,716,1000","7cd94c7828fbf228":"185,317,450,698,1000","d8e471c8f280c4a2":"112,223,522,679,790,1000","da12c1764ca494a2":"59,281,379,562,699,1000","cef939c8ea5fb9aa":"62,255,372,540,627,770,832,1000","c79f22e33683cf31":"98,281,543,641,738,1000","32edfd2ff7cfee3d":"124,308,542,667,1000","af50ab57cebbbc95":"139,239,466,653,753,853,1000","8c58e42405f13d16":"90,367,493,626,831,1000","d41330dfea43d95b":"155,261,458,655,803,1000","3f1f674c88b26ab8":"54,259,464,554,759,1000","8abc6a809d339e18":"148,485,633,781,1000","28ef5652b7ae0b9e":"101,250,351,581,770,1000","70290151796daed5":"156,455,567,723,835,1000","7c9a5a9957f33bd5":"141,236,414,593,764,859,1000","c36bcc3e0c45f066":"86,385,471,701,787,873,1000","22822aac3662c83e":"44,183,257,544,743,1000","43c361f0f5f03d7a":"136,554,690,1000","95222044e47c00f4":"118,389,507,730,1000","db28285b1e30153d":"108,252,397,474,680,855,1000","2b23d886d9d5bb20":"65,268,333,537,645,753,1000","ac931b82a115ff74":"84,378,463,689,774,1000","eadb209ab02206f6":"38,233,322,441,504,567,711,830,1000","a1cbc282b3a56e2a":"104,423,660,763,1000","212d5c10f5c10c12":"132,317,513,593,1000","59464c87cf6b1357":"68,279,347,388,598,667,735,1000","819a6c78469288e2":"113,462,575,833,1000","22ccdca7f06aadcf":"142,333,435,585,687,1000","6492e147e332642f":"68,281,538,697,1000","f7b7e5a16d8dd4af":"107,214,500,607,714,1000","4950047589ebb06d":"132,383,477,654,786,1000","813a5fb526191ed9":"112,366,478,589,701,1000","4b2fdc0f4a52c3c9":"121,210,249,421,485,656,828,1000","4121b911afec9213":"89,214,381,584,673,762,1000","9c17cd36f20f25a6":"56,207,335,413,587,804,861,894,1000","be638fadf8017e67":"91,261,540,630,721,1000","5a93bd70d303edb6":"76,338,414,616,692,767,1000","da36a2947d17e858":"132,308,440,496,711,1000","fad579e50cbde157":"64,237,410,474,539,737,802,1000","dcf976bc3c13b8cc":"83,199,355,545,628,744,1000","bd0e979b7d566e29":"60,331,520,710,810,1000","852bf04a244e3c0e":"123,402,525,647,770,1000","efc208fb56882fef":"92,303,395,487,734,827,1000","59295490b159b9d2":"162,247,333,529,753,838,1000","120aef8790c69ca1":"70,203,245,349,510,608,679,868,1000","6ab2374b743bdfd3":"113,371,584,742,1000","8abd20e903fe9d2b":"275,374,507,725,796,929,1000","f9e2b2210661affd":"270,493,611,777,1000","1ac56f9bc29e5097":"105,180,351,523,724,799,1000","8c22793daead9ab9":"190,446,582,1000","4674651b94a9b57d":"107,183,357,591,735,1000","9e9bc3591546f9e9":"73,416,490,686,760,862,1000","7319dc56eb22aaf8":"48,230,342,422,540,620,770,850,1000","cc47dea6d001377a":"106,347,453,517,716,1000","f845d2777b2655a1":"98,197,461,598,697,1000","a39fa913b3a1fb11":"108,316,424,471,616,854,1000","82228df0890412f6":"55,148,395,524,579,753,1000","bebb350d7720562f":"87,319,483,604,802,1000","2edba81cffbc084a":"50,242,500,725,842,1000","5385cbdbdfb877bd":"84,275,326,517,742,1000","44d4531f33b7d54d":"196,335,598,682,1000","993a37886a6ad314":"87,285,372,604,802,1000","267a5cf3193c9451":"102,374,516,577,768,1000","c0053b7548f6e17b":"89,363,452,762,1000","41fffdded7682284":"138,252,313,451,614,723,886,1000","c7b7111b5ea0a777":"118,294,517,682,1000","866ef8628c6a453e":"77,285,362,570,715,824,1000","f9432da656c6d6b6":"174,291,559,779,1000","71429c9a841d1238":"58,277,419,600,858,1000","792b26f15fbb3aa7":"99,285,344,530,715,814,1000","4a2e6af94878419b":"74,304,438,607,682,1000","8a56ba0db19e04b9":"50,273,497,653,877,1000","426a39e999dd4c7b":"142,244,435,577,809,1000","72a523fbe208a7af":"122,287,374,573,696,1000","e3e2964653b60b2c":"69,138,322,507,636,733,1000","692d8b1195575263":"60,250,399,710,810,1000","d7a5d207e374484d":"106,305,547,653,801,1000","2d0884944960a928":"73,301,626,1000","267e2a6409939566":"80,360,441,656,736,817,1000","6ffa75a43b5193dc":"213,366,652,1000","9d81527d9f8b75dd":"148,426,574,722,1000","7ad5121ad24658f4":"237,432,535,639,1000","0fa0ef6275eb1b06":"75,216,321,523,724,829,1000","a4c71c98526cdccc":"69,333,644,1000","48d8dc1b51827d15":"299,513,1000","fcd91251f4f893d3":"83,372,455,711,794,877,1000","176d3076a5d104f4":"213,471,584,697,1000","3146e6717aa3ea23":"91,297,388,478,649,1000","ec1cf8b7922e94c3":"296,363,527,1000","bd844497f0c9c117":"113,226,484,742,1000","fee0452378a06d3d":"144,529,672,1000","867cc8b968c8f221":"143,240,461,519,740,1000","198a04a23200ea26":"179,258,406,610,789,1000","4db08f0c54a8db64":"75,276,381,492,664,769,1000"},"SPK":[{"t":"عن نفسك","q":[["What is your name?","ما اسمك؟",["name","my"]],["How old are you?","كم عمرك؟",["age","years"]],["Where do you live?","أين تعيش؟",["live","city"]],["Where are you from?","من أين أنت؟",["from","country"]],["Do you have brothers or sisters?","هل لديك إخوة أو أخوات؟",["brother","sister"]]]},{"t":"يومك","q":[["What time do you get up?","متى تستيقظ؟",["get up","time"]],["What do you eat for breakfast?","ماذا تأكل في الفطور؟",["breakfast","eat"]],["How do you go to work or school?","كيف تذهب للعمل أو المدرسة؟",["bus","walk"]],["What time do you start work?","متى تبدأ العمل؟",["start","hour"]],["Where do you eat lunch?","أين تتغدّى؟",["lunch","home"]]]},{"t":"بيتك ومكانك","q":[["Is your house big or small?","هل بيتك كبير أم صغير؟",["big","small"]],["How many rooms are in your house?","كم غرفة في بيتك؟",["room","many"]],["Do you have a garden?","هل عندكم حديقة؟",["garden","tree"]],["What is in your bedroom?","ماذا في غرفة نومك؟",["bed","table"]],["Which room do you like best?","أي غرفة تحب أكثر؟",["room","like"]]]}],"WR":[{"i":"👋","ar":"عرّف بنفسك","en":"Introduce yourself","arB":"اكتب عن نفسك: اسمك، عمرك، أين تعيش، وماذا تحب.","b":"Write about yourself: your name, your age, where you live, and what you like.","w":["name","age","live","like"]},{"i":"🏠","ar":"بيتي","en":"My home","arB":"صِف بيتك: كم غرفة فيه، وما غرفتك المفضلة.","b":"Describe your home. How many rooms does it have? Which room do you like best?","w":["house","room","kitchen","small"]},{"i":"👪","ar":"عائلتي","en":"My family","arB":"اكتب عن أفراد عائلتك وماذا يعمل كل منهم.","b":"Write about the people in your family. What does each of them do?","w":["mother","father","brother","sister"]}],"PQ":[{"q":"What does Maya look at every morning before she leaves the house?","qAr":"إلى ماذا تنظر مايا كل صباح قبل أن تخرج من البيت؟","options":["The radio","The weather information on her phone","The newspaper","A travel magazine"],"answer":1,"line":20,"explainAr":"قالت مايا: «Every morning, I look at the weather information before I leave the house.»"},{"q":"What does Adam's mother do for the weather?","qAr":"ماذا تفعل أم آدم لتعرف الطقس؟","options":["She calls the weather station","She looks at her phone","She listens to the radio","She looks at the newspaper"],"answer":2,"line":25,"explainAr":"قال آدم: «my mother listens to the weather on the radio»"},{"q":"What is the best month for the mountains in the article?","qAr":"ما أفضل شهر للجبال في المقالة؟","options":["April","June","January","August"],"answer":0,"line":38,"explainAr":"قالت مايا: «The article says the best month for the mountains is April.»"},{"q":"How often do the machines at the weather station check the weather?","qAr":"كم مرة تفحص آلات محطة الطقس الطقس؟","options":["Every week","Every month","Every hour","Every day"],"answer":2,"line":46,"explainAr":"قالت مايا: «Their machines check the weather every hour»"},{"q":"Where does Adam go on very hot days?","qAr":"إلى أين يذهب آدم في الأيام الحارة جداً؟","options":["To his grandparents' house","To the train station","To the mountains","To the library near his house"],"answer":3,"line":71,"explainAr":"قال آدم: «To the library near my house.»"}],"DIC":[["I drink milk every morning.","أشرب الحليب كل صباح."],["She drives a red car.","تقود سيارة حمراء."],["Drink more water every day.","اشرب المزيد من الماء كل يوم."]],"NAR":[[["Sam is nine years old. ","e6797a47776dc2d9"],["He lives in a big city with his family. ","dd6c948a70670cc8"],["His little sister, Lily, is six. ","cd3516f34fcd2597"],["Every summer, the family goes on a big trip together.","bc63a6c910e57f3b"]],[["This year, they go to a small island in the sea. ","cb52940786824bf7"],["Sam is very happy. ","676e0f4807e882e6"],["It is his first trip on a plane. ","eb0bef6f1aec004d"],["\"Can a plane really fly over the sea?\" he asks. ","26de4bd8cb507ff4"],["\"Yes, it can,\" says his father.","fa133e3363764a93"]],[["The night before the trip, Sam packs his bag. ","a08e6066a72ddc5e"],["He puts in his clothes, his favorite book and his new camera. ","4b3d6a94e3c84064"],["His bag is blue and not very big.","1de8ccf1ea6e97f3"]],[["Then Lily comes into his room with her toy rabbit, Bunny. ","9a030981c66bf859"],["\"My bag is full,\" she says. ","eb28928a18019598"],["\"Can Bunny go in your bag?\" ","ecb1ad54ae70d7e2"],["Sam takes out one T-shirt, and Bunny goes in. ","84178bb3f9f9facb"],["Lily claps her hands.","55ad659792963f39"]]]};window.__PGQ=[{"w":"trip","ar":"رحلة قصيرة","o":["plane","airport","ticket","trip"]},{"w":"airport","ar":"مطار","o":["passport","trip","airport","plane"]},{"w":"ticket","ar":"تذكرة","o":["passport","trip","ticket","plane"]}];</script>
+<script id="kalima-demo2">
+/* Demo additions — the newer parts of the Kalima app, shown in the same phone:
+   book narrator (sentence by sentence, main-site recordings), word-by-word highlight while a
+   definition/example is read, the end-of-page quiz, the level's sections screen, speaking
+   questions, the writing workshop, dictation, and the podcast episode quiz. */
+(function(){
+  var root=document.getElementById('try'); if(!root) return;
+  var X=window.__DEMO2||{}; var TIM=X.TIM||{}, NAR=X.NAR||[], SPK=X.SPK||[], WR=X.WR||[], PQ=X.PQ||[], DIC=X.DIC||[];
+  var MB='https://kalima-app-iota.vercel.app';
+  var $=function(s){return root.querySelector(s)}, $$=function(s){return [].slice.call(root.querySelectorAll(s))};
+  function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function hsh(k){var a=0x811c9dc5>>>0,b=5381>>>0;for(var i=0;i<k.length;i++){var c=k.charCodeAt(i);a=Math.imul(a^c,0x01000193)>>>0;b=((Math.imul(b,33)>>>0)^c)>>>0;}return('0000000'+a.toString(16)).slice(-8)+('0000000'+b.toString(16)).slice(-8)}
+  function key(t){return String(t||'').replace(/[‘’]/g,"'").replace(/\s+/g,' ').trim().toLowerCase()}
+  var wrap=(window.__kSheet&&window.__kSheet.wrap)||function(t){return esc(t)};
+  var say=function(t,onEnd,pos){ if(window.KalimaMichael) window.KalimaMichael.say(t,pos,onEnd); else if(onEnd) onEnd(); };
+  var cur=function(){ var p=$('.pane.on'); return p?p.getAttribute('data-pane'):''; };
+
+  /* ───────── word-by-word highlight while a sentence is read (same as the app) ───────── */
+  var hl={el:null,raf:0,spans:[]};
+  function tokens(el){
+    if(el.getAttribute('data-hw')) return [].slice.call(el.querySelectorAll('.hw'));
+    var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null), n, list=[];
+    while((n=w.nextNode())) list.push(n);
+    list.forEach(function(tn){
+      var parts=tn.nodeValue.split(/(\s+)/), frag=document.createDocumentFragment();
+      parts.forEach(function(p){ if(!p) return; if(/^\s+$/.test(p)) frag.appendChild(document.createTextNode(p)); else { var s=document.createElement('span'); s.className='hw'; s.textContent=p; frag.appendChild(s); } });
+      tn.parentNode.replaceChild(frag,tn);
+    });
+    el.setAttribute('data-hw','1');
+    return [].slice.call(el.querySelectorAll('.hw'));
+  }
+  function hlStop(){ cancelAnimationFrame(hl.raf); hl.spans.forEach(function(s){s.classList.remove('on')}); hl.spans=[]; hl.el=null; }
+  function hlStart(el,text){
+    hlStop(); if(!el) return;
+    var t=TIM[hsh(key(text))]; if(!t) return;
+    var ends=t.split(',').map(function(x){return +x/1000}), spans=tokens(el); if(spans.length!==ends.length) return;
+    hl.el=el; hl.spans=spans;
+    var a=window.KalimaMichael&&window.KalimaMichael.audio?window.KalimaMichael.audio():null; if(!a) return;
+    function tick(){
+      if(hl.el!==el) return;
+      var d=a.duration, p=d&&isFinite(d)?a.currentTime/d:0, i=-1;
+      for(var k=0;k<ends.length;k++){ if(p>=(k?ends[k-1]:0)-0.02 && p<ends[k]) i=k; }
+      if(p>=ends[ends.length-1]-0.01&&a.ended) i=-1;
+      spans.forEach(function(s,k){ s.classList.toggle('on',k===i); });
+      if(!a.ended) hl.raf=requestAnimationFrame(tick); else hlStop();
+    }
+    hl.raf=requestAnimationFrame(tick);
+  }
+  /* the card's own buttons already call say(); here we only add the highlight on top */
+  root.addEventListener('click',function(e){
+    var b=e.target.closest('#shSayDef,#shSayEx,.sh-mini[data-x],.bk-say'); if(!b) return;
+    var box=null,text='';
+    if(b.id==='shSayDef'){ box=$('#shDef'); } else if(b.id==='shSayEx'){ box=$('#shEx'); }
+    else if(b.classList.contains('sh-mini')){ box=b.parentNode.querySelector('span'); }
+    else if(b.classList.contains('bk-say')){ var back=b.closest('.back'); box=b.getAttribute('data-say')==='def'?back.querySelector('.b-def'):back.querySelector('.b-ex span'); }
+    if(!box) return; text=box.textContent; setTimeout(function(){ hlStart(box,text); },30);
+  },true);
+
+  /* ───────── book narrator (reads the page sentence by sentence from the site's recordings) ───────── */
+  var body=$('#stBody'), nar={on:false,i:-1,a:null,spans:[]};
+  if(body&&NAR.length){
+    body.innerHTML=NAR.map(function(par){ return '<p>'+par.map(function(c){ return '<span class="sentence" data-h="'+c[1]+'">'+wrap(c[0])+'</span>'; }).join('')+'</p>'; }).join('');
+    nar.spans=$$('#stBody .sentence');
+  }
+  var narBtn=$('#narBtn'), narBar=$('#narBar');
+  function narStop(){ nar.on=false; if(nar.a){ try{nar.a.pause()}catch(e){} nar.a=null; } nar.spans.forEach(function(s){s.classList.remove('reading')}); if(narBtn){ narBtn.textContent='🎧 اسمع القصة'; narBtn.classList.remove('on'); } }
+  function narPlay(i){
+    if(i>=nar.spans.length){ narStop(); var pq=$('#pgQuiz'); if(pq){ pq.scrollIntoView({behavior:'smooth',block:'start'}); } return; }
+    nar.i=i; nar.spans.forEach(function(s,k){s.classList.toggle('reading',k===i)});
+    var sp=nar.spans[i]; try{ sp.scrollIntoView({behavior:'smooth',block:'center'}); }catch(e){}
+    var h=sp.getAttribute('data-h'), a=nar.a||(nar.a=new Audio()); a.setAttribute('playsinline','');
+    a.src=MB+'/voice/books/'+h.slice(0,2)+'/'+h+'.mp3';
+    a.onended=function(){ if(nar.on) setTimeout(function(){ if(nar.on) narPlay(i+1); },260); };
+    a.onerror=function(){ if(nar.on) narPlay(i+1); };
+    var p=a.play(); if(p&&p.catch) p.catch(function(){ narStop(); });
+  }
+  if(narBtn){
+    narBtn.addEventListener('click',function(){
+      if(nar.on){ narStop(); return; }
+      if(window.KalimaMichael) KalimaMichael.stop(); if(window.__pdPause) window.__pdPause();
+      nar.on=true; narBtn.textContent='⏸ إيقاف'; narBtn.classList.add('on'); narPlay(nar.i>=0&&nar.i<nar.spans.length-1?nar.i:0);
+    });
+    body.addEventListener('click',function(e){ var s=e.target.closest('.sentence'); if(!s||e.target.closest('.tw')) return; var i=nar.spans.indexOf(s); if(i<0) return; if(!nar.on){ nar.on=true; narBtn.textContent='⏸ إيقاف'; narBtn.classList.add('on'); } narPlay(i); });
+  }
+  window.__narStop=narStop;
+
+  /* ───────── end-of-page quiz (the app asks about the page's words before turning it) ───────── */
+  var pq=$('#pgQuiz');
+  if(pq&&window.__PGQ){
+    var Q=window.__PGQ, qi=0, score=0;
+    function pqDraw(){
+      if(qi>=Q.length){ pq.innerHTML='<div class="pg-done"><div class="pg-ic">✅</div><b>اكتملت الصفحة</b><p>'+score+' / '+Q.length+' صحيحة</p><button type="button" class="pg-next" id="pgNext">الصفحة التالية ←</button></div>'; return; }
+      var q=Q[qi];
+      pq.innerHTML='<div class="pg-lbl">أي كلمة تعني هذا؟ · '+(qi+1)+'/'+Q.length+'</div><div class="pg-q">'+esc(q.ar)+'</div><div class="pg-opts">'+q.o.map(function(o){return '<button type="button" dir="ltr" data-o="'+esc(o)+'">'+esc(o)+'</button>'}).join('')+'</div>';
+    }
+    pq.addEventListener('click',function(e){
+      var b=e.target.closest('button[data-o]');
+      if(b){ if(pq.getAttribute('data-done')) return; pq.setAttribute('data-done','1'); var ok=b.getAttribute('data-o')===Q[qi].w; b.classList.add(ok?'ok':'bad'); if(!ok){ var r=pq.querySelector('button[data-o="'+Q[qi].w+'"]'); if(r) r.classList.add('ok'); } if(ok) score++; say(Q[qi].w); setTimeout(function(){ pq.removeAttribute('data-done'); qi++; pqDraw(); },900); return; }
+      if(e.target.closest('#pgNext')){ lock('باقي صفحات الكتاب للمشتركين','هذي أول صفحة من 20 صفحة. اشترك في كلمة واقرأ الكتاب كامل، ومعه 165 كتاب على كل المستويات.'); }
+    });
+    pqDraw();
+  }
+
+  /* ───────── lock card (reuses the quiz lock of the words pane, but inside any pane) ───────── */
+  function lock(t,p){
+    var old=$('#lk2'); if(old) old.remove();
+    var d=document.createElement('div'); d.className='qz-lock lk2'; d.id='lk2';
+    d.innerHTML='<div class="qz-card"><div class="qz-ic">🔒</div><b>'+esc(t)+'</b><p>'+esc(p)+'</p><a class="qz-cta" href="#price">اشترك الآن</a><button type="button" class="qz-x" id="lk2x">رجوع</button></div>';
+    var pane=$('.pane.on')||root; pane.appendChild(d);
+    d.addEventListener('click',function(e){ if(e.target.closest('#lk2x')||e.target===d) d.remove(); });
+  }
+
+  /* ───────── levels → the sections screen of the level (what the app shows after you pick a level) ───────── */
+  var SECS=[
+    ['📖','مكتبة الكلمات','897 كلمة · بطاقات واختبارات','words'],
+    ['📚','مكتبة القراءة','30 كتاباً · كل كتاب 20 صفحة','story'],
+    ['🎧','الاستماع','31 حلقة · بودكاست مايا وآدم','pod'],
+    ['✍️','ورشة الكتابة','50 موضوعاً · كلمات وعبارات مقترحة','write'],
+    ['🎙️','التحدث','200 سؤال · 10 مجموعات','speak'],
+    ['🎯','تمارين اليوم','اقرأ بصوتك · إملاء · مراجعة ذكية · مهام يومية','dict'],
+    ['🔗','الأفعال المركّبة','أفعال مركّبة بمستوى A1 · مع كتبها','lock'],
+    ['📑','قوائمي','كلماتك المحفوظة من كل الأقسام','lock']
+  ];
+  var lvList=$('#lvList'), secScr=$('#secScr');
+  if(lvList&&secScr){
+    lvList.addEventListener('click',function(e){
+      var row=e.target.closest('.lv'); if(!row) return;
+      var b=row.querySelector('.lv-b'); var lv=b?b.textContent.trim():'';
+      if(lv!=='A1'){ lock('مستوى '+lv+' للمشتركين','اشترك في كلمة وافتح كل المستويات من A1 إلى C1 ومعها الأفعال المركّبة.'); return; }
+      secScr.innerHTML='<div class="sec-top"><button type="button" class="qz-back" id="secBack" aria-label="رجوع">→</button><div><b>اختر القسم</b><small>A1 · مبتدئ</small></div></div><div class="sec-list">'+SECS.map(function(s,i){return '<button type="button" class="sec" data-s="'+s[3]+'" style="animation-delay:'+(i*50)+'ms"><span class="sec-ic">'+s[0]+'</span><span><b>'+s[1]+'</b><small>'+s[2]+'</small></span></button>'}).join('')+'</div>';
+      secScr.hidden=false;
+    });
+    secScr.addEventListener('click',function(e){
+      if(e.target.closest('#secBack')){ secScr.hidden=true; return; }
+      var s=e.target.closest('.sec'); if(!s) return; var k=s.getAttribute('data-s');
+      if(k==='lock'){ lock(s.querySelector('b').textContent+' للمشتركين','هذا القسم يفتح مع الاشتراك، مع كل أقسام المستوى.'); return; }
+      if(k==='write'||k==='speak'||k==='dict'){ goTab('prac'); setTimeout(function(){ pracTab(k); },0); return; }
+      goTab(k);
+    });
+  }
+  function goTab(name){ var b=root.querySelector('.tabbar [data-go="'+name+'"]')||root.querySelector('[data-go="'+name+'"]'); if(b) b.click(); }
+
+  /* ───────── practice pane: speaking questions · writing workshop · dictation ───────── */
+  var prac=$('[data-pane=prac]'), pracBody=$('#pracBody'), pracTabs=$('#pracTabs'), pracMode='speak';
+  function pracTab(k){ pracMode=k; if(pracTabs) [].forEach.call(pracTabs.querySelectorAll('button'),function(b){ b.classList.toggle('on',b.getAttribute('data-p')===k); }); if(k==='speak') drawSpeak(); else if(k==='write') drawWrite(); else drawDict(); }
+  if(pracTabs) pracTabs.addEventListener('click',function(e){ var b=e.target.closest('button[data-p]'); if(b) pracTab(b.getAttribute('data-p')); });
+
+  /* speaking: question groups; tap a question to hear it, then say your answer out loud (the app shows helper words) */
+  var spkG=-1;
+  function drawSpeak(){
+    if(spkG<0){
+      pracBody.innerHTML='<div class="pr-note">اختر مجموعة، واسمع السؤال، وجاوب بصوتك. كل سؤال معه كلمات تساعدك.</div>'+SPK.map(function(g,i){return '<button type="button" class="pr-row" data-g="'+i+'"><span class="pr-n">'+(i+1)+'</span><span><b>'+esc(g.t)+'</b><small>'+g.q.length+' أسئلة للتجربة · 20 في التطبيق</small></span></button>'}).join('')+
+        '<button type="button" class="pr-row pr-lock" data-lock="1"><span class="pr-n">🔒</span><span><b>7 مجموعات أخرى</b><small>يومك · بيتك ومكانك · الناس حولك · …</small></span></button>';
+      return;
+    }
+    var g=SPK[spkG];
+    pracBody.innerHTML='<button type="button" class="pr-back" data-back="1">→ كل المجموعات</button><div class="pr-title">'+esc(g.t)+'</div>'+g.q.map(function(q,i){return '<div class="sq" data-i="'+i+'"><button type="button" class="sh-mini" data-say="'+esc(q[0])+'" aria-label="اسمع السؤال">🔊</button><div><span dir="ltr">'+esc(q[0])+'</span><small>'+esc(q[1])+'</small><div class="sq-k">كلمات تساعدك: '+q[2].map(function(w){return '<em dir="ltr">'+esc(w)+'</em>'}).join('')+'</div></div></div>'}).join('')+
+      '<div class="pr-note">في التطبيق: 20 سؤال في كل مجموعة، وتقدر تسجل جوابك وتسمع نفسك.</div>';
+  }
+  /* writing: pick a topic, write, and see the suggested words light up as you use them (no AI in this package) */
+  var wrT=-1;
+  function drawWrite(){
+    if(wrT<0){
+      pracBody.innerHTML='<div class="pr-note">اختر موضوع واكتب عنه. التطبيق يعطيك كلمات وعبارات مقترحة لكل موضوع.</div>'+WR.map(function(w,i){return '<button type="button" class="pr-row" data-w="'+i+'"><span class="pr-n">'+w.i+'</span><span><b>'+esc(w.ar)+'</b><small dir="ltr">'+esc(w.en)+'</small></span></button>'}).join('')+
+        '<button type="button" class="pr-row pr-lock" data-lock="2"><span class="pr-n">🔒</span><span><b>47 موضوعاً آخر</b><small>يومي · أكلتي المفضلة · مدرستي · صديقي · …</small></span></button>';
+      return;
+    }
+    var w=WR[wrT];
+    pracBody.innerHTML='<button type="button" class="pr-back" data-back="2">→ كل المواضيع</button><div class="pr-title">'+w.i+' '+esc(w.ar)+'</div><div class="wr-b">'+esc(w.arB)+'<small dir="ltr">'+esc(w.b)+'</small></div>'+
+      '<div class="wr-k" id="wrK">'+w.w.map(function(x){return '<em dir="ltr" data-k="'+esc(x)+'">'+esc(x)+'</em>'}).join('')+'<span>كلمات مقترحة</span></div>'+
+      '<textarea class="wr-ta" id="wrTa" dir="ltr" rows="5" placeholder="Write here…"></textarea><div class="wr-ct" id="wrCt">0 كلمة</div>';
+    var ta=$('#wrTa');
+    ta.addEventListener('input',function(){
+      var t=ta.value.toLowerCase(), n=(t.match(/[a-z']+/gi)||[]).length; $('#wrCt').textContent=n+' كلمة'+(n>=30?' · ممتاز 👏':n>=15?' · كمّل 💪':'');
+      [].forEach.call($('#wrK').querySelectorAll('em'),function(e){ e.classList.toggle('on',new RegExp('\\b'+e.getAttribute('data-k')+'s?\\b','i').test(t)); });
+    });
+  }
+  /* dictation: hear a sentence, type it, check (part of the daily practice) */
+  var dcI=0;
+  function drawDict(){
+    var d=DIC[dcI%DIC.length];
+    pracBody.innerHTML='<div class="pr-note">من «تمارين اليوم»: اسمع الجملة واكتبها، وبعدين تحقق.</div><div class="dc"><button type="button" class="dc-play" data-say="'+esc(d[0])+'">🔊 اسمع الجملة</button><input class="dc-in" id="dcIn" dir="ltr" type="text" autocomplete="off" placeholder="Type what you hear…"><button type="button" class="dc-chk" id="dcChk">تحقق</button><div class="dc-res" id="dcRes"></div></div>'+
+      '<div class="pr-note">تمارين اليوم في التطبيق: اقرأ بصوتك · إملاء · مراجعة ذكية · مهام يومية.</div>';
+    $('#dcChk').addEventListener('click',function(){
+      var v=key($('#dcIn').value).replace(/[^a-z' ]/g,''), t=key(d[0]).replace(/[^a-z' ]/g,''), r=$('#dcRes');
+      if(!v){ r.innerHTML='اكتب الجملة أول 🙂'; return; }
+      if(v===t){ r.innerHTML='<b class="ok">✅ صحيحة!</b><small>'+esc(d[1])+'</small><button type="button" class="dc-next" id="dcNext">جملة ثانية ←</button>'; }
+      else { var tw=t.split(' '), vw=v.split(' '), ow=d[0].split(' '); r.innerHTML='<b class="bad">قريبة… الجملة الصحيحة:</b><span dir="ltr">'+tw.map(function(x,i){return '<i class="'+(vw[i]===x?'ok':'bad')+'">'+esc(ow[i]||x)+'</i>'}).join(' ')+'</span><button type="button" class="dc-next" id="dcNext">جملة ثانية ←</button>'; }
+    });
+    $('#dcIn').addEventListener('keydown',function(e){ if(e.key==='Enter') $('#dcChk').click(); });
+  }
+  if(pracBody){
+    pracBody.addEventListener('click',function(e){
+      var b;
+      if((b=e.target.closest('[data-say]'))){ var t=b.getAttribute('data-say'); say(t); var sq=b.closest('.sq'); if(sq){ $$('.sq.on').forEach(function(x){x.classList.remove('on')}); sq.classList.add('on'); } return; }
+      if((b=e.target.closest('[data-g]'))){ spkG=+b.getAttribute('data-g'); drawSpeak(); return; }
+      if((b=e.target.closest('[data-w]'))){ wrT=+b.getAttribute('data-w'); drawWrite(); return; }
+      if((b=e.target.closest('[data-back]'))){ if(b.getAttribute('data-back')==='1') spkG=-1; else wrT=-1; pracTab(pracMode); return; }
+      if((b=e.target.closest('[data-lock]'))){ lock(b.getAttribute('data-lock')==='1'?'باقي الأسئلة للمشتركين':'باقي المواضيع للمشتركين','اشترك في كلمة وافتح 200 سؤال محادثة و50 موضوع كتابة في A1 وحده، وأكثر في كل مستوى.'); return; }
+      if(e.target.closest('#dcNext')){ dcI++; drawDict(); return; }
+    });
+  }
+
+  /* ───────── podcast: the episode's 5-question quiz ───────── */
+  var pqBtn=$('#pdQuizBtn'), pqBox=$('#pdQuiz');
+  if(pqBtn&&pqBox&&PQ.length){
+    var pi=0, ps=0;
+    function pdDraw(){
+      if(pi>=PQ.length){ pqBox.innerHTML='<div class="pq-top"><button type="button" class="qz-back" id="pqX" aria-label="رجوع">→</button><div><b>اختبار الحلقة</b><small>النتيجة</small></div></div><div class="pg-done"><div class="pg-ic">'+(ps>=4?'🏆':'👏')+'</div><b>'+ps+' / '+PQ.length+' صحيحة</b><p>كل حلقة في التطبيق معها 5 أسئلة مثل هذي.</p><button type="button" class="pg-next" id="pqAgain">أعد الاختبار</button></div>'; return; }
+      var q=PQ[pi];
+      pqBox.innerHTML='<div class="pq-top"><button type="button" class="qz-back" id="pqX" aria-label="رجوع">→</button><div><b>اختبار الحلقة</b><small>سؤال '+(pi+1)+' من '+PQ.length+'</small></div></div><div class="pq-q"><span dir="ltr">'+esc(q.q)+'</span><small>'+esc(q.qAr)+'</small></div><div class="pg-opts pq-opts">'+q.options.map(function(o,i){return '<button type="button" dir="ltr" data-i="'+i+'">'+esc(o)+'</button>'}).join('')+'</div><div class="pq-ex" id="pqEx" hidden></div>';
+    }
+    pqBtn.addEventListener('click',function(){ if(window.__pdPause) window.__pdPause(); pi=0; ps=0; pdDraw(); pqBox.hidden=false; });
+    pqBox.addEventListener('click',function(e){
+      if(e.target.closest('#pqX')){ pqBox.hidden=true; return; }
+      if(e.target.closest('#pqAgain')){ pi=0; ps=0; pdDraw(); return; }
+      var b=e.target.closest('button[data-i]'); if(!b||pqBox.getAttribute('data-done')) return;
+      pqBox.setAttribute('data-done','1'); var q=PQ[pi], ok=+b.getAttribute('data-i')===q.answer; b.classList.add(ok?'ok':'bad');
+      if(!ok){ var r=pqBox.querySelector('button[data-i="'+q.answer+'"]'); if(r) r.classList.add('ok'); } else ps++;
+      var ex=$('#pqEx'); ex.innerHTML=esc(q.explainAr).replace(/\s*«([^»]+)»\s*/g,'<span class="pq-quote" dir="ltr">$1</span>'); ex.hidden=false;
+      setTimeout(function(){ pqBox.removeAttribute('data-done'); pi++; pdDraw(); }, ok?1100:2600);
+    });
+  }
+
+  /* ───────── when the tab changes ───────── */
+  window.__demoGo=function(name){
+    hlStop(); if(name!=='story') narStop();
+    if(secScr&&name!=='levels') secScr.hidden=true;
+    var lk=$('#lk2'); if(lk) lk.remove();
+    if(pqBox&&name!=='pod') pqBox.hidden=true;
+    if(name==='prac'&&pracBody&&!pracBody.children.length) pracTab(pracMode);
+  };
 })();
 </script>
 
