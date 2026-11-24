@@ -1995,55 +1995,6 @@ footer{border-top-color:rgba(233,201,135,.16);background:#0D1316}
       <div class="phone" aria-label="تجربة تطبيق كلمة">
         <div class="island" aria-hidden="true"></div>
         <div class="screen">
-<style>
-#try .lg{position:absolute;inset:0;z-index:30;background:rgba(20,28,33,.62);display:grid;place-items:center;padding:16px;backdrop-filter:blur(3px)}
-#try .lg[hidden]{display:none}
-#try .lg-card{background:#FFFDF7;border-radius:22px;padding:18px 15px 14px;text-align:center;box-shadow:0 18px 40px -10px rgba(0,0,0,.5);width:100%}
-#try .lg-ic{font-size:28px;line-height:1}
-#try .lg-card b{display:block;font-size:16px;color:var(--ink);margin-top:6px}
-#try .lg-card p{font-size:12.5px;color:var(--soft);line-height:1.8;margin:4px 0 10px}
-#try .lg-card input{width:100%;direction:ltr;text-align:left;font:500 14px var(--en);padding:11px 12px;border:1.5px solid var(--line-soft);border-radius:12px;background:#fff;color:var(--ink);margin-bottom:8px;outline:none}
-#try .lg-card input:focus{border-color:var(--gold)}
-#try .lg-btn{width:100%;border:0;border-radius:12px;padding:12px;background:var(--moss-d);color:#fff;font:700 14.5px var(--ar);cursor:pointer}
-#try .lg-btn[disabled]{opacity:.6}
-#try .lg-err{min-height:18px;font-size:12px;color:#B3392B;margin:0 0 6px}
-#try .lg-note{font-size:11px;color:var(--soft);margin:8px 0 0}
-</style>
-<div class="lg" id="lgGate" hidden>
-  <form class="lg-card" id="lgForm" novalidate>
-    <div class="lg-ic">🎁</div>
-    <b>جرّب كلمة مجاناً</b>
-    <p>اكتب إيميلك ورقمك وابدأ التجربة على طول</p>
-    <input type="email" id="lgEmail" placeholder="name@email.com" autocomplete="email" inputmode="email" aria-label="الإيميل">
-    <input type="tel" id="lgPhone" placeholder="+965 5000 0000" autocomplete="tel" inputmode="tel" aria-label="رقم الجوال">
-    <div class="lg-err" id="lgErr" role="alert"></div>
-    <button type="submit" class="lg-btn" id="lgBtn">ابدأ التجربة</button>
-    <div class="lg-note">نتواصل معاك بخصوص كلمة فقط</div>
-  </form>
-</div>
-<script>
-(function(){
-  var K='kalimaLeadOk', g=document.getElementById('lgGate'), f=document.getElementById('lgForm');
-  try{ if(!localStorage.getItem(K)) g.hidden=false; }catch(e){ g.hidden=false; }
-  f.addEventListener('submit',function(ev){
-    ev.preventDefault();
-    var em=document.getElementById('lgEmail').value.trim();
-    var ph=document.getElementById('lgPhone').value.replace(/[\s\-()]/g,'').replace(/^00/,'+');
-    var er=document.getElementById('lgErr'), b=document.getElementById('lgBtn');
-    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){ er.textContent='اكتب إيميل صحيح'; return; }
-    if(!/^\+?[0-9]{7,15}$/.test(ph)){ er.textContent='اكتب رقم جوال صحيح'; return; }
-    er.textContent=''; b.disabled=true; b.textContent='لحظة...';
-    fetch('https://llzehodvkaddizklaywy.supabase.co/rest/v1/trial_leads',{
-      method:'POST',
-      headers:{'apikey':'sb_publishable_8mtwca4dj1U99oE40ufSeg_b57gyO4D','Authorization':'Bearer sb_publishable_8mtwca4dj1U99oE40ufSeg_b57gyO4D','Content-Type':'application/json','Prefer':'return=minimal'},
-      body:JSON.stringify({email:em,phone:ph})
-    }).then(function(r){
-      if(r.ok||r.status===409){ try{localStorage.setItem(K,'1')}catch(e){} g.hidden=true; }
-      else{ er.textContent='صار خطأ، جرّب مرة ثانية'; b.disabled=false; b.textContent='ابدأ التجربة'; }
-    }).catch(function(){ er.textContent='تأكد من الاتصال وجرّب مرة ثانية'; b.disabled=false; b.textContent='ابدأ التجربة'; });
-  });
-})();
-</script>
           <div class="sb" aria-hidden="true"><span>9:41</span><span class="sb-ic" aria-hidden="true"><svg width="15" height="10" viewBox="0 0 15 10"><rect x="0" y="7" width="2.6" height="3" rx=".6"/><rect x="4" y="5" width="2.6" height="5" rx=".6"/><rect x="8" y="2.5" width="2.6" height="7.5" rx=".6"/><rect x="12" y="0" width="2.6" height="10" rx=".6"/></svg><svg width="20" height="10" viewBox="0 0 20 10"><rect x=".5" y=".5" width="16" height="9" rx="2.4" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="11.5" height="6" rx="1.3"/><rect x="17.6" y="3.3" width="1.6" height="3.4" rx=".8" opacity=".45"/></svg></span></div>
           <div class="app-top">
             <span class="app-logo">كلمة</span>
