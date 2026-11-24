@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>المسجلين</title>
+<style>
+*{box-sizing:border-box;margin:0}
+body{font-family:system-ui,-apple-system,'Noto Kufi Arabic',sans-serif;background:#FAF6EC;color:#23332F;padding:18px;line-height:1.7}
+.box{max-width:560px;margin:0 auto}
+h1{font-size:20px;margin:8px 0 14px}
+input,button{font:inherit;padding:12px;border-radius:12px;border:1.5px solid #EAE0CC;width:100%}
+input{background:#fff;direction:ltr;text-align:left;margin-bottom:8px}
+button{background:#2F4A38;color:#fff;border:0;font-weight:700;cursor:pointer}
+button.alt{background:#fff;color:#2F4A38;border:1.5px solid #2F4A38;margin-top:8px}
+.err{color:#B3392B;min-height:22px;font-size:14px}
+.row{background:#FFFDF7;border:1px solid #EAE0CC;border-radius:14px;padding:10px 14px;margin-bottom:8px}
+.row b{display:block;direction:ltr;text-align:left;font-size:15px;word-break:break-all}
+.row span{display:block;direction:ltr;text-align:left;font-size:14px}
+.row small{color:#7A6A55;font-size:12px}
+.cnt{font-size:14px;color:#7A6A55;margin-bottom:10px}
+</style>
+</head>
+<body>
+<div class="box">
+  <div id="login">
+    <h1>المسجلين في التجربة</h1>
+    <input type="password" id="pw" placeholder="كلمة السر" autocomplete="current-password">
+    <div class="err" id="err"></div>
+    <button id="go">دخول</button>
+  </div>
+  <div id="list" hidden>
+    <h1>المسجلين في التجربة</h1>
+    <div class="cnt" id="cnt"></div>
+    <div id="rows"></div>
+    <button class="alt" id="csv">تنزيل ملف</button>
+  </div>
+</div>
+<script>
+var U='https://llzehodvkaddizklaywy.supabase.co/rest/v1/rpc/get_trial_leads',
+    KEY='sb_publishable_8mtwca4dj1U99oE40ufSeg_b57gyO4D', data=[];
+function load(pw){
+  return fetch(U,{method:'POST',headers:{'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':'application/json'},body:JSON.stringify({pw:pw})})
+   .then(function(r){ if(!r.ok) throw new Error('x'); return r.json(); });
+}
+function show(d,pw){
+  data=d; document.getElementById('login').hidden=true; document.getElementById('list').hidden=false;
+  document.getElementById('cnt').textContent='العدد: '+d.length;
+  var h=''; d.forEach(function(x){
+    var t=new Date(x.created_at).toLocaleString('ar-KW',{dateStyle:'medium',timeStyle:'short'});
+    h+='<div class="row"><b>'+esc(x.email)+'</b><span>'+esc(x.phone)+'</span><small>'+t+'</small></div>';
+  });
+  document.getElementById('rows').innerHTML=h||'<div class="row">ما أحد سجّل للحين</div>';
+  try{sessionStorage.setItem('lp',pw)}catch(e){}
+}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function enter(pw){
+  load(pw).then(function(d){show(d,pw)}).catch(function(){document.getElementById('err').textContent='كلمة السر غلط'; try{sessionStorage.removeItem('lp')}catch(e){}});
+}
+document.getElementById('go').onclick=function(){enter(document.getElementById('pw').value)};
+document.getElementById('pw').addEventListener('keydown',function(e){if(e.key==='Enter')enter(this.value)});
+document.getElementById('csv').onclick=function(){
+  var c='﻿email,phone,date\n'+data.map(function(x){return [x.email,'"'+x.phone+'"',x.created_at].join(',')}).join('\n');
+  var a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([c],{type:'text/csv'})); a.download='kalima-leads.csv'; a.click();
+};
+try{var s=sessionStorage.getItem('lp'); if(s) enter(s);}catch(e){}
+</script>
+</body>
+</html>
